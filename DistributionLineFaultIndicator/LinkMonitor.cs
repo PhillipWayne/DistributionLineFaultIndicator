@@ -26,7 +26,8 @@ namespace DistributionLineFaultIndicator
             DataCollection.cotlen=int.Parse(textBoxCOTLen.Text);
             DataCollection.publen=int.Parse(textBoxPALen.Text);
             DataCollection.inflen=int.Parse(textBoxInALen.Text);
-            DataCollection.DevAddr = UInt16.Parse(textBoxLA.Text);
+            DataCollection.linkAddr = UInt16.Parse(textBoxLA.Text);
+            DataCollection.DevAddr = UInt16.Parse(textBoxPA.Text);
         }
 
         private void LinkMonitor_Load(object sender, EventArgs e)

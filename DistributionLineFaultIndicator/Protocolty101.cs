@@ -29,14 +29,14 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComStructData.TXBuffer[1] = 0x49;  //PRM=1，主站-》从站；功能码FC=9，召唤链路状态
                 if (linklen == 1) 
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
                     DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
                     DataCollection._ComStructData.TXBuffer[4] = 0x16;
                     Leng = 5;
                 }
-                else if (linklen == 2) {     
-                    DataCollection._ComStructData.TXBuffer[2] = 
-                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                else if (linklen == 2) {
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                     DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
                     DataCollection._ComStructData.TXBuffer[5] = 0x16;
                     Leng = 6;
@@ -49,15 +49,15 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComStructData.TXBuffer[1] = 0x40;  //PRM=1，主站-》从站；功能码FC=0，复位远方链路
                 if (linklen == 1)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
                     DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
                     DataCollection._ComStructData.TXBuffer[4] = 0x16;
                     Leng = 5;
                 }
                 else if (linklen == 2)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] =
-                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                     DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
                     DataCollection._ComStructData.TXBuffer[5] = 0x16;
                     Leng = 6;
@@ -72,15 +72,15 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[1] = 0x7A;
                 if (linklen == 1)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
                     DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
                     DataCollection._ComStructData.TXBuffer[4] = 0x16;
                     Leng = 5;
                 }
                 else if (linklen == 2)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] =(byte)((DataCollection.DevAddr) & 0x00ff);
-                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                     DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
                     DataCollection._ComStructData.TXBuffer[5] = 0x16;
                     Leng = 6;
@@ -92,15 +92,15 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComStructData.TXBuffer[1] = 0x0b;  //
                 if (linklen == 1)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
                     DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
                     DataCollection._ComStructData.TXBuffer[4] = 0x16;
                     Leng = 5;
                 }
                 else if (linklen == 2)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] =(byte)((DataCollection.DevAddr) & 0x00ff);
-                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                     DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
                     DataCollection._ComStructData.TXBuffer[5] = 0x16;
                     Leng = 6;
@@ -112,15 +112,15 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComStructData.TXBuffer[1] = 0x00;  
                 if (linklen == 1)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
                     DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
                     DataCollection._ComStructData.TXBuffer[4] = 0x16;
                     Leng = 5;
                 }
                 else if (linklen == 2)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] =(byte)((DataCollection.DevAddr) & 0x00ff);
-                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                     DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
                     DataCollection._ComStructData.TXBuffer[5] = 0x16;
                     Leng = 6;
@@ -135,15 +135,15 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[1] = 0x7B;
                 if (linklen == 1)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
                     DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
                     DataCollection._ComStructData.TXBuffer[4] = 0x16;
                     Leng = 5;
                 }
                 else if (linklen == 2)
                 {
-                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.DevAddr) & 0x00ff);
-                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                     DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
                     DataCollection._ComStructData.TXBuffer[5] = 0x16;
                     Leng = 6;
@@ -392,11 +392,11 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComStructData.TXBuffer[0] = 0x68;
                 DataCollection._ComStructData.TXBuffer[3] = 0x68;
                 if (linklen == 1)
-                    DataCollection._ComStructData.TXBuffer[5] = (byte)((DataCollection.DevAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[5] = (byte)((DataCollection.linkAddr) & 0x00ff);
                 else if (linklen == 2)
                 {
-                    DataCollection._ComStructData.TXBuffer[5] = (byte)((DataCollection.DevAddr) & 0x00ff);
-                    DataCollection._ComStructData.TXBuffer[6] = (byte)(((DataCollection.DevAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[5] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[6] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                 }
                 DataCollection._ComStructData.TXBuffer[5 + linklen] = TypeID;
                 DataCollection._ComStructData.TXBuffer[6 + linklen] = (byte)(DataCollection._DataField.FieldVSQ);
@@ -951,7 +951,7 @@ namespace DistributionLineFaultIndicator
             }
             else if (DataCollection._ComStructData.RXBuffer[0] == 0x10)
             {
-                if (GetSumCheck(2, 1, 2) != DataCollection._ComStructData.RXBuffer[3])
+                if (GetSumCheck(2, 1, linklen+1) != DataCollection._ComStructData.RXBuffer[2+linklen])
                     dataty = 0;   //非法帧
                 else
                 {

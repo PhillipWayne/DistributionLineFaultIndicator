@@ -14,6 +14,7 @@ namespace DistributionLineFaultIndicator
         public static int publen;      //
         public static int inflen;
 
+        public static UInt16 linkAddr;
         public static UInt16 DevAddr;
         public static int YkStartPos;
         public static int ParamInfoAddr;
@@ -26,7 +27,7 @@ namespace DistributionLineFaultIndicator
 
         public static byte DataTy;
 
-        public static int linkState = 0;   //链路状态指示符，0为未初始化，1为已收到链路状态请求确认，2为已收到链路复位确认。
+        public static int linkState = 0;   //链路状态指示符，0为未初始化，1为已收到链路状态请求确认，2为已收到确认(链路复位确认或其他确认)。
         public static int waitTime = 10;  //重发等待时间
         public static int class2Delay;
         public static int class2Delay_default;

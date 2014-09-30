@@ -44,6 +44,8 @@
             this.textBoxInALen = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxLA = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxPA = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -70,7 +72,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(56, 74);
+            this.label5.Location = new System.Drawing.Point(67, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 10;
@@ -79,7 +81,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 106);
+            this.label6.Location = new System.Drawing.Point(67, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 11;
@@ -87,19 +89,19 @@
             // 
             // textBoxIP
             // 
-            this.textBoxIP.Location = new System.Drawing.Point(127, 71);
+            this.textBoxIP.Location = new System.Drawing.Point(138, 37);
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(100, 21);
             this.textBoxIP.TabIndex = 12;
-            this.textBoxIP.Text = "172.16.0.112";
+            this.textBoxIP.Text = "220.180.239.204";
             // 
             // textBoxPort
             // 
-            this.textBoxPort.Location = new System.Drawing.Point(127, 103);
+            this.textBoxPort.Location = new System.Drawing.Point(138, 69);
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(100, 21);
             this.textBoxPort.TabIndex = 13;
-            this.textBoxPort.Text = "2404";
+            this.textBoxPort.Text = "4001";
             // 
             // label1
             // 
@@ -143,7 +145,7 @@
             this.textBoxCOTLen.Name = "textBoxCOTLen";
             this.textBoxCOTLen.Size = new System.Drawing.Size(100, 21);
             this.textBoxCOTLen.TabIndex = 18;
-            this.textBoxCOTLen.Text = "1";
+            this.textBoxCOTLen.Text = "2";
             // 
             // textBoxPALen
             // 
@@ -159,7 +161,7 @@
             this.textBoxLALen.Name = "textBoxLALen";
             this.textBoxLALen.Size = new System.Drawing.Size(100, 21);
             this.textBoxLALen.TabIndex = 20;
-            this.textBoxLALen.Text = "1";
+            this.textBoxLALen.Text = "2";
             // 
             // textBoxInALen
             // 
@@ -172,7 +174,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(56, 138);
+            this.label7.Location = new System.Drawing.Point(67, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 22;
@@ -180,17 +182,36 @@
             // 
             // textBoxLA
             // 
-            this.textBoxLA.Location = new System.Drawing.Point(127, 135);
+            this.textBoxLA.Location = new System.Drawing.Point(138, 101);
             this.textBoxLA.Name = "textBoxLA";
             this.textBoxLA.Size = new System.Drawing.Size(100, 21);
             this.textBoxLA.TabIndex = 23;
             this.textBoxLA.Text = "1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(67, 134);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "公共地址：";
+            // 
+            // textBoxPA
+            // 
+            this.textBoxPA.Location = new System.Drawing.Point(138, 134);
+            this.textBoxPA.Name = "textBoxPA";
+            this.textBoxPA.Size = new System.Drawing.Size(100, 21);
+            this.textBoxPA.TabIndex = 25;
+            this.textBoxPA.Text = "1";
             // 
             // LinkMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 386);
+            this.Controls.Add(this.textBoxPA);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxLA);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxInALen);
@@ -233,5 +254,7 @@
         private System.Windows.Forms.TextBox textBoxInALen;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxLA;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxPA;
     }
 }

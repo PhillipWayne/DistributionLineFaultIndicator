@@ -970,13 +970,13 @@ namespace DistributionLineFaultIndicator
 
                         byte[] x = new byte[DataCollection._ComStructData.TxLen];
                         Array.Copy(DataCollection._ComStructData.TXBuffer, 0, x, 0, DataCollection._ComStructData.TxLen);
-                        richTextBox1.AppendText("发送; ");
+                        StringBuilder str = new StringBuilder("发送;");
                         for (int i = 0; i < DataCollection._ComStructData.TxLen; i++)
                         {
-                            richTextBox1.AppendText(" ");
-                            richTextBox1.AppendText(x[i].ToString("X2"));
+                            str.Append(" ");
+                            str.Append(x[i].ToString("X2"));
                         }
-                        richTextBox1.AppendText("\n");
+                        richTextBox1.AppendText(str+"\n");
 
                     }
                     catch
@@ -999,21 +999,23 @@ namespace DistributionLineFaultIndicator
                 try
                 {
                     DataCollection._ComStructData.RxLen = socket1.Receive(DataCollection._ComStructData.RXBuffer);
-                    byte[] x = new byte[DataCollection._ComStructData.RxLen];
-                    Array.Copy(DataCollection._ComStructData.RXBuffer, 0, x, 0, DataCollection._ComStructData.RxLen);
-                    richTextBox1.AppendText("接收;");
-                    for (int i = 0; i < DataCollection._ComStructData.RxLen; i++)
-                    {
-                        richTextBox1.AppendText(" ");
-                        richTextBox1.AppendText(x[i].ToString("X2"));
-                    }
-                    richTextBox1.AppendText("\n");
-
                     if (DataCollection._ComStructData.RxLen > 0)
                     {
                         DataTy = Protocolty101.DecodeFrame();
                         System.Diagnostics.Debug.WriteLine("Dataty: " + DataTy);
                         processRevTele(DataTy);
+
+                        
+                        byte[] x = new byte[DataCollection._ComStructData.RxLen];
+                        Array.Copy(DataCollection._ComStructData.RXBuffer, 0, x, 0, DataCollection._ComStructData.RxLen);
+                        StringBuilder str = new StringBuilder("接收;");
+                        for (int i = 0; i < DataCollection._ComStructData.RxLen; i++)
+                        {
+                            str.Append(" ");
+                            str.Append(x[i].ToString("X2"));
+                        }
+                        richTextBox1.AppendText(str+"\n");
+
                         DataCollection.class2Delay = DataCollection.class2Delay_default;
                     }
                     else
@@ -1285,16 +1287,16 @@ namespace DistributionLineFaultIndicator
 
             //}
           
-                if (DataCollection._ProtocoltyFlag.ACD == 1)
-                {
+                //if (DataCollection._ProtocoltyFlag.ACD == 1)
+                //{
 
-                    DataCollection._ComTaskFlag.CALL_1 = true;
-                }
-                else if (DataCollection._ProtocoltyFlag.ACD == 2)
-                {
+                //    DataCollection._ComTaskFlag.CALL_1 = true;
+                //}
+                //else if (DataCollection._ProtocoltyFlag.ACD == 2)
+                //{
 
-                    DataCollection._ComTaskFlag.CALL_2 = true;
-                }
+                //    DataCollection._ComTaskFlag.CALL_2 = true;
+                //}
 
 
 
@@ -1498,6 +1500,11 @@ namespace DistributionLineFaultIndicator
         private void timer1_Tick(object sender, EventArgs e)
         {
             MessageBox.Show("ss");
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
         }
     }
 }
