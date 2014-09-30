@@ -16,11 +16,11 @@ namespace DistributionLineFaultIndicator
                 case 1://向监视器下发监视端系统参数
                     DataCollection._ComStructData.TXBuffer[0] = 0x69;
                     DataCollection._ComStructData.TXBuffer[1] = 34;
-                    DataCollection._ComStructData.TXBuffer[2] = 34;
+                    DataCollection._ComStructData.TXBuffer[2] = 0;
                     DataCollection._ComStructData.TXBuffer[3]=0x69;
                     DataCollection._ComStructData.TXBuffer[4]=1;
-                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.DevAddr;  //LinkAddress
-                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.DevAddr>>8);
+                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.linkAddr;  //LinkAddress
+                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.linkAddr>>8);
                     DataCollection._ComStructData.TXBuffer[7]=1;//应用层功能码，参数下载
                     DataCollection._ComStructData.TXBuffer[8]=1;//应用层功能码，给监测单元
                     DataCollection._ComStructData.TXBuffer[9]=0;
@@ -62,11 +62,11 @@ namespace DistributionLineFaultIndicator
                 case 2://向监视器下发监视端ip参数
                     DataCollection._ComStructData.TXBuffer[0] = 0x69;
                     DataCollection._ComStructData.TXBuffer[1] =40;
-                    DataCollection._ComStructData.TXBuffer[2] = 40;
+                    DataCollection._ComStructData.TXBuffer[2] = 0;
                     DataCollection._ComStructData.TXBuffer[3]=0x69;
                     DataCollection._ComStructData.TXBuffer[4]=1;//链路控制域
-                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.DevAddr;  //LinkAddress
-                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.DevAddr>>8);
+                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.linkAddr;  //LinkAddress
+                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.linkAddr>>8);
                     DataCollection._ComStructData.TXBuffer[7]=1;//应用层功能码，参数下载
                     DataCollection._ComStructData.TXBuffer[8]=1;//应用层功能码，给监测单元
                     DataCollection._ComStructData.TXBuffer[9]=0;//帧序列域
@@ -98,6 +98,58 @@ namespace DistributionLineFaultIndicator
                     len = 46;
                     break;
 
+                case 3://向监视器下发读取监视端系统参数
+                    DataCollection._ComStructData.TXBuffer[0] = 0x69;
+                    DataCollection._ComStructData.TXBuffer[1] =14;
+                    DataCollection._ComStructData.TXBuffer[2] = 0;
+                    DataCollection._ComStructData.TXBuffer[3]=0x69;
+                    DataCollection._ComStructData.TXBuffer[4]=1;//链路控制域
+                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.linkAddr;  //LinkAddress
+                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.linkAddr>>8);
+                    DataCollection._ComStructData.TXBuffer[7]=2;//应用层功能码，参数读取
+                    DataCollection._ComStructData.TXBuffer[8]=1;//应用层功能码，给监测单元
+                    DataCollection._ComStructData.TXBuffer[9]=0;//帧序列域
+                    DataCollection._ComStructData.TXBuffer[10]=1;//帧序列域（序号）
+                    DataCollection._ComStructData.TXBuffer[11]=1;//数据个数低位
+                    DataCollection._ComStructData.TXBuffer[12]=0;//数据个数高位
+                    DataCollection._ComStructData.TXBuffer[13]=0;//SQ
+                    //数据域
+                    DataCollection._ComStructData.TXBuffer[14]=1; //信息体地址低
+                    DataCollection._ComStructData.TXBuffer[15]=0; //信息体地址高
+                    DataCollection._ComStructData.TXBuffer[16]=0;
+                    DataCollection._ComStructData.TXBuffer[17]=0;
+                   
+                    DataCollection._ComStructData.TXBuffer[18]=GetSumCheck(1,4,14);
+                    DataCollection._ComStructData.TXBuffer[19]=0x16;
+                    len =20;
+
+                    break;
+                case 4://向监视器下发读取监视端ip参数
+                    DataCollection._ComStructData.TXBuffer[0] = 0x69;
+                    DataCollection._ComStructData.TXBuffer[1] =14;
+                    DataCollection._ComStructData.TXBuffer[2] = 0;
+                    DataCollection._ComStructData.TXBuffer[3]=0x69;
+                    DataCollection._ComStructData.TXBuffer[4]=1;//链路控制域
+                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.linkAddr;  //LinkAddress
+                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.linkAddr>>8);
+                    DataCollection._ComStructData.TXBuffer[7]=2;//应用层功能码，参数读取
+                    DataCollection._ComStructData.TXBuffer[8]=1;//应用层功能码，给监测单元
+                    DataCollection._ComStructData.TXBuffer[9]=0;//帧序列域
+                    DataCollection._ComStructData.TXBuffer[10]=1;//帧序列域（序号）
+                    DataCollection._ComStructData.TXBuffer[11]=1;//数据个数低位
+                    DataCollection._ComStructData.TXBuffer[12]=0;//数据个数高位
+                    DataCollection._ComStructData.TXBuffer[13]=0;//SQ
+                    //数据域
+                    DataCollection._ComStructData.TXBuffer[14]=2; //信息体地址低
+                    DataCollection._ComStructData.TXBuffer[15]=0; //信息体地址高
+                    DataCollection._ComStructData.TXBuffer[16]=0;
+                    DataCollection._ComStructData.TXBuffer[17]=0;
+                   
+                    DataCollection._ComStructData.TXBuffer[18]=GetSumCheck(1,4,14);
+                    DataCollection._ComStructData.TXBuffer[19]=0x16;
+                    len =20;
+                    break;
+
                 default:
                     break;
             }
@@ -112,11 +164,11 @@ namespace DistributionLineFaultIndicator
                 case 1://向监视器下发故障指示器参数
                     DataCollection._ComStructData.TXBuffer[0] = 0x69;
                     DataCollection._ComStructData.TXBuffer[1] =46;
-                    DataCollection._ComStructData.TXBuffer[2] =46;
+                    DataCollection._ComStructData.TXBuffer[2] =0;
                     DataCollection._ComStructData.TXBuffer[3]=0x69;
                     DataCollection._ComStructData.TXBuffer[4]=1;//链路控制域
-                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.DevAddr;  //LinkAddress
-                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.DevAddr>>8);
+                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.linkAddr;  //LinkAddress
+                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.linkAddr>>8);
                     DataCollection._ComStructData.TXBuffer[7]=1;//应用层功能码，参数下载
                     DataCollection._ComStructData.TXBuffer[8]=2;//应用层功能码，给故障指示器
                     DataCollection._ComStructData.TXBuffer[9]=0;//帧序列域
@@ -170,12 +222,12 @@ namespace DistributionLineFaultIndicator
                 case 2://向监视器下发故障指示器标志位
                     DataCollection._ComStructData.TXBuffer[0] = 0x69;
                     DataCollection._ComStructData.TXBuffer[1] =20;
-                    DataCollection._ComStructData.TXBuffer[2] =20;
+                    DataCollection._ComStructData.TXBuffer[2] =0;
                     DataCollection._ComStructData.TXBuffer[3]=0x69;
                     DataCollection._ComStructData.TXBuffer[4]=1;//链路控制域
-                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.DevAddr;  //LinkAddress
-                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.DevAddr>>8);
-                    DataCollection._ComStructData.TXBuffer[7]=9;//应用层功能码，参数下载
+                    DataCollection._ComStructData.TXBuffer[5]=(byte)DataCollection.linkAddr;  //LinkAddress
+                    DataCollection._ComStructData.TXBuffer[6]=(byte)(DataCollection.linkAddr>>8);
+                    DataCollection._ComStructData.TXBuffer[7]=9;//应用层功能码，标志位下载
                     DataCollection._ComStructData.TXBuffer[8]=2;//应用层功能码，给故障指示器
                     DataCollection._ComStructData.TXBuffer[9]=0;//帧序列域
                     DataCollection._ComStructData.TXBuffer[10]=1;//帧序列域（序号）
@@ -198,6 +250,11 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[25]=0x16;
                     len =26;
                     break;
+                case 3://向监视器下发读取故障指示器参数
+                    break;
+                case 4://向监视器下发读取故障指示器标志位
+                    break;
+
 
                 default:
                     break;

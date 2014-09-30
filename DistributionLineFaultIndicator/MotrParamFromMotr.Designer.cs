@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonReadSysParam = new System.Windows.Forms.Button();
             this.buttonSysParam = new System.Windows.Forms.Button();
             this.textBoxRequestTime = new System.Windows.Forms.TextBox();
             this.textBoxPubAddr = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonReadIpConfig = new System.Windows.Forms.Button();
             this.textBoxMainPort = new System.Windows.Forms.TextBox();
             this.textBoxResPort = new System.Windows.Forms.TextBox();
             this.textBoxAPN = new System.Windows.Forms.TextBox();
@@ -82,6 +84,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonReadSysParam);
             this.groupBox1.Controls.Add(this.buttonSysParam);
             this.groupBox1.Controls.Add(this.textBoxRequestTime);
             this.groupBox1.Controls.Add(this.textBoxPubAddr);
@@ -111,6 +114,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "系统参数";
+            // 
+            // buttonReadSysParam
+            // 
+            this.buttonReadSysParam.Location = new System.Drawing.Point(498, 143);
+            this.buttonReadSysParam.Name = "buttonReadSysParam";
+            this.buttonReadSysParam.Size = new System.Drawing.Size(75, 23);
+            this.buttonReadSysParam.TabIndex = 23;
+            this.buttonReadSysParam.Text = "读取";
+            this.buttonReadSysParam.UseVisualStyleBackColor = true;
+            this.buttonReadSysParam.Click += new System.EventHandler(this.buttonReadSysParam_Click);
             // 
             // buttonSysParam
             // 
@@ -300,6 +313,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonReadIpConfig);
             this.groupBox2.Controls.Add(this.textBoxMainPort);
             this.groupBox2.Controls.Add(this.textBoxResPort);
             this.groupBox2.Controls.Add(this.textBoxAPN);
@@ -329,6 +343,16 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ip设置";
+            // 
+            // buttonReadIpConfig
+            // 
+            this.buttonReadIpConfig.Location = new System.Drawing.Point(498, 139);
+            this.buttonReadIpConfig.Name = "buttonReadIpConfig";
+            this.buttonReadIpConfig.Size = new System.Drawing.Size(75, 23);
+            this.buttonReadIpConfig.TabIndex = 23;
+            this.buttonReadIpConfig.Text = "读取";
+            this.buttonReadIpConfig.UseVisualStyleBackColor = true;
+            this.buttonReadIpConfig.Click += new System.EventHandler(this.buttonReadIpConfig_Click);
             // 
             // textBoxMainPort
             // 
@@ -602,5 +626,7 @@
         private System.Windows.Forms.TextBox textBoxResIP3;
         private System.Windows.Forms.TextBox textBoxResIP2;
         private System.Windows.Forms.TextBox textBoxResIP4;
+        private System.Windows.Forms.Button buttonReadSysParam;
+        private System.Windows.Forms.Button buttonReadIpConfig;
     }
 }

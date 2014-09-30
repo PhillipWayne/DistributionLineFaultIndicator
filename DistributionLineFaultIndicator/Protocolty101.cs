@@ -126,6 +126,26 @@ namespace DistributionLineFaultIndicator
                     Leng = 6;
                 }
             }
+            else if (dataty == 153)//确认帧
+            {
+                DataCollection._ComStructData.TXBuffer[0] = 0x10;  //起始字节
+                DataCollection._ComStructData.TXBuffer[1] = 0x40;
+                if (linklen == 1)
+                {
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);  // 
+                    DataCollection._ComStructData.TXBuffer[3] = GetSumCheck(1, 1, 2);
+                    DataCollection._ComStructData.TXBuffer[4] = 0x16;
+                    Leng = 5;
+                }
+                else if (linklen == 2)
+                {
+                    DataCollection._ComStructData.TXBuffer[2] = (byte)((DataCollection.linkAddr) & 0x00ff);
+                    DataCollection._ComStructData.TXBuffer[3] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
+                    DataCollection._ComStructData.TXBuffer[4] = GetSumCheck(1, 1, 3);
+                    DataCollection._ComStructData.TXBuffer[5] = 0x16;
+                    Leng = 6;
+                }
+            }
             else if (dataty == 4)  //请求二级数据
             {
                 DataCollection._ComStructData.TXBuffer[0] = 0x10;  //起始字节
@@ -957,7 +977,7 @@ namespace DistributionLineFaultIndicator
                 {
                     if ((DataCollection._ComStructData.RXBuffer[1] & 0x0F) == 0x0B)  //链路状态正常
                         dataty = 2;
-                    else if ((DataCollection._ComStructData.RXBuffer[1] & 0xFF) == 0xc0)//收到下位机的链路复位
+                    else if ((DataCollection._ComStructData.RXBuffer[1] & 0xFF) == 0xc0)//收到下位机的链路复位请求
                         dataty = 151;
                     else if ((DataCollection._ComStructData.RXBuffer[1] & 0x0F) == 0x00)  //复位链路确认
                         dataty = 3;
@@ -968,7 +988,7 @@ namespace DistributionLineFaultIndicator
                         dataty = 114;
                     else if ((DataCollection._ComStructData.RXBuffer[1] & 0xFF) == 0x88)  //以数据响应
                         dataty = 115;
-                    else if ((DataCollection._ComStructData.RXBuffer[1] & 0xFF) == 0xc9) //收到下位机的链路请求
+                    else if ((DataCollection._ComStructData.RXBuffer[1] & 0xFF) == 0xc9) //收到下位机的链路状态请求
                         dataty = 150;
                     
 
@@ -1443,6 +1463,9 @@ namespace DistributionLineFaultIndicator
 
                                     break;
                             }
+                            break;
+                        case 70:      //初始化结束
+                            dataty = 152;
                             break;
                         default:
                             dataty = 0;

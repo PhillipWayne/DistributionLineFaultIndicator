@@ -78,7 +78,7 @@ namespace DistributionLineFaultIndicator
         {
             indicator.TopLevel = false;
             indicator.Dock = DockStyle.Fill;
-            this.splitContainer1.Panel2.Controls.Add(indicator);
+            this.splitContainer2.Panel1.Controls.Add(indicator);
             if (monitor.Visible == true)
                 monitor.Hide();
             indicator.Show();
@@ -309,7 +309,7 @@ namespace DistributionLineFaultIndicator
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("    版本号：v0.05      by 2014-9-28 ");
+            MessageBox.Show("    版本号：v0.07      by 2014-9-30 ");
         }
 
 
@@ -988,7 +988,7 @@ namespace DistributionLineFaultIndicator
                 else
                 {
                 }
-                Thread.Sleep(5);
+                Thread.Sleep(10);
             }
         }
 
@@ -1029,7 +1029,7 @@ namespace DistributionLineFaultIndicator
                 {
                     toolStripStatusX.Text = "监测单元方向报文接收错误";
                 }
-                Thread.Sleep(1);
+                Thread.Sleep(10);
             }
         }
 
@@ -1086,7 +1086,6 @@ namespace DistributionLineFaultIndicator
 
                 //    //ProtoZZTime = DataCollection._ProtocoltyFlag.ZZTime;//设置总召唤循环时间
                 //}
-
 
             }
             //else if (DataTy == 4)     //  总召激活
@@ -1300,15 +1299,19 @@ namespace DistributionLineFaultIndicator
 
 
 
-                if (DataTy == 150)
+                if (DataTy == 150)  //收到下位机链路状态请求
                 {
                     DataCollection.linkState = 3;
                     DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F = true;
                 }
-                else if (DataTy == 151)
+                else if (DataTy == 151)  //收到下位机链路复位请求
                 {
                     DataCollection.linkState = 4;
                     DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F1 = true;
+                }
+                else if (DataTy == 152)  //收到下位机初始化完成确认
+                {
+                    DataCollection.linkState = 5;
                 }
 
 
@@ -1489,22 +1492,16 @@ namespace DistributionLineFaultIndicator
             }
         }
 
-        private void timerC_RQ_NA_LINKREQ_Tick(object sender, EventArgs e)
-        {
-            if (DataCollection.linkState == 0)
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F = true;
-            else if (DataCollection.linkState == 1)
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;
-        }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            MessageBox.Show("ss");
-        }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace DistributionLineFaultIndicator
         public static byte DataTy;
 
         public static int linkState = 0;   //链路状态指示符，0为未初始化，1为已收到链路状态请求确认，2为已收到确认(链路复位确认或其他确认)。
+                                           //3为本机已回复链路状态，4为本机已回复链路复位确认。5为收到下位机初始化完成确认。
         public static int waitTime = 10;  //重发等待时间
         public static int class2Delay;
         public static int class2Delay_default;
@@ -112,6 +113,7 @@ namespace DistributionLineFaultIndicator
             public static bool C_RQ_NA_LINKREQ_F1;//复位链路
             public static bool C_RQ_NA_LINKCOM_F;//请求链路状态确认
             public static bool C_RQ_NA_LINKCOM_F1;//复位链路确认
+            public static bool Comfirm;//确认帧
             public static bool FirstON_S;
             public static bool SET_PARAM_CON;
             public static bool C_CS_NA_1;             //对时

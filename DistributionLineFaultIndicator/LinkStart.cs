@@ -23,10 +23,11 @@ namespace DistributionLineFaultIndicator
         {
             DataCollection.linkState = 0;
             textBoxState.Text = "已发送链路状态请求";
-            DataCollection.waitTime = int.Parse(textBoxWaitTime.Text)*1000;
             DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F = true;
+            DataCollection.waitTime = int.Parse(textBoxWaitTime.Text)*1000;
             timerF.Interval = DataCollection.waitTime;
             timerF.Enabled = true;
+            timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -40,10 +41,15 @@ namespace DistributionLineFaultIndicator
                     textBoxState.Text = "链路复位已确认！";
                     break;
                 case 3:
-                    textBoxState.Text = "已回复链路状态！";
+                    textBoxState.Text = "本机已回复链路状态！";
                     break;
                 case 4:
-                    textBoxState.Text = "已复位链路，链路启动完成！";
+                    textBoxState.Text = "本机已复位链路，链路握手完成！";
+                    break;
+                case 5:
+                    textBoxState.Text = "链路及下位机初始化完成！";
+                    DataCollection.linkState = -1;
+                    DataCollection._ComTaskFlag.C_IC_NA_1 = true;    //总招
                     break;
                 default:
                     break;
@@ -60,17 +66,19 @@ namespace DistributionLineFaultIndicator
             {
                 DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;
             }
-            else if (DataCollection.linkState == 2)
+            else 
             {
                 timerF.Enabled = false;
             }
         }
 
-        private void LinkStart_FormClosing(object sender, FormClosingEventArgs e)
+        private void LinkStart_FormClosed(object sender, FormClosedEventArgs e)
         {
-            timer1.Enabled = false;
             timerF.Enabled = false;
+            timer1.Enabled = false;
         }
+
+
 
 
     }

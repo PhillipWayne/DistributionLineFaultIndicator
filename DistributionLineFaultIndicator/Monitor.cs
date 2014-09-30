@@ -111,7 +111,7 @@ namespace DistributionLineFaultIndicator
         {
             DataCollection.linkState = 0;
             LinkStart linkStart = new LinkStart();
-            linkStart.Show();
+            linkStart.ShowDialog();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace DistributionLineFaultIndicator
             DataCollection.class2Delay-=1000;
             if (DataCollection.class2Delay <= 0)
             {
-                DataCollection._ComTaskFlag.CALL_2 = true;
+                DataCollection._ComTaskFlag.C_IC_NA_1 = true;
                 DataCollection.class2Delay = DataCollection.class2Delay_default;
             }
         }

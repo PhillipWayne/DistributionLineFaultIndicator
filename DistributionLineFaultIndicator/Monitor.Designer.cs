@@ -222,18 +222,19 @@
             this.label2.Location = new System.Drawing.Point(69, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 12);
+            this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 7;
-            this.label2.Text = "秒召唤2级数据";
+            this.label2.Text = "秒循环总召";
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(45, 17);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.MaxLength = 3;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(24, 21);
             this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "5";
+            this.textBox1.Text = "30";
             // 
             // button3
             // 
@@ -340,9 +341,9 @@
         private System.Windows.Forms.Button buttonMontrParam;
         private System.Windows.Forms.Button buttonIndtrParam;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -30,7 +30,7 @@ namespace DistributionLineFaultIndicator
             DataCollection.SystemParam.NormalCurrentRating = UInt16.Parse(textBoxNormalCurrentRating.Text);
             DataCollection.SystemParam.PubAddr_101 = UInt16.Parse(textBoxPubAddr.Text);
             DataCollection.SystemParam.RequestTime = UInt16.Parse(textBoxRequestTime.Text);
-            DataCollection._ComStructData.TxLen =ProtocoltyParam.EncodeFrame(1);
+            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(1);            //向监视器下发监视端系统参数
             DataCollection._ComStructData.TX_TASK = true;
         }
 
@@ -64,7 +64,7 @@ namespace DistributionLineFaultIndicator
                     DataCollection._GPRSComSet.APN[i] = textBoxAPN.Text[i];
             }
 
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(2);
+            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(2);      //向监视器下发监视端ip参数
             DataCollection._ComStructData.TX_TASK = true;
         }
 
@@ -99,6 +99,18 @@ namespace DistributionLineFaultIndicator
             textBoxResIP4.Text=DataCollection._GPRSComSet.res_IP[3].ToString();
             textBoxResPort.Text = DataCollection._GPRSComSet.res_Port.ToString();
 
+        }
+
+        private void buttonReadSysParam_Click(object sender, EventArgs e)
+        {
+            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(3);      //向监视器下发读取监视端系统参数
+            DataCollection._ComStructData.TX_TASK = true;
+        }
+
+        private void buttonReadIpConfig_Click(object sender, EventArgs e)
+        {
+            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(4);      //向监视器下发读取监视端ip参数
+            DataCollection._ComStructData.TX_TASK = true;
         }
     }
 }

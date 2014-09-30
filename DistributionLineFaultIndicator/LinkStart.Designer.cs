@@ -63,7 +63,7 @@
             this.textBoxWaitTime.Name = "textBoxWaitTime";
             this.textBoxWaitTime.Size = new System.Drawing.Size(100, 21);
             this.textBoxWaitTime.TabIndex = 2;
-            this.textBoxWaitTime.Text = "10";
+            this.textBoxWaitTime.Text = "30";
             // 
             // label2
             // 
@@ -104,7 +104,7 @@
             this.Controls.Add(this.buttonStart);
             this.Name = "LinkStart";
             this.Text = "LinkStart";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LinkStart_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LinkStart_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
