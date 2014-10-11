@@ -60,10 +60,12 @@
             // textBoxWaitTime
             // 
             this.textBoxWaitTime.Location = new System.Drawing.Point(148, 63);
+            this.textBoxWaitTime.MaxLength = 5;
             this.textBoxWaitTime.Name = "textBoxWaitTime";
             this.textBoxWaitTime.Size = new System.Drawing.Size(100, 21);
             this.textBoxWaitTime.TabIndex = 2;
             this.textBoxWaitTime.Text = "30";
+            this.textBoxWaitTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
             // 
             // label2
             // 
@@ -85,7 +87,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timerF

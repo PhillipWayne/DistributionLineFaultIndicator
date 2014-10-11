@@ -85,14 +85,14 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
-            this.splitContainer1.Size = new System.Drawing.Size(757, 414);
-            this.splitContainer1.SplitterDistance = 49;
+            this.splitContainer1.Size = new System.Drawing.Size(757, 479);
+            this.splitContainer1.SplitterDistance = 54;
             this.splitContainer1.TabIndex = 1;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.AutoSize = false;
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonLink,
             this.toolStripButtonUnLink,
@@ -106,16 +106,16 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(757, 49);
+            this.toolStrip1.Size = new System.Drawing.Size(757, 54);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButtonLink
             // 
-            this.toolStripButtonLink.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLink.Image")));
+            this.toolStripButtonLink.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010015150551_easyicon_net_128;
             this.toolStripButtonLink.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLink.Name = "toolStripButtonLink";
-            this.toolStripButtonLink.Size = new System.Drawing.Size(84, 46);
+            this.toolStripButtonLink.Size = new System.Drawing.Size(84, 51);
             this.toolStripButtonLink.Text = "监测单元连接";
             this.toolStripButtonLink.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonLink.Click += new System.EventHandler(this.toolStripButtonLink_Click);
@@ -123,10 +123,10 @@
             // toolStripButtonUnLink
             // 
             this.toolStripButtonUnLink.Enabled = false;
-            this.toolStripButtonUnLink.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUnLink.Image")));
+            this.toolStripButtonUnLink.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010015157867_easyicon_net_128;
             this.toolStripButtonUnLink.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUnLink.Name = "toolStripButtonUnLink";
-            this.toolStripButtonUnLink.Size = new System.Drawing.Size(36, 46);
+            this.toolStripButtonUnLink.Size = new System.Drawing.Size(36, 51);
             this.toolStripButtonUnLink.Text = "断开";
             this.toolStripButtonUnLink.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonUnLink.Click += new System.EventHandler(this.toolStripButtonUnLink_Click);
@@ -135,14 +135,14 @@
             // 
             this.toolStripSeparator1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 49);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // toolStripButtonLink2
             // 
-            this.toolStripButtonLink2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLink2.Image")));
+            this.toolStripButtonLink2.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010015143196_easyicon_net_256;
             this.toolStripButtonLink2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLink2.Name = "toolStripButtonLink2";
-            this.toolStripButtonLink2.Size = new System.Drawing.Size(72, 46);
+            this.toolStripButtonLink2.Size = new System.Drawing.Size(72, 51);
             this.toolStripButtonLink2.Text = "指示器连接";
             this.toolStripButtonLink2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonLink2.Click += new System.EventHandler(this.toolStripButtonLink2_Click);
@@ -150,10 +150,10 @@
             // toolStripButtonUnLink2
             // 
             this.toolStripButtonUnLink2.Enabled = false;
-            this.toolStripButtonUnLink2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUnLink2.Image")));
+            this.toolStripButtonUnLink2.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010015139390_easyicon_net_256;
             this.toolStripButtonUnLink2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUnLink2.Name = "toolStripButtonUnLink2";
-            this.toolStripButtonUnLink2.Size = new System.Drawing.Size(36, 46);
+            this.toolStripButtonUnLink2.Size = new System.Drawing.Size(36, 51);
             this.toolStripButtonUnLink2.Text = "断开";
             this.toolStripButtonUnLink2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonUnLink2.Click += new System.EventHandler(this.toolStripButtonUnLink2_Click);
@@ -162,24 +162,24 @@
             // 
             this.toolStripSeparator2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 49);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // toolStripButtonMonitor
             // 
-            this.toolStripButtonMonitor.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMonitor.Image")));
+            this.toolStripButtonMonitor.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010014804222_easyicon_net_256;
             this.toolStripButtonMonitor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonMonitor.Name = "toolStripButtonMonitor";
-            this.toolStripButtonMonitor.Size = new System.Drawing.Size(60, 46);
+            this.toolStripButtonMonitor.Size = new System.Drawing.Size(60, 51);
             this.toolStripButtonMonitor.Text = "监视单元";
             this.toolStripButtonMonitor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonMonitor.Click += new System.EventHandler(this.toolStripButtonMonitor_Click);
             // 
             // toolStripButtonIndtr
             // 
-            this.toolStripButtonIndtr.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonIndtr.Image")));
+            this.toolStripButtonIndtr.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010015038738_easyicon_net_512;
             this.toolStripButtonIndtr.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonIndtr.Name = "toolStripButtonIndtr";
-            this.toolStripButtonIndtr.Size = new System.Drawing.Size(72, 46);
+            this.toolStripButtonIndtr.Size = new System.Drawing.Size(72, 51);
             this.toolStripButtonIndtr.Text = "故障指示器";
             this.toolStripButtonIndtr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonIndtr.Click += new System.EventHandler(this.toolStripButtonIndtr_Click);
@@ -189,7 +189,7 @@
             this.toolStripButtonTest.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTest.Image")));
             this.toolStripButtonTest.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonTest.Name = "toolStripButtonTest";
-            this.toolStripButtonTest.Size = new System.Drawing.Size(84, 46);
+            this.toolStripButtonTest.Size = new System.Drawing.Size(84, 51);
             this.toolStripButtonTest.Text = "串口通信测试";
             this.toolStripButtonTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonTest.Visible = false;
@@ -197,10 +197,10 @@
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010020938961_easyicon_net_256;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(60, 46);
+            this.toolStripButton1.Size = new System.Drawing.Size(60, 51);
             this.toolStripButton1.Text = "清除报文";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
@@ -215,8 +215,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.richTextBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(757, 339);
-            this.splitContainer2.SplitterDistance = 251;
+            this.splitContainer2.Size = new System.Drawing.Size(757, 399);
+            this.splitContainer2.SplitterDistance = 271;
             this.splitContainer2.TabIndex = 1;
             // 
             // richTextBox1
@@ -227,7 +227,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(757, 84);
+            this.richTextBox1.Size = new System.Drawing.Size(757, 124);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -240,7 +240,7 @@
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
             this.toolStripStatusX});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 399);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(757, 22);
             this.statusStrip1.TabIndex = 0;
@@ -303,6 +303,7 @@
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141011113220623_easyicon_net_128;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.openToolStripMenuItem.Text = "打开";
@@ -310,6 +311,7 @@
             // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141011112955692_easyicon_net_256;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "退出";
@@ -324,6 +326,7 @@
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141011113136397_easyicon_net_256;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.aboutToolStripMenuItem.Text = "关于";
@@ -333,14 +336,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 439);
+            this.ClientSize = new System.Drawing.Size(757, 504);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

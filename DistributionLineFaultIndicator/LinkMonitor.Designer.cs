@@ -38,14 +38,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxCOTLen = new System.Windows.Forms.TextBox();
-            this.textBoxPALen = new System.Windows.Forms.TextBox();
-            this.textBoxLALen = new System.Windows.Forms.TextBox();
-            this.textBoxInALen = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxLA = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxPA = new System.Windows.Forms.TextBox();
+            this.comboBoxCOTLen = new System.Windows.Forms.ComboBox();
+            this.comboBoxPALen = new System.Windows.Forms.ComboBox();
+            this.comboBoxLAddrLen = new System.Windows.Forms.ComboBox();
+            this.comboBoxInAddrLen = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -93,7 +93,8 @@
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(100, 21);
             this.textBoxIP.TabIndex = 12;
-            this.textBoxIP.Text = "220.180.239.204";
+            this.textBoxIP.Text = "127.0.0.1";
+            this.textBoxIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_Ip_KeyPress);
             // 
             // textBoxPort
             // 
@@ -101,12 +102,13 @@
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(100, 21);
             this.textBoxPort.TabIndex = 13;
-            this.textBoxPort.Text = "4001";
+            this.textBoxPort.Text = "4000";
+            this.textBoxPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 225);
+            this.label1.Location = new System.Drawing.Point(44, 235);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 12);
             this.label1.TabIndex = 14;
@@ -115,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 249);
+            this.label2.Location = new System.Drawing.Point(45, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 15;
@@ -124,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 273);
+            this.label3.Location = new System.Drawing.Point(45, 208);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 16;
@@ -133,43 +135,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 298);
+            this.label4.Location = new System.Drawing.Point(33, 287);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 12);
             this.label4.TabIndex = 17;
             this.label4.Text = "信息体地址长度：";
-            // 
-            // textBoxCOTLen
-            // 
-            this.textBoxCOTLen.Location = new System.Drawing.Point(139, 222);
-            this.textBoxCOTLen.Name = "textBoxCOTLen";
-            this.textBoxCOTLen.Size = new System.Drawing.Size(100, 21);
-            this.textBoxCOTLen.TabIndex = 18;
-            this.textBoxCOTLen.Text = "2";
-            // 
-            // textBoxPALen
-            // 
-            this.textBoxPALen.Location = new System.Drawing.Point(139, 246);
-            this.textBoxPALen.Name = "textBoxPALen";
-            this.textBoxPALen.Size = new System.Drawing.Size(100, 21);
-            this.textBoxPALen.TabIndex = 19;
-            this.textBoxPALen.Text = "2";
-            // 
-            // textBoxLALen
-            // 
-            this.textBoxLALen.Location = new System.Drawing.Point(139, 270);
-            this.textBoxLALen.Name = "textBoxLALen";
-            this.textBoxLALen.Size = new System.Drawing.Size(100, 21);
-            this.textBoxLALen.TabIndex = 20;
-            this.textBoxLALen.Text = "2";
-            // 
-            // textBoxInALen
-            // 
-            this.textBoxInALen.Location = new System.Drawing.Point(139, 295);
-            this.textBoxInALen.Name = "textBoxInALen";
-            this.textBoxInALen.Size = new System.Drawing.Size(100, 21);
-            this.textBoxInALen.TabIndex = 21;
-            this.textBoxInALen.Text = "2";
             // 
             // label7
             // 
@@ -187,6 +157,7 @@
             this.textBoxLA.Size = new System.Drawing.Size(100, 21);
             this.textBoxLA.TabIndex = 23;
             this.textBoxLA.Text = "1";
+            this.textBoxLA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
             // 
             // label8
             // 
@@ -204,20 +175,74 @@
             this.textBoxPA.Size = new System.Drawing.Size(100, 21);
             this.textBoxPA.TabIndex = 25;
             this.textBoxPA.Text = "1";
+            this.textBoxPA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            // 
+            // comboBoxCOTLen
+            // 
+            this.comboBoxCOTLen.FormattingEnabled = true;
+            this.comboBoxCOTLen.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBoxCOTLen.Location = new System.Drawing.Point(139, 232);
+            this.comboBoxCOTLen.Name = "comboBoxCOTLen";
+            this.comboBoxCOTLen.Size = new System.Drawing.Size(84, 20);
+            this.comboBoxCOTLen.TabIndex = 26;
+            this.comboBoxCOTLen.Text = "2";
+            this.comboBoxCOTLen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            // 
+            // comboBoxPALen
+            // 
+            this.comboBoxPALen.FormattingEnabled = true;
+            this.comboBoxPALen.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBoxPALen.Location = new System.Drawing.Point(139, 258);
+            this.comboBoxPALen.Name = "comboBoxPALen";
+            this.comboBoxPALen.Size = new System.Drawing.Size(84, 20);
+            this.comboBoxPALen.TabIndex = 27;
+            this.comboBoxPALen.Text = "2";
+            this.comboBoxPALen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            // 
+            // comboBoxLAddrLen
+            // 
+            this.comboBoxLAddrLen.FormattingEnabled = true;
+            this.comboBoxLAddrLen.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBoxLAddrLen.Location = new System.Drawing.Point(140, 205);
+            this.comboBoxLAddrLen.Name = "comboBoxLAddrLen";
+            this.comboBoxLAddrLen.Size = new System.Drawing.Size(84, 20);
+            this.comboBoxLAddrLen.TabIndex = 28;
+            this.comboBoxLAddrLen.Text = "2";
+            this.comboBoxLAddrLen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            // 
+            // comboBoxInAddrLen
+            // 
+            this.comboBoxInAddrLen.FormattingEnabled = true;
+            this.comboBoxInAddrLen.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxInAddrLen.Location = new System.Drawing.Point(139, 284);
+            this.comboBoxInAddrLen.Name = "comboBoxInAddrLen";
+            this.comboBoxInAddrLen.Size = new System.Drawing.Size(84, 20);
+            this.comboBoxInAddrLen.TabIndex = 29;
+            this.comboBoxInAddrLen.Text = "2";
+            this.comboBoxInAddrLen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
             // 
             // LinkMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 386);
+            this.Controls.Add(this.comboBoxInAddrLen);
+            this.Controls.Add(this.comboBoxLAddrLen);
+            this.Controls.Add(this.comboBoxPALen);
+            this.Controls.Add(this.comboBoxCOTLen);
             this.Controls.Add(this.textBoxPA);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxLA);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBoxInALen);
-            this.Controls.Add(this.textBoxLALen);
-            this.Controls.Add(this.textBoxPALen);
-            this.Controls.Add(this.textBoxCOTLen);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -248,13 +273,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxCOTLen;
-        private System.Windows.Forms.TextBox textBoxPALen;
-        private System.Windows.Forms.TextBox textBoxLALen;
-        private System.Windows.Forms.TextBox textBoxInALen;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxLA;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxPA;
+        private System.Windows.Forms.ComboBox comboBoxCOTLen;
+        private System.Windows.Forms.ComboBox comboBoxPALen;
+        private System.Windows.Forms.ComboBox comboBoxLAddrLen;
+        private System.Windows.Forms.ComboBox comboBoxInAddrLen;
     }
 }

@@ -22,10 +22,10 @@ namespace DistributionLineFaultIndicator
             DataCollection.Channel1.ip = textBoxIP.Text;
             DataCollection.Channel1.port = textBoxPort.Text;
 
-            DataCollection.linklen=int.Parse(textBoxLALen.Text); 
-            DataCollection.cotlen=int.Parse(textBoxCOTLen.Text);
-            DataCollection.publen=int.Parse(textBoxPALen.Text);
-            DataCollection.inflen=int.Parse(textBoxInALen.Text);
+            DataCollection.linklen=int.Parse(comboBoxLAddrLen.Text); 
+            DataCollection.cotlen=int.Parse(comboBoxCOTLen.Text);
+            DataCollection.publen=int.Parse(comboBoxPALen.Text);
+            DataCollection.inflen=int.Parse(comboBoxInAddrLen.Text);
             DataCollection.linkAddr = UInt16.Parse(textBoxLA.Text);
             DataCollection.DevAddr = UInt16.Parse(textBoxPA.Text);
         }
@@ -41,7 +41,17 @@ namespace DistributionLineFaultIndicator
 
         }
 
+        private void validating_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9')&&e.KeyChar!=8)
+                e.Handled = true;
+        }
 
+        private void validating_Ip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9')&&e.KeyChar!='.'&&e.KeyChar!=8)
+                e.Handled = true;
+        }
 
 
 

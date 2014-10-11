@@ -19,9 +19,12 @@ namespace DistributionLineFaultIndicator
 
         private void IndtrParamFromMotr_Load(object sender, EventArgs e)
         {
+            DataCollection.indtrParamState = 0;
             refresh();
+            labelState.Text = "";
         }
 
+        //界面数据显示刷新
         private void refresh()
         {
             int index = getIndex();
@@ -76,8 +79,11 @@ namespace DistributionLineFaultIndicator
             }
         }
 
+        //指示器参数设置
         private void button1_Click(object sender, EventArgs e)
         {
+            labelState.Text = "参数设置中...";
+            DataCollection.indtrParamState = 0;
             int index=getIndex();
             DataCollection.quickBreakSwitch[index]=UInt16.Parse(textBoxSuDuanSwitch.Text);
             DataCollection.quickBreakValue[index]=UInt16.Parse(textBoxSuDuanSet.Text);
@@ -100,8 +106,12 @@ namespace DistributionLineFaultIndicator
             DataCollection._ComStructData.TX_TASK = true;
         }
 
+
+        //指示器标志位设置
         private void button2_Click(object sender, EventArgs e)
         {
+            labelState.Text = "参数设置中...";
+            DataCollection.indtrParamState = 0;
             int index = getIndex();
             DataCollection.manualReset[index]=byte.Parse(textBoxManualreset.Text );
             DataCollection.calibration[index]=byte.Parse(textBoxJiaoZhun.Text );
@@ -114,6 +124,90 @@ namespace DistributionLineFaultIndicator
         private void comboBoxIndtr_SelectedIndexChanged(object sender, EventArgs e)
         {
             refresh();
+        }
+
+        //指示器参数读取
+        private void buttonRead1_Click(object sender, EventArgs e)
+        {
+            labelState.Text = "参数读取中...";
+            DataCollection.indtrParamState = 0;
+            int index = getIndex();
+            DataCollection._ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(3, index);
+            DataCollection._ComStructData.TX_TASK = true;
+        }
+
+        private void IndtrParamFromMotr_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        //定时器，根据当前状态更新提示信息
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (DataCollection.indtrParamState == 1)
+            {
+                labelState.Text = "设置成功";
+            }
+            else if (DataCollection.indtrParamState == 2)
+            {
+                labelState.Text = "设置失败";
+            }
+            else if (DataCollection.indtrParamState == 3)
+            {
+                labelState.Text = "读取失败";
+            }
+            else if (DataCollection.indtrParamState == 4)
+            {
+                labelState.Text = "读取成功";
+            }
+            else if (DataCollection.indtrParamState == 4)
+            {
+                labelState.Text = "网络传输错误";
+            }
+            if (DataCollection.indtrUpdate == 1)
+            {
+                DataCollection.indtrUpdate = 0;
+                refresh();
+            }
+        }
+
+        //验证判断按键是数字或退格
+        private void validating_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9')&&e.KeyChar!=8)
+                e.Handled = true;
+        }
+
+        //验证输入的文本输入符合要求，否则不予通过验证，无法执行其他操作
+        private void textBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (((TextBox)sender).Text == ""||int.Parse(((TextBox)sender).Text) > 65535)
+            {
+                e.Cancel = true;
+                ((TextBox)sender).BackColor = Color.Red;
+                labelState.Text = "请输入0~65535！";
+            }
+            else
+            {
+                ((TextBox)sender).BackColor = SystemColors.Window;
+                labelState.Text = "";
+            }
+        }
+
+        //验证输入的校验文本框内的输入符合要求，否则不予通过验证，无法执行其他操作
+        private void jiaoYan_Validating(object sender, CancelEventArgs e)
+        {
+            if (((TextBox)sender).Text == ""||int.Parse(((TextBox)sender).Text) > 1)
+            {
+                e.Cancel = true;
+                ((TextBox)sender).BackColor = Color.Red;
+                labelState.Text = "请输入0~1！";
+            }
+            else
+            {
+                ((TextBox)sender).BackColor = SystemColors.Window;
+                labelState.Text = "";
+            }
         }
 
     }

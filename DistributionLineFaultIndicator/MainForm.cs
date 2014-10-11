@@ -106,7 +106,11 @@ namespace DistributionLineFaultIndicator
                     Openpathname = openF.FileName;
 
                     WriteReadAllFile.WriteReadParamIniFile(openF.FileName, 0);
-                    toolStripButtonMonitor.Enabled = true;
+                    for (int i = 0; i < DataCollection.YxData.num; i++)
+                    {
+                        DataCollection.nameMap.Add(DataCollection.YxData.addr[i], DataCollection.YxData.name[i]);
+                    }
+                        toolStripButtonMonitor.Enabled = true;
                     //timerOpenProj.Enabled = true;
                 }
                 catch
@@ -309,7 +313,7 @@ namespace DistributionLineFaultIndicator
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("    版本号：v0.07      by 2014-9-30 ");
+            MessageBox.Show("    版本号：v0.12      Released by 2014-10-11 ","软件版本",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
 
@@ -332,8 +336,8 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F = false;
                 DataCollection._ComStructData.TxLen = 0;
 
-                DataCollection._DataField.FieldLen = 0;
-                DataCollection._DataField.FieldVSQ = 1;
+                DataCollection._DataField.TXFieldLen = 0;
+                DataCollection._DataField.TXFieldVSQ = 1;
 
                 DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(1);
                 DataCollection._ComStructData.TX_TASK = true;
@@ -343,9 +347,9 @@ namespace DistributionLineFaultIndicator
             {
                 DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = false;
                 DataCollection._ComStructData.TxLen = 0;
-                //DataCollection._ComStructData.TxLen = EncodeFrame(1, 0, 0, ref DataCollection._ComStructData.TXBuffer[0],ref DataCollection._DataField.Buffer[0]);
-                DataCollection._DataField.FieldLen = 0;
-                DataCollection._DataField.FieldVSQ = 1;
+                //DataCollection._ComStructData.TxLen = EncodeFrame(1, 0, 0, ref DataCollection._ComStructData.TXBuffer[0],ref DataCollection._DataField.TXBuffer[0]);
+                DataCollection._DataField.TXFieldLen = 0;
+                DataCollection._DataField.TXFieldVSQ = 1;
                 DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(2);
                 DataCollection._ComStructData.TX_TASK = true;
 
@@ -355,14 +359,15 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComTaskFlag.C_IC_NA_1 = false;
                 DataCollection._ComStructData.TxLen = 0;
 
-                DataCollection._DataField.FieldLen = 0;
-                DataCollection._DataField.FieldVSQ = 1;
+                DataCollection._DataField.TXFieldLen = 0;
+                DataCollection._DataField.TXFieldVSQ = 1;
 
                 DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(10);
 
                 DataCollection._ProtocoltyFlag.ZZFlag = false;
                 DataCollection._ComStructData.TX_TASK = true;
                 DataCollection._ComStructData.FCB = (!DataCollection._ComStructData.FCB);
+                DataCollection.class2Delay = DataCollection.class2Delay_default;    //循环总招重新计时
 
             }
             else if(DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F== true)//链路请求确认
@@ -370,8 +375,8 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F = false;
                 DataCollection._ComStructData.TxLen = 0;
 
-                DataCollection._DataField.FieldLen = 0;
-                DataCollection._DataField.FieldVSQ = 1;
+                DataCollection._DataField.TXFieldLen = 0;
+                DataCollection._DataField.TXFieldVSQ = 1;
 
                 DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(150);
                 DataCollection._ComStructData.TX_TASK = true;
@@ -381,36 +386,31 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F1 = false;
                 DataCollection._ComStructData.TxLen = 0;
 
-                DataCollection._DataField.FieldLen = 0;
-                DataCollection._DataField.FieldVSQ = 1;
+                DataCollection._DataField.TXFieldLen = 0;
+                DataCollection._DataField.TXFieldVSQ = 1;
 
                 DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(151);
                 DataCollection._ComStructData.TX_TASK = true;
             }
 
-            //else if (DataCollection._ComTaskFlag.C_CS_NA_1 == true)
-            //{
+            else if (DataCollection._ComTaskFlag.C_CS_NA_1 == true)
+            {
 
-            //    DataCollection._ComTaskFlag.C_CS_NA_1 = false;
-            //    DataCollection._ComStructData.TxLen = 0;
-            //    DataCollection.ZDYtype = 7;
-            //    if (DataCollection.Framelen == 231)
-            //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
-            //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(7, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+                DataCollection._ComTaskFlag.C_CS_NA_1 = false;
+                DataCollection._ComStructData.TxLen = 0;
+                DataCollection.ZDYtype = 7;
 
-            //    DataCollection.ComFrameMsg = "对时";
-            //    DataCollection._ComStructData.TX_TASK = true;
+                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(12);
+                
+                DataCollection._ComStructData.TX_TASK = true;
 
-            //}
+            }
             //else if (DataCollection._ComTaskFlag.YK_Sel_1_D == true)
             //{
             //    DataCollection._ComTaskFlag.YK_Sel_1_D = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ParamInfoAddr = DataCollection.YkStartPos;
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(15);
 
@@ -426,7 +426,7 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.YK_Exe_1_D = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ParamInfoAddr = DataCollection.YkStartPos;
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(15);
 
@@ -442,7 +442,7 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.YK_Cel_1_D = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ParamInfoAddr = DataCollection.YkStartPos;
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(16);
 
@@ -458,7 +458,7 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.YK_Sel_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ParamInfoAddr = DataCollection.YkStartPos;
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(17);
 
@@ -475,7 +475,7 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.YK_Exe_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ParamInfoAddr = DataCollection.YkStartPos;
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(17);
 
@@ -492,7 +492,7 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.YK_Cel_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ParamInfoAddr = DataCollection.YkStartPos;
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(18);
 
@@ -508,10 +508,10 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.VERSION_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 10, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //DataCollection._DataField.FieldLen, 1, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
-            //    DataCollection._DataField.FieldLen = 0;
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 10, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //DataCollection._DataField.TXFieldLen, 1, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    DataCollection._DataField.TXFieldLen = 0;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.seqflag = 0;
             //    DataCollection.seq = 1;
             //    DataCollection.SQflag = 0;
@@ -519,9 +519,9 @@ namespace DistributionLineFaultIndicator
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(5, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(5, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
             //    DataCollection.ComFrameMsg = "请求版本号";
             //    DataCollection._ComStructData.TX_TASK = true;
 
@@ -530,8 +530,8 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.CALLTIME_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    DataCollection._DataField.FieldLen = 0;
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldLen = 0;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.seqflag = 0;
             //    DataCollection.seq = 1;
             //    DataCollection.SQflag = 0;
@@ -539,9 +539,9 @@ namespace DistributionLineFaultIndicator
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(6, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(6, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
             //    DataCollection.ComFrameMsg = "请求时间";
             //    DataCollection._ComStructData.TX_TASK = true;
@@ -554,9 +554,9 @@ namespace DistributionLineFaultIndicator
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(2, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(2, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
             //    DataCollection.ComFrameMsg = "读参数";
             //    DataCollection._ComStructData.TX_TASK = true;
@@ -565,15 +565,15 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.SET_PARAM_CON = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 8, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                         DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 8, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                         DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    DataCollection.ZDYtype = 1;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(1, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(1, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
 
             //    DataCollection.ComFrameMsg = "设置";
@@ -585,8 +585,8 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.AloneCallYx_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 12, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                          DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 12, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                          DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(39);
             //    DataCollection.ComFrameMsg = "请求遥信";
             //    //发送单招
@@ -600,8 +600,8 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.AloneCallYc_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 13, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                          DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 13, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                          DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(38);
             //    DataCollection.ComFrameMsg = "请求遥测";
             //    //发送单招
@@ -616,8 +616,8 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.Reset_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 17, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                          DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 17, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                          DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(13);
 
             //    DataCollection.ComFrameMsg = "复位";
@@ -628,16 +628,16 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.UpdateCode_Start_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                              DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                              DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ZDYtype = 3;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(3, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(3, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
 
             //    DataCollection.ComFrameMsg = "升级";
@@ -648,16 +648,16 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComTaskFlag.UpdateCode_ARMStart_1 = false;
             //    DataCollection._ComStructData.TxLen = 0;
 
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                              DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                              DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ZDYtype = 9;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(9, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(9, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
 
             //    DataCollection.ComFrameMsg = "ARM升级";
@@ -670,17 +670,17 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComStructData.TxLen = 0;
 
             //    //{
-            //    //    DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                              DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //    DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                              DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    //}
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ZDYtype = 3;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(3, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                             DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                             DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(3, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                             DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                             DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
             //    DataCollection.ComFrameMsg = "校验";
             //    DataCollection._ComStructData.TX_TASK = true;
@@ -692,17 +692,17 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComStructData.TxLen = 0;
 
             //    //{
-            //    //    DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                              DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //    DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                              DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    //}
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ZDYtype = 9;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(9, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                             DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                             DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(9, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                             DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                             DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
             //    DataCollection.ComFrameMsg = "ARM校验";
             //    DataCollection._ComStructData.TX_TASK = true;
@@ -715,16 +715,16 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComStructData.TxLen = 0;
 
 
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                             DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                             DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ZDYtype = 3;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(3, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                            DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                            DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(3, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                            DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                            DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
 
             //    DataCollection.ComFrameMsg = "更新代码";
@@ -737,16 +737,16 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComStructData.TxLen = 0;
 
 
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                             DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 22, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                             DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.ZDYtype = 9;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(9, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                            DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                            DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(9, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                            DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                            DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
 
             //    DataCollection.ComFrameMsg = "ARM更新代码";
@@ -759,15 +759,15 @@ namespace DistributionLineFaultIndicator
             //{
             //    DataCollection._ComTaskFlag.CallRecordData = false;
             //    DataCollection._ComStructData.TxLen = 0;
-            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 20, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.Buffer[0],
-            //    //                                          DataCollection._DataField.FieldLen, DataCollection._DataField.FieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
+            //    //DataCollection._ComStructData.TxLen = EncodeFrame(2, 20, ref DataCollection._ComStructData.TXBuffer[0], ref DataCollection._DataField.TXBuffer[0],
+            //    //                                          DataCollection._DataField.TXFieldLen, DataCollection._DataField.TXFieldVSQ, DataCollection.DevAddr, DataCollection.ParamInfoAddr, MTxSeq, MRxSeq);
             //    DataCollection.ZDYtype = 4;
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(4, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(4, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
             //    DataCollection.ComFrameMsg = "请求记录数据";
             //    DataCollection._ComStructData.TX_TASK = true;
             //}
@@ -780,8 +780,8 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComStructData.TxLen = 0;
 
             //    //DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(37);
-            //    DataCollection._DataField.FieldLen = 0;
-            //    DataCollection._DataField.FieldVSQ = 1;
+            //    DataCollection._DataField.TXFieldLen = 0;
+            //    DataCollection._DataField.TXFieldVSQ = 1;
             //    DataCollection.seqflag = 0;
             //    DataCollection.seq = 1;
             //    DataCollection.SQflag = 0;
@@ -789,9 +789,9 @@ namespace DistributionLineFaultIndicator
             //    if (DataCollection.Framelen == 231)
             //        DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(50);
             //    else
-            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(8, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.Buffer,
-            //                                              DataCollection._DataField.FieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
-            //                                              DataCollection.SQflag, DataCollection._DataField.FieldVSQ, DataCollection.ParamInfoAddr);
+            //        DataCollection._ComStructData.TxLen = protocoltyparam.EncodeFrame(8, DataCollection._ComStructData.TXBuffer, DataCollection._DataField.TXBuffer,
+            //                                              DataCollection._DataField.TXFieldLen, DataCollection.DevAddr, DataCollection.addselect, DataCollection.seqflag, DataCollection.seq,
+            //                                              DataCollection.SQflag, DataCollection._DataField.TXFieldVSQ, DataCollection.ParamInfoAddr);
 
             //    DataCollection.ComFrameMsg = "请求硬件状态";
             //    DataCollection._ComStructData.TX_TASK = true;
@@ -815,8 +815,8 @@ namespace DistributionLineFaultIndicator
                
                     DataCollection._ComStructData.TxLen = 0;
 
-                    DataCollection._DataField.FieldLen = 0;
-                    DataCollection._DataField.FieldVSQ = 1;
+                    DataCollection._DataField.TXFieldLen = 0;
+                    DataCollection._DataField.TXFieldVSQ = 1;
 
                     DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(3);
 
@@ -831,8 +831,8 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComTaskFlag.CALL_2 = false;
                     DataCollection._ComStructData.TxLen = 0;
 
-                    DataCollection._DataField.FieldLen = 0;
-                    DataCollection._DataField.FieldVSQ = 1;
+                    DataCollection._DataField.TXFieldLen = 0;
+                    DataCollection._DataField.TXFieldVSQ = 1;
 
                     DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(4);
 
@@ -977,6 +977,11 @@ namespace DistributionLineFaultIndicator
                             str.Append(x[i].ToString("X2"));
                         }
                         richTextBox1.AppendText(str+"\n");
+                        richTextBox1.Focus();
+                        //设置光标的位置到文本尾 
+                        //richTextBox1.Select(richTextBox1.TextLength, 0);
+                        //滚动到控件光标处 
+                        richTextBox1.ScrollToCaret();
 
                     }
                     catch
@@ -1001,11 +1006,17 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.RxLen = socket1.Receive(DataCollection._ComStructData.RXBuffer);
                     if (DataCollection._ComStructData.RxLen > 0)
                     {
-                        DataTy = Protocolty101.DecodeFrame();
-                        System.Diagnostics.Debug.WriteLine("Dataty: " + DataTy);
-                        processRevTele(DataTy);
-
-                        
+                        if (DataCollection._ComStructData.RXBuffer[0] == 0x69)
+                        {
+                            ProtocoltyParam.DecodeFrame();
+                        }
+                        else
+                        {
+                            DataTy = Protocolty101.DecodeFrame();
+                            System.Diagnostics.Debug.WriteLine("Dataty: " + DataTy);
+                            processRevTele(DataTy);
+                        }
+                       
                         byte[] x = new byte[DataCollection._ComStructData.RxLen];
                         Array.Copy(DataCollection._ComStructData.RXBuffer, 0, x, 0, DataCollection._ComStructData.RxLen);
                         StringBuilder str = new StringBuilder("接收;");
@@ -1015,8 +1026,13 @@ namespace DistributionLineFaultIndicator
                             str.Append(x[i].ToString("X2"));
                         }
                         richTextBox1.AppendText(str+"\n");
+                        richTextBox1.Focus();
+                        //设置光标的位置到文本尾 
+                        //richTextBox1.Select(richTextBox1.TextLength, 0);
+                        //滚动到控件光标处 
+                        richTextBox1.ScrollToCaret();
 
-                        DataCollection.class2Delay = DataCollection.class2Delay_default;
+                        
                     }
                     else
                     {
@@ -1073,10 +1089,13 @@ namespace DistributionLineFaultIndicator
             {
                 DataCollection.linkState = 1;
                 DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;  //链路复位
+                return;
             }
             else if (DataTy == 3)  //复位链路确认
             {
-                DataCollection.linkState = 2;
+                if(DataCollection.linkState == 1)//区分链路确认与一般确认
+                    DataCollection.linkState = 2;
+                return;
 
                 //if (DataCollection._ProtocoltyFlag.ZZFirstFlag == true)
                 //{
@@ -1303,26 +1322,37 @@ namespace DistributionLineFaultIndicator
                 {
                     DataCollection.linkState = 3;
                     DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F = true;
+                    return;
                 }
                 else if (DataTy == 151)  //收到下位机链路复位请求
                 {
                     DataCollection.linkState = 4;
                     DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F1 = true;
+                    return;
                 }
                 else if (DataTy == 152)  //收到下位机初始化完成确认
                 {
                     DataCollection.linkState = 5;
+                    return;
                 }
 
 
 
-
+                if (DataTy == 6)
+                {
+                    if (DataCollection._ComStructData.RXBuffer[7 + DataCollection.linklen] == 7)//对时成功
+                        DataCollection.montrParamState = 1;
+                    else
+                        DataCollection.montrParamState = 2;
+                    return;
+                }
 
 
             byte[] bytes = new byte[4];
             int data = 0;
             int StartPos = 0;
             int index = 0;
+            string DataInfo;
 
             switch (DataTy)
             {
@@ -1485,6 +1515,84 @@ namespace DistributionLineFaultIndicator
                         }
                     }
                     break;
+                case 56://遥信变位，类型标示30，传送原因3
+
+                    
+                    for (int i = 0; i < DataCollection._DataField.FieldVSQ;i++ )
+                    {
+                        if (DataCollection.inflen == 2)
+                        {
+                            StartPos = DataCollection._DataField.Buffer[index] +(DataCollection._DataField.Buffer[index+1] << 8);
+                            if (DataCollection.nameMap.ContainsKey(StartPos.ToString()))
+                            {
+                                DataCollection.Event.name.Add(DataCollection.nameMap[StartPos.ToString()]);
+                            }
+                            else
+                            {
+                                DataCollection.Event.name.Add("未知");
+                            }
+                            
+                            DataCollection.Event.addr.Add(StartPos.ToString());
+
+
+                            if (DataCollection._DataField.Buffer[index+2] == 0)
+                                DataCollection.Event.value.Add("分");
+                            else
+                                DataCollection.Event.value.Add("合");
+
+                            DataInfo = "";
+                            DataInfo = String.Format("{0:d}", DataCollection._DataField.Buffer[index+9]&0x7f);   //年
+                            DataInfo += "年";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index+8]&0x0f);  //月
+                            DataInfo += "月";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index+7] & 0x1f);  //日+星期
+                            DataInfo += "日";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index+6]&0x1f);  //时
+                            DataInfo += "时";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 5] & 0x3f);  //分
+                            DataInfo += "分";
+                            int ms = (DataCollection._DataField.Buffer[index+4] << 8)
+                                      + DataCollection._DataField.Buffer[index+3];
+
+                            DataInfo += String.Format("{0:d}", ms);
+                            DataInfo += "毫秒";
+                            DataCollection.Event.date.Add(DataInfo);
+                            index += 10;
+                        }
+                        else if (DataCollection.inflen == 3)
+                        {
+                            StartPos = DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8)
+                                + (DataCollection._DataField.Buffer[index + 2] << 16);
+                            DataCollection.Event.name.Add("No Name");
+                            DataCollection.Event.addr.Add(StartPos.ToString());
+
+
+                            if (DataCollection._DataField.Buffer[index + 3] == 0)
+                                DataCollection.Event.value.Add("分");
+                            else
+                                DataCollection.Event.value.Add("合");
+
+                            DataInfo = "";
+                            DataInfo = String.Format("{0:d}", DataCollection._DataField.Buffer[index + 10] & 0x7f);   //年
+                            DataInfo += "年";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 9] & 0x0f);  //月
+                            DataInfo += "月";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 8] & 0x1f);  //日+星期
+                            DataInfo += "日";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 7] & 0x1f);  //时
+                            DataInfo += "时";
+                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 6] & 0x3f);  //分
+                            DataInfo += "分";
+                            int ms = (DataCollection._DataField.Buffer[index + 5] << 8)
+                                      + DataCollection._DataField.Buffer[index + 4];
+
+                            DataInfo += String.Format("{0:d}", ms);
+                            DataInfo += "毫秒";
+                            DataCollection.Event.date.Add(DataInfo);
+                            index += 11;
+                        }
+                    }
+                    break;
 
 
                 default:
@@ -1503,5 +1611,7 @@ namespace DistributionLineFaultIndicator
         {
             System.Environment.Exit(0);
         }
+
+
     }
 }

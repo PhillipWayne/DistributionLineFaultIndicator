@@ -419,7 +419,7 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[6] = (byte)(((DataCollection.linkAddr) & 0xff00) >> 8);
                 }
                 DataCollection._ComStructData.TXBuffer[5 + linklen] = TypeID;
-                DataCollection._ComStructData.TXBuffer[6 + linklen] = (byte)(DataCollection._DataField.FieldVSQ);
+                DataCollection._ComStructData.TXBuffer[6 + linklen] = (byte)(DataCollection._DataField.TXFieldVSQ);
 
                 if (cotlen == 1)
                     DataCollection._ComStructData.TXBuffer[7 + linklen] = Convert.ToByte(COT & 0x00ff);
@@ -476,8 +476,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
                         break;
                     case 104:   //测试命令
                         if (inflen == 1)
@@ -539,8 +539,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
                     case 45:   //不带时标单点控制
@@ -559,8 +559,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.YkStartPos) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
 
@@ -580,8 +580,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.YkStartPos) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
                     case 58:   //不带时标单点控制
@@ -600,8 +600,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.YkStartPos) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
 
@@ -621,8 +621,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.ParamInfoAddr) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
                     //================以下为自定义类型=========================================
@@ -642,8 +642,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.ParamInfoAddr) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
                     case 137:   //读参数
@@ -718,8 +718,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.ParamInfoAddr) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
                     case 145:        //历史记录
@@ -738,8 +738,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.ParamInfoAddr) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
                     case 236:        //器件状态
@@ -815,8 +815,8 @@ namespace DistributionLineFaultIndicator
                             DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(((DataCollection.ParamInfoAddr) & 0xff00) >> 8);
                             DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                         }
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                         break;
 
@@ -827,15 +827,15 @@ namespace DistributionLineFaultIndicator
                         DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection.addselect;
                         DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection.seqflag;
                         DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection.seq;
-                        DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(DataCollection._DataField.FieldVSQ & 0x00ff); ;
-                        DataCollection._ComStructData.TXBuffer[Leng++] = (byte)((DataCollection._DataField.FieldVSQ & 0xff00) >> 8);
+                        DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(DataCollection._DataField.TXFieldVSQ & 0x00ff); ;
+                        DataCollection._ComStructData.TXBuffer[Leng++] = (byte)((DataCollection._DataField.TXFieldVSQ & 0xff00) >> 8);
                         DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection.SQflag;
                         DataCollection._ComStructData.TXBuffer[Leng++] = (byte)(DataCollection.ParamInfoAddr & 0x00ff);
                         DataCollection._ComStructData.TXBuffer[Leng++] = (byte)((DataCollection.ParamInfoAddr & 0xff00) >> 8);
                         Leng = linklen + cotlen + publen + 7 + 11;
 
-                        for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                        for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                            DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
 
                         break;
@@ -855,8 +855,8 @@ namespace DistributionLineFaultIndicator
                     //        DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                     //        DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                     //    }
-                    //    for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                    //    for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                     //    break;
                     //case 252:        //终端升级
@@ -894,8 +894,8 @@ namespace DistributionLineFaultIndicator
                     //        DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                     //        DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                     //    }
-                    //    for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                    //    for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                     //    break;
                     //case 254:         //4UDSP升级（包括文本下载、校验、升级）
@@ -914,18 +914,18 @@ namespace DistributionLineFaultIndicator
                     //        DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                     //        DataCollection._ComStructData.TXBuffer[Leng++] = 0x00;
                     //    }
-                    //    for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                    //    for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                     //    break;
                     //case 180:         //4UDSP升级（包括文本下载、校验、升级）  
-                    //    for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                    //    for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                     //    break;
                     //case 181:         //4UDSP升级（包括文本下载、校验、升级）  
-                    //    for (int i = 0; i < DataCollection._DataField.FieldLen; i++)
-                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.Buffer[i];
+                    //    for (int i = 0; i < DataCollection._DataField.TXFieldLen; i++)
+                    //        DataCollection._ComStructData.TXBuffer[Leng++] = DataCollection._DataField.TXBuffer[i];
 
                     //    break;
                     default:

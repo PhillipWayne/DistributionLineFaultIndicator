@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonRead1 = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonRead2 = new System.Windows.Forms.Button();
             this.textBoxManualreset = new System.Windows.Forms.TextBox();
             this.textBoxRes1 = new System.Windows.Forms.TextBox();
             this.textBoxRes2 = new System.Windows.Forms.TextBox();
@@ -78,6 +78,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBoxIndtr = new System.Windows.Forms.ComboBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelState = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -143,106 +145,149 @@
             this.buttonRead1.Name = "buttonRead1";
             this.buttonRead1.Size = new System.Drawing.Size(75, 23);
             this.buttonRead1.TabIndex = 43;
-            this.buttonRead1.Text = "buttonRead1";
+            this.buttonRead1.Text = "读取";
             this.buttonRead1.UseVisualStyleBackColor = true;
+            this.buttonRead1.Click += new System.EventHandler(this.buttonRead1_Click);
             // 
             // textBoxRes4
             // 
             this.textBoxRes4.Location = new System.Drawing.Point(489, 37);
+            this.textBoxRes4.MaxLength = 5;
             this.textBoxRes4.Name = "textBoxRes4";
             this.textBoxRes4.Size = new System.Drawing.Size(62, 21);
             this.textBoxRes4.TabIndex = 28;
+            this.textBoxRes4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxRes4.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxRes3
             // 
             this.textBoxRes3.Location = new System.Drawing.Point(392, 186);
+            this.textBoxRes3.MaxLength = 5;
             this.textBoxRes3.Name = "textBoxRes3";
             this.textBoxRes3.Size = new System.Drawing.Size(62, 21);
             this.textBoxRes3.TabIndex = 22;
+            this.textBoxRes3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxRes3.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxTfgs
             // 
             this.textBoxTfgs.Location = new System.Drawing.Point(392, 137);
+            this.textBoxTfgs.MaxLength = 5;
             this.textBoxTfgs.Name = "textBoxTfgs";
             this.textBoxTfgs.Size = new System.Drawing.Size(62, 21);
             this.textBoxTfgs.TabIndex = 25;
+            this.textBoxTfgs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxTfgs.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxRate
             // 
             this.textBoxRate.Location = new System.Drawing.Point(265, 186);
+            this.textBoxRate.MaxLength = 5;
             this.textBoxRate.Name = "textBoxRate";
             this.textBoxRate.Size = new System.Drawing.Size(62, 21);
             this.textBoxRate.TabIndex = 33;
+            this.textBoxRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxRate.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxTgz
             // 
             this.textBoxTgz.Location = new System.Drawing.Point(392, 85);
+            this.textBoxTgz.MaxLength = 5;
             this.textBoxTgz.Name = "textBoxTgz";
             this.textBoxTgz.Size = new System.Drawing.Size(62, 21);
             this.textBoxTgz.TabIndex = 19;
+            this.textBoxTgz.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxTgz.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxSuDuanTimeSet
             // 
             this.textBoxSuDuanTimeSet.Location = new System.Drawing.Point(22, 137);
+            this.textBoxSuDuanTimeSet.MaxLength = 5;
             this.textBoxSuDuanTimeSet.Name = "textBoxSuDuanTimeSet";
             this.textBoxSuDuanTimeSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxSuDuanTimeSet.TabIndex = 29;
+            this.textBoxSuDuanTimeSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxSuDuanTimeSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxSuDuanSet
             // 
             this.textBoxSuDuanSet.Location = new System.Drawing.Point(22, 85);
+            this.textBoxSuDuanSet.MaxLength = 5;
             this.textBoxSuDuanSet.Name = "textBoxSuDuanSet";
             this.textBoxSuDuanSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxSuDuanSet.TabIndex = 18;
+            this.textBoxSuDuanSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxSuDuanSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxWuLiuTimeSet
             // 
             this.textBoxWuLiuTimeSet.Location = new System.Drawing.Point(144, 186);
+            this.textBoxWuLiuTimeSet.MaxLength = 5;
             this.textBoxWuLiuTimeSet.Name = "textBoxWuLiuTimeSet";
             this.textBoxWuLiuTimeSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxWuLiuTimeSet.TabIndex = 31;
+            this.textBoxWuLiuTimeSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxWuLiuTimeSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxBandWidth
             // 
             this.textBoxBandWidth.Location = new System.Drawing.Point(392, 37);
+            this.textBoxBandWidth.MaxLength = 5;
             this.textBoxBandWidth.Name = "textBoxBandWidth";
             this.textBoxBandWidth.Size = new System.Drawing.Size(62, 21);
             this.textBoxBandWidth.TabIndex = 26;
+            this.textBoxBandWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxBandWidth.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxSelfAdapSwitch
             // 
             this.textBoxSelfAdapSwitch.Location = new System.Drawing.Point(262, 85);
+            this.textBoxSelfAdapSwitch.MaxLength = 5;
             this.textBoxSelfAdapSwitch.Name = "textBoxSelfAdapSwitch";
             this.textBoxSelfAdapSwitch.Size = new System.Drawing.Size(62, 21);
             this.textBoxSelfAdapSwitch.TabIndex = 21;
+            this.textBoxSelfAdapSwitch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxSelfAdapSwitch.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxYongLiuTimeSet
             // 
             this.textBoxYongLiuTimeSet.Location = new System.Drawing.Point(265, 37);
+            this.textBoxYongLiuTimeSet.MaxLength = 5;
             this.textBoxYongLiuTimeSet.Name = "textBoxYongLiuTimeSet";
             this.textBoxYongLiuTimeSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxYongLiuTimeSet.TabIndex = 30;
+            this.textBoxYongLiuTimeSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxYongLiuTimeSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxIndicatorAddr
             // 
             this.textBoxIndicatorAddr.Location = new System.Drawing.Point(265, 137);
+            this.textBoxIndicatorAddr.MaxLength = 5;
             this.textBoxIndicatorAddr.Name = "textBoxIndicatorAddr";
             this.textBoxIndicatorAddr.Size = new System.Drawing.Size(62, 21);
             this.textBoxIndicatorAddr.TabIndex = 27;
+            this.textBoxIndicatorAddr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxIndicatorAddr.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxWuLiuSet
             // 
             this.textBoxWuLiuSet.Location = new System.Drawing.Point(144, 137);
+            this.textBoxWuLiuSet.MaxLength = 5;
             this.textBoxWuLiuSet.Name = "textBoxWuLiuSet";
             this.textBoxWuLiuSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxWuLiuSet.TabIndex = 32;
+            this.textBoxWuLiuSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxWuLiuSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxSuDuanSwitch
             // 
             this.textBoxSuDuanSwitch.Location = new System.Drawing.Point(22, 37);
+            this.textBoxSuDuanSwitch.MaxLength = 5;
             this.textBoxSuDuanSwitch.Name = "textBoxSuDuanSwitch";
             this.textBoxSuDuanSwitch.Size = new System.Drawing.Size(62, 21);
             this.textBoxSuDuanSwitch.TabIndex = 17;
+            this.textBoxSuDuanSwitch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxSuDuanSwitch.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // label17
             // 
@@ -265,7 +310,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(395, 122);
+            this.label15.Location = new System.Drawing.Point(390, 122);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 12);
             this.label15.TabIndex = 14;
@@ -274,14 +319,17 @@
             // textBoxGuoLiuSwitch
             // 
             this.textBoxGuoLiuSwitch.Location = new System.Drawing.Point(21, 186);
+            this.textBoxGuoLiuSwitch.MaxLength = 5;
             this.textBoxGuoLiuSwitch.Name = "textBoxGuoLiuSwitch";
             this.textBoxGuoLiuSwitch.Size = new System.Drawing.Size(62, 21);
             this.textBoxGuoLiuSwitch.TabIndex = 20;
+            this.textBoxGuoLiuSwitch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxGuoLiuSwitch.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(395, 70);
+            this.label14.Location = new System.Drawing.Point(390, 70);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 12);
             this.label14.TabIndex = 13;
@@ -299,16 +347,22 @@
             // textBoxGuoLiuSet
             // 
             this.textBoxGuoLiuSet.Location = new System.Drawing.Point(144, 37);
+            this.textBoxGuoLiuSet.MaxLength = 5;
             this.textBoxGuoLiuSet.Name = "textBoxGuoLiuSet";
             this.textBoxGuoLiuSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxGuoLiuSet.TabIndex = 23;
+            this.textBoxGuoLiuSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxGuoLiuSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxGuoLiuTimeSet
             // 
             this.textBoxGuoLiuTimeSet.Location = new System.Drawing.Point(144, 85);
+            this.textBoxGuoLiuTimeSet.MaxLength = 5;
             this.textBoxGuoLiuTimeSet.Name = "textBoxGuoLiuTimeSet";
             this.textBoxGuoLiuTimeSet.Size = new System.Drawing.Size(62, 21);
             this.textBoxGuoLiuTimeSet.TabIndex = 24;
+            this.textBoxGuoLiuTimeSet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxGuoLiuTimeSet.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // label12
             // 
@@ -420,7 +474,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.buttonRead2);
             this.groupBox2.Controls.Add(this.textBoxManualreset);
             this.groupBox2.Controls.Add(this.textBoxRes1);
             this.groupBox2.Controls.Add(this.textBoxRes2);
@@ -430,59 +483,57 @@
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Location = new System.Drawing.Point(12, 291);
+            this.groupBox2.Location = new System.Drawing.Point(12, 279);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(596, 98);
+            this.groupBox2.Size = new System.Drawing.Size(596, 76);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "下载标识";
             // 
-            // buttonRead2
-            // 
-            this.buttonRead2.Location = new System.Drawing.Point(515, 21);
-            this.buttonRead2.Name = "buttonRead2";
-            this.buttonRead2.Size = new System.Drawing.Size(75, 23);
-            this.buttonRead2.TabIndex = 44;
-            this.buttonRead2.Text = "button4";
-            this.buttonRead2.UseVisualStyleBackColor = true;
-            // 
             // textBoxManualreset
             // 
-            this.textBoxManualreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxManualreset.Location = new System.Drawing.Point(42, 41);
+            this.textBoxManualreset.Location = new System.Drawing.Point(30, 41);
+            this.textBoxManualreset.MaxLength = 1;
             this.textBoxManualreset.Name = "textBoxManualreset";
             this.textBoxManualreset.Size = new System.Drawing.Size(49, 21);
             this.textBoxManualreset.TabIndex = 42;
+            this.textBoxManualreset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxManualreset.Validating += new System.ComponentModel.CancelEventHandler(this.jiaoYan_Validating);
             // 
             // textBoxRes1
             // 
-            this.textBoxRes1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxRes1.Location = new System.Drawing.Point(235, 41);
+            this.textBoxRes1.Location = new System.Drawing.Point(223, 41);
+            this.textBoxRes1.MaxLength = 5;
             this.textBoxRes1.Name = "textBoxRes1";
             this.textBoxRes1.Size = new System.Drawing.Size(49, 21);
             this.textBoxRes1.TabIndex = 41;
+            this.textBoxRes1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxRes1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxRes2
             // 
-            this.textBoxRes2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxRes2.Location = new System.Drawing.Point(341, 41);
+            this.textBoxRes2.Location = new System.Drawing.Point(329, 41);
+            this.textBoxRes2.MaxLength = 5;
             this.textBoxRes2.Name = "textBoxRes2";
             this.textBoxRes2.Size = new System.Drawing.Size(49, 21);
             this.textBoxRes2.TabIndex = 40;
+            this.textBoxRes2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxRes2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // textBoxJiaoZhun
             // 
-            this.textBoxJiaoZhun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxJiaoZhun.Location = new System.Drawing.Point(138, 41);
+            this.textBoxJiaoZhun.Location = new System.Drawing.Point(126, 41);
+            this.textBoxJiaoZhun.MaxLength = 1;
             this.textBoxJiaoZhun.Name = "textBoxJiaoZhun";
             this.textBoxJiaoZhun.Size = new System.Drawing.Size(49, 21);
             this.textBoxJiaoZhun.TabIndex = 39;
+            this.textBoxJiaoZhun.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxJiaoZhun.Validating += new System.ComponentModel.CancelEventHandler(this.jiaoYan_Validating);
             // 
             // label18
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(40, 26);
+            this.label18.Location = new System.Drawing.Point(28, 26);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 12);
             this.label18.TabIndex = 35;
@@ -490,9 +541,8 @@
             // 
             // label20
             // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(139, 26);
+            this.label20.Location = new System.Drawing.Point(127, 26);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 12);
             this.label20.TabIndex = 37;
@@ -500,9 +550,8 @@
             // 
             // label21
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(233, 26);
+            this.label21.Location = new System.Drawing.Point(221, 26);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 38;
@@ -510,8 +559,7 @@
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(515, 51);
+            this.button2.Location = new System.Drawing.Point(515, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 35;
@@ -521,9 +569,8 @@
             // 
             // label19
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(340, 26);
+            this.label19.Location = new System.Drawing.Point(328, 26);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(29, 12);
             this.label19.TabIndex = 36;
@@ -558,17 +605,34 @@
             this.comboBoxIndtr.Text = "指示器1";
             this.comboBoxIndtr.SelectedIndexChanged += new System.EventHandler(this.comboBoxIndtr_SelectedIndexChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelState
+            // 
+            this.labelState.AutoSize = true;
+            this.labelState.Location = new System.Drawing.Point(525, 367);
+            this.labelState.Name = "labelState";
+            this.labelState.Size = new System.Drawing.Size(65, 12);
+            this.labelState.TabIndex = 3;
+            this.labelState.Text = "labelState";
+            // 
             // IndtrParamFromMotr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 410);
+            this.ClientSize = new System.Drawing.Size(620, 388);
+            this.Controls.Add(this.labelState);
             this.Controls.Add(this.comboBoxIndtr);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "IndtrParamFromMotr";
             this.Text = "IndtrParamFromMotr";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IndtrParamFromMotr_FormClosing);
             this.Load += new System.EventHandler(this.IndtrParamFromMotr_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -630,6 +694,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox comboBoxIndtr;
         private System.Windows.Forms.Button buttonRead1;
-        private System.Windows.Forms.Button buttonRead2;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelState;
     }
 }

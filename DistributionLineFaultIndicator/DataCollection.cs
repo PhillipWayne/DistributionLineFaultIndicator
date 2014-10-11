@@ -9,29 +9,44 @@ namespace DistributionLineFaultIndicator
     class DataCollection
     {
 
-        public static int linklen;      //
-        public static int cotlen;//
-        public static int publen;      //
-        public static int inflen;
+        public static int linklen;      //链路地址长度
+        public static int cotlen;       //传送原因长度
+        public static int publen;       //公共地址长度
+        public static int inflen;       //信息体地址长度
 
-        public static UInt16 linkAddr;
-        public static UInt16 DevAddr;
+        public struct Version      //监视器版本信息
+        {
+            public static string VER_FACNO="";
+            public static string VER_DEVNO = "";
+            public static string VER_SOFTNO ="";
+            public static byte[] VER_SOFTDATE =new byte[3];
+        }
+
+        public static UInt16 linkAddr;     //链路地址
+        public static UInt16 DevAddr;      //设备地址
         public static int YkStartPos;
-        public static int ParamInfoAddr;
+        public static int ParamInfoAddr;   //参数信息体地址
 
-        public static byte addselect = 2;//
-        public static byte seqflag;      //
-        public static byte seq;      //
-        public static byte SQflag;      //
+        public static byte addselect = 2;  //
+        public static byte seqflag;        //
+        public static byte seq;             //
+        public static byte SQflag;         //
         public static byte ZDYtype;
 
         public static byte DataTy;
 
         public static int linkState = 0;   //链路状态指示符，0为未初始化，1为已收到链路状态请求确认，2为已收到确认(链路复位确认或其他确认)。
                                            //3为本机已回复链路状态，4为本机已回复链路复位确认。5为收到下位机初始化完成确认。
-        public static int waitTime = 10;  //重发等待时间
-        public static int class2Delay;
-        public static int class2Delay_default;
+
+        public static int montrParamState = 0;   //监视器方向系统参数下设状态指示，1为设置成功，2为设置失败,3为读取失败,4为读取成功
+        public static int montrUpdate = 0;  //监视器方向显示参数需要更新
+        public static int indtrParamState = 0;   //监视器方向系统参数下设状态指示，1为设置成功，2为设置失败，3为读取失败,4为读取成功
+        public static int indtrUpdate = 0;  //监视器方向显示参数需要更新,1有更新，2无更新
+
+
+        public static int waitTime = 25;  //链路连接重发等待时间
+        public static int class2Delay;             //总招定时器时间瞬时值
+        public static int class2Delay_default;     //总招定时器时间设定值
 
         public static int trial;   //测试专用量
 
@@ -74,20 +89,25 @@ namespace DistributionLineFaultIndicator
 
         }
 
+        //信息体，默认一般不包含第一个信息体地址
         public struct _DataField
         {
+            //接收来的
             public static byte[] Buffer = new byte[1024];
-
             public static int FieldLen;
             public static int FieldVSQ;
+            //发送用的
+            public static byte[] TXBuffer = new byte[1024];
+            public static int TXFieldLen;
+            public static int TXFieldVSQ;
 
         }
 
         //------------------------------------------------------------------------串口数据缓存
         public struct _ComStructData
         {
-            public static byte[] RXBuffer = new byte[1024];
-            public static byte[] TXBuffer = new byte[1024];
+            public static byte[] RXBuffer = new byte[1024]; //接收
+            public static byte[] TXBuffer = new byte[1024]; //发送
             public static int TxLen;
             public static int RxLen;
             public static bool TX_TASK;
@@ -117,7 +137,7 @@ namespace DistributionLineFaultIndicator
             public static bool FirstON_S;
             public static bool SET_PARAM_CON;
             public static bool C_CS_NA_1;             //对时
-            public static bool C_IC_NA_1;
+            public static bool C_IC_NA_1;            //总招
             public static bool CALL_1;//
             public static bool CALL_2;//
             public static bool YK_Sel_1;
@@ -157,17 +177,17 @@ namespace DistributionLineFaultIndicator
         //下发监视端系统参数
         public struct SystemParam
         {
-            public static byte AddrByteNum_101;
-            public static byte CauseByteNum_101;
-            public static byte PubAddByteNum_101;
-            public static UInt16 Addr;                    //终端地址     
-            public static UInt16 HeartBeatTime;            //心跳遥信发送周期 单位 min
-            public static UInt16 BeatCycle;                  //GPRS心跳，以后作为GPRS模块休眠的周期
-            public static UInt16 ComFrameSTime;
-            public static UInt16 NormalVoltageRating;
-            public static UInt16 NormalCurrentRating;
-            public static UInt16 PubAddr_101;
-            public static UInt16 RequestTime;               //发送请求链路的持续时间单位1ms
+            public static byte AddrByteNum_101=2;
+            public static byte CauseByteNum_101=2;
+            public static byte PubAddByteNum_101=2;
+            public static UInt16 Addr=1;                    //终端地址     
+            public static UInt16 HeartBeatTime=2;            //心跳遥信发送周期 单位 min
+            public static UInt16 BeatCycle=60000;                  //GPRS心跳，以后作为GPRS模块休眠的周期
+            public static UInt16 ComFrameSTime=500;
+            public static UInt16 NormalVoltageRating=2200;
+            public static UInt16 NormalCurrentRating=1500;
+            public static UInt16 PubAddr_101=1;
+            public static UInt16 RequestTime=8000;               //发送请求链路的持续时间单位1ms
         }
 
         //下发监视端ip参数
@@ -243,7 +263,7 @@ namespace DistributionLineFaultIndicator
 
 
 
-
+        //遥测数据存储
         public struct YcData
         {
             public static int num;
@@ -252,6 +272,7 @@ namespace DistributionLineFaultIndicator
             public static string[] value;
         }
 
+        //遥信数据存储
         public struct YxData
         {
             public static int num;
@@ -260,6 +281,17 @@ namespace DistributionLineFaultIndicator
             public static string[] value;
         }
 
+        //遥信变位数据存储
+        public struct Event
+        {
+            public static List<string> name=new List<string>();
+            public static List<string> addr = new List<string>();
+            public static List<string> value = new List<string>();
+            public static List<string> date = new List<string>();
+
+        }
+
+        public static Dictionary<string, string> nameMap = new Dictionary<string, string>();  //遥信数据名称和地址的映射
 
 
 
@@ -278,8 +310,8 @@ namespace DistributionLineFaultIndicator
 
         //初始化参数
         public static void initializeData()
-        { 
-            //初始化接收参数,3路监测单元
+        {
+            //初始化接收参数,9个故障指示器
             heartBeats=new byte[9];
             shortCircuist = new byte[9];     
             groundFaults=new byte[9];      
@@ -293,7 +325,7 @@ namespace DistributionLineFaultIndicator
                 heartBeats[i] = shortCircuist[i] = groundFaults[i] = powerOns[i] =powerOffs[i] = shortCircuitTypes[i]=(byte)i;
                 loadCurrents[i] = cellVoltages[i] = i;
             }
-            //初始化下设参数，3路监测单元（每个单元含3个故障指示器）
+            //初始化下设参数，9个故障指示器
             quickBreakSwitch = new ushort[9];
             quickBreakValue = new ushort[9];
             quickBreakTime=new ushort[9];

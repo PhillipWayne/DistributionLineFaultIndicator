@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>2014101002165429_easyicon_net_128.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -64,12 +67,6 @@
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
     <Compile Include="DataCollection.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Indicator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,9 +129,6 @@
     <EmbeddedResource Include="Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Indicator.resx">
       <DependentUpon>Indicator.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +161,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="config.sys" />
     <None Include="Properties\Settings.settings">
@@ -181,6 +176,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010014804222_easyicon_net_256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010014808526_easyicon_net_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010015038738_easyicon_net_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010015139390_easyicon_net_256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010015143196_easyicon_net_256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010015150551_easyicon_net_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010015157867_easyicon_net_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\resource\20141010020938961_easyicon_net_256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="2014101002165429_easyicon_net_128.ico" />
+    <None Include="Properties\resource\20141011113136397_easyicon_net_256.png" />
+    <None Include="Properties\resource\20141011113220623_easyicon_net_128.png" />
+    <None Include="Properties\resource\20141011113253215_easyicon_net_128.png" />
+    <None Include="Properties\resource\2014101111291634_easyicon_net_256.png" />
+    <None Include="Properties\resource\20141011112955692_easyicon_net_256.png" />
+    <None Include="Properties\resource\20141011113013772_easyicon_net_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,6 +30,7 @@ namespace DistributionLineFaultIndicator
                 lv.SubItems.Add(DataCollection.YxData.value[i]);
                 listView1.Items.Add(lv);
             }
+            timerRefresh.Enabled = true;
         }
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
@@ -48,7 +49,7 @@ namespace DistributionLineFaultIndicator
                     listView1.Items.Add(lv);
                 }
             }
-            else
+            else if (tabControl1.SelectedIndex == 1)
             {
                 listView2.Items.Clear();
                 for (int i = 0; i < DataCollection.YcData.num; i++)
@@ -59,6 +60,20 @@ namespace DistributionLineFaultIndicator
                     lv.SubItems.Add(DataCollection.YcData.addr[i]);
                     lv.SubItems.Add(DataCollection.YcData.value[i]);
                     listView2.Items.Add(lv);
+                } 
+            }
+            else
+            {
+                listView3.Items.Clear();
+                for (int i = 0; i < DataCollection.Event.addr.Count; i++)
+                {
+                    lv = new ListViewItem();
+                    lv.SubItems.Add(listView3.Items.Count.ToString());
+                    lv.SubItems.Add(DataCollection.Event.name[i]);
+                    lv.SubItems.Add(DataCollection.Event.addr[i]);
+                    lv.SubItems.Add(DataCollection.Event.value[i]);
+                    lv.SubItems.Add(DataCollection.Event.date[i]);
+                    listView3.Items.Add(lv);
                 } 
             }
             
@@ -74,12 +89,30 @@ namespace DistributionLineFaultIndicator
                     listView1.Items[i].SubItems[4].Text = DataCollection.YxData.value[i];
                 }
             }
-            else
+            else if (tabControl1.SelectedIndex == 1)
             {
                 for (int i = 0; i < DataCollection.YcData.num; i++)
                 {
                     listView2.Items[i].SubItems[4].Text = DataCollection.YcData.value[i];
                 }
+            }
+            else
+            {
+                ListViewItem lv;
+                if (listView3.Items.Count < DataCollection.Event.addr.Count)
+                {
+                    for (int i = listView3.Items.Count; i < DataCollection.Event.addr.Count; i++)
+                    {
+                        lv = new ListViewItem();
+                        lv.SubItems.Add(listView3.Items.Count.ToString());
+                        lv.SubItems.Add(DataCollection.Event.name[i]);
+                        lv.SubItems.Add(DataCollection.Event.addr[i]);
+                        lv.SubItems.Add(DataCollection.Event.value[i]);
+                        lv.SubItems.Add(DataCollection.Event.date[i]);
+                        listView3.Items.Add(lv);
+                    } 
+                }
+                
             }
         }
 
@@ -128,6 +161,8 @@ namespace DistributionLineFaultIndicator
             }
         }
 
+
+        //定时器，发送总招
         private void timer1_Tick(object sender, EventArgs e)
         {
             DataCollection.class2Delay-=1000;
@@ -136,6 +171,17 @@ namespace DistributionLineFaultIndicator
                 DataCollection._ComTaskFlag.C_IC_NA_1 = true;
                 DataCollection.class2Delay = DataCollection.class2Delay_default;
             }
+        }
+
+        private void Monitor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
+            timerRefresh.Enabled = false;
+        }
+
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
+            refresh();
         }
 
 
