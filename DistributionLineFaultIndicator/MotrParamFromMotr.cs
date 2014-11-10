@@ -176,20 +176,21 @@ namespace DistributionLineFaultIndicator
 
         private void buttonTimeSyn_Click(object sender, EventArgs e)
         {
-            if ((textBoxMilisecond.Text != "" && textBoxMinute.Text != "" && textBoxHour.Text != "" && textBoxDay.Text != "" && textBoxMonth.Text != "" && textBoxYear.Text!="") && int.Parse(textBoxMilisecond.Text) < 1000 && int.Parse(textBoxMinute.Text) < 60 && int.Parse(textBoxHour.Text) < 24 && int.Parse(textBoxDay.Text) < 32
+            if (textBoxMilisecond.Text != "" &&textBoxSecond.Text!=""&& textBoxMinute.Text != "" && textBoxHour.Text != "" && textBoxDay.Text != "" && textBoxMonth.Text != "" && textBoxYear.Text!=""&& int.Parse(textBoxMilisecond.Text) < 1000 &&int.Parse(textBoxSecond.Text)<60&& int.Parse(textBoxMinute.Text) < 60 && int.Parse(textBoxHour.Text) < 24 && int.Parse(textBoxDay.Text) < 32
                 && int.Parse(textBoxMonth.Text) < 13 && int.Parse(textBoxMonth.Text) != 0 && int.Parse(textBoxDay.Text)!=0)
             {
                 labelState.Text = "参数下设中...";
                 DataCollection.montrParamState = 0;
                 int len = 0;
-                DataCollection._DataField.TXBuffer[len++] = (byte)int.Parse(textBoxMilisecond.Text);
-                DataCollection._DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxMilisecond.Text)>>8);
+                DataCollection._DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxMilisecond.Text) + int.Parse(textBoxSecond.Text)*1000);
+                DataCollection._DataField.TXBuffer[len++] = (byte)((int.Parse(textBoxMilisecond.Text) + int.Parse(textBoxSecond.Text) * 1000) >> 8);
                 DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxMinute.Text);
                 DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxHour.Text);
                 DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxDay.Text);
                 DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxMonth.Text);
                 DataCollection._DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxYear.Text)%100);
                 DataCollection._DataField.TXFieldLen = len;
+                DataCollection._DataField.TXFieldVSQ = 1;
                 DataCollection._ComTaskFlag.C_CS_NA_1 = true;
             }
             else
@@ -202,6 +203,7 @@ namespace DistributionLineFaultIndicator
         private void button1_Click(object sender, EventArgs e)
         {
             textBoxMilisecond.Text = DateTime.Now.Millisecond.ToString();
+            textBoxSecond.Text = DateTime.Now.Second.ToString();
             textBoxMinute.Text = DateTime.Now.Minute.ToString();
             textBoxHour.Text = DateTime.Now.Hour.ToString();
             textBoxDay.Text = DateTime.Now.Day.ToString();
@@ -247,7 +249,7 @@ namespace DistributionLineFaultIndicator
             }
         }
 
-
+       
  
     }
 }

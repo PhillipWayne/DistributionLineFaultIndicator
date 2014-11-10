@@ -952,6 +952,7 @@ namespace DistributionLineFaultIndicator
             int publen = DataCollection.publen;
             int inflen = DataCollection.inflen;
 
+            int SQ;
             byte dataty = 0;
             byte Length = 0;
             byte TypeID = 0;  //类型标识符
@@ -1014,6 +1015,7 @@ namespace DistributionLineFaultIndicator
                         DataCollection._ProtocoltyFlag.ACD = 2;
                     TypeID = DataCollection._ComStructData.RXBuffer[5 + linklen];
                     DataCollection._DataField.FieldVSQ = DataCollection._ComStructData.RXBuffer[6 + linklen] & 0x7f;
+                    SQ = DataCollection._ComStructData.RXBuffer[6 + linklen]>>7;
                     if (cotlen == 1)
                         COT = DataCollection._ComStructData.RXBuffer[7 + linklen];
                     else if (cotlen == 2)
@@ -1193,14 +1195,14 @@ namespace DistributionLineFaultIndicator
 
                             break;
                         case 9:               //遥测 归一化值 2+1字节
-                            if (COT == 20)  //正常响应站召唤
+                            if (SQ == 1)  //正常响应站召唤
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
                                 DataCollection._DataField.FieldLen = DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen);
                                 dataty = 36;
                             }
-                            else if (COT == 3)  //突发，扰动
+                            else if (SQ == 0)  //突发，扰动
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
@@ -1314,14 +1316,14 @@ namespace DistributionLineFaultIndicator
 
                             break;
                         case 1:               //单点遥信
-                            if (COT == 20)  //正常响应站召唤
+                            if (SQ == 1)  //正常响应站召唤
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
                                 DataCollection._DataField.FieldLen = DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen);
                                 dataty = 51;
                             }
-                            else if (COT == 3)  //突发，遥信变位
+                            else if (SQ == 0)  //突发，遥信变位
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
@@ -1330,14 +1332,14 @@ namespace DistributionLineFaultIndicator
                             }
                             break;
                         case 3:               //双点遥信
-                            if (COT == 20)  //正常响应站召唤
+                            if (SQ == 1)  //正常响应站召唤
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
                                 DataCollection._DataField.FieldLen = DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen);
                                 dataty = 53;
                             }
-                            else if (COT == 3)  //突发，双点遥信变位
+                            else if (SQ == 0)  //突发，双点遥信变位
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
@@ -1346,14 +1348,14 @@ namespace DistributionLineFaultIndicator
                             }
                             break;
                         case 30:               //带56时标的单点遥信
-                            if (COT == 20)  //正常响应站召唤
+                            if (SQ == 1)  //正常响应站召唤
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];
                                 DataCollection._DataField.FieldLen = DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen);
                                 dataty = 55;
                             }
-                            else if (COT == 3)  //突发，遥信变位
+                            else if (SQ == 0)  //突发，遥信变位
                             {
                                 for (int i = 0; i < DataCollection._ComStructData.RxLen - (9 + linklen + cotlen + publen); i++)
                                     DataCollection._DataField.Buffer[i] = DataCollection._ComStructData.RXBuffer[i + 7 + linklen + cotlen + publen];

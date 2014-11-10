@@ -53,6 +53,9 @@
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemDeleteAll = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -63,6 +66,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemReset = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -71,6 +76,8 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -132,6 +139,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader10});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip2;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(3, 3);
@@ -171,7 +179,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(735, 320);
+            this.tabPage2.Size = new System.Drawing.Size(735, 376);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "遥测";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -184,11 +192,12 @@
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader9});
+            this.listView2.ContextMenuStrip = this.contextMenuStrip2;
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(3, 3);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(729, 314);
+            this.listView2.Size = new System.Drawing.Size(729, 370);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -223,7 +232,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(735, 320);
+            this.tabPage3.Size = new System.Drawing.Size(735, 376);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "事件";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -237,11 +246,13 @@
             this.columnHeader14,
             this.columnHeader15,
             this.columnHeader16});
+            this.listView3.ContextMenuStrip = this.contextMenuStrip1;
             this.listView3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView3.FullRowSelect = true;
             this.listView3.GridLines = true;
             this.listView3.Location = new System.Drawing.Point(3, 3);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(729, 314);
+            this.listView3.Size = new System.Drawing.Size(729, 370);
             this.listView3.TabIndex = 0;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -276,6 +287,28 @@
             this.columnHeader16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader16.Width = 250;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemDelete,
+            this.ToolStripMenuItemDeleteAll});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            // 
+            // ToolStripMenuItemDelete
+            // 
+            this.ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
+            this.ToolStripMenuItemDelete.Size = new System.Drawing.Size(124, 22);
+            this.ToolStripMenuItemDelete.Text = "删除";
+            this.ToolStripMenuItemDelete.Click += new System.EventHandler(this.ToolStripMenuItemDelete_Click);
+            // 
+            // ToolStripMenuItemDeleteAll
+            // 
+            this.ToolStripMenuItemDeleteAll.Name = "ToolStripMenuItemDeleteAll";
+            this.ToolStripMenuItemDeleteAll.Size = new System.Drawing.Size(124, 22);
+            this.ToolStripMenuItemDeleteAll.Text = "删除所有";
+            this.ToolStripMenuItemDeleteAll.Click += new System.EventHandler(this.ToolStripMenuItemDeleteAll_Click);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -307,13 +340,14 @@
             this.textBox1.Size = new System.Drawing.Size(24, 21);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "30";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(273, 6);
+            this.button3.Location = new System.Drawing.Point(344, 6);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(63, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "链路启动";
             this.button3.UseVisualStyleBackColor = true;
@@ -322,9 +356,9 @@
             // buttonMontrParam
             // 
             this.buttonMontrParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMontrParam.Location = new System.Drawing.Point(372, 6);
+            this.buttonMontrParam.Location = new System.Drawing.Point(427, 6);
             this.buttonMontrParam.Name = "buttonMontrParam";
-            this.buttonMontrParam.Size = new System.Drawing.Size(75, 23);
+            this.buttonMontrParam.Size = new System.Drawing.Size(63, 23);
             this.buttonMontrParam.TabIndex = 3;
             this.buttonMontrParam.Text = "监测参数";
             this.buttonMontrParam.UseVisualStyleBackColor = true;
@@ -333,9 +367,9 @@
             // buttonIndtrParam
             // 
             this.buttonIndtrParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonIndtrParam.Location = new System.Drawing.Point(469, 6);
+            this.buttonIndtrParam.Location = new System.Drawing.Point(507, 6);
             this.buttonIndtrParam.Name = "buttonIndtrParam";
-            this.buttonIndtrParam.Size = new System.Drawing.Size(75, 23);
+            this.buttonIndtrParam.Size = new System.Drawing.Size(63, 23);
             this.buttonIndtrParam.TabIndex = 2;
             this.buttonIndtrParam.Text = "指示参数";
             this.buttonIndtrParam.UseVisualStyleBackColor = true;
@@ -344,9 +378,9 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(563, 6);
+            this.button2.Location = new System.Drawing.Point(589, 6);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(63, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "刷新";
             this.button2.UseVisualStyleBackColor = true;
@@ -355,9 +389,9 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(656, 6);
+            this.button1.Location = new System.Drawing.Point(668, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(63, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "总招";
             this.button1.UseVisualStyleBackColor = true;
@@ -372,6 +406,20 @@
             // 
             this.timerRefresh.Interval = 2000;
             this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemReset});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 48);
+            // 
+            // ToolStripMenuItemReset
+            // 
+            this.ToolStripMenuItemReset.Name = "ToolStripMenuItemReset";
+            this.ToolStripMenuItemReset.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemReset.Text = "清空";
+            this.ToolStripMenuItemReset.Click += new System.EventHandler(this.ToolStripMenuItemReset_Click);
             // 
             // Monitor
             // 
@@ -393,6 +441,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -433,5 +483,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.Timer timerRefresh;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDelete;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDeleteAll;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemReset;
     }
 }

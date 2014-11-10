@@ -48,7 +48,7 @@ namespace DistributionLineFaultIndicator
             if (Type == 0)//read
             {
 
-                GetPrivateProfileString("NUM", "YCNUM", "无法读取对应数值！",
+                GetPrivateProfileString("NUM", "YCNUM", "0",
                                                      temp, 255, fname);
                 DataCollection.YcData.num = int.Parse(temp.ToString());
                 DataCollection.YcData.name = new string[DataCollection.YcData.num];
@@ -78,7 +78,7 @@ namespace DistributionLineFaultIndicator
 
                 //读遥信配置参数
 
-                GetPrivateProfileString("NUM", "YXNUM", "无法读取对应数值！",
+                GetPrivateProfileString("NUM", "YXNUM", "0",
                                                      temp, 255, fname);
                 DataCollection.YxData.num = int.Parse(temp.ToString());
                 DataCollection.YxData.name = new string[DataCollection.YxData.num];

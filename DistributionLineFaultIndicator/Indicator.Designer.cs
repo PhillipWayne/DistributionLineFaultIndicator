@@ -67,6 +67,7 @@
             this.comboBoxIndicator.Name = "comboBoxIndicator";
             this.comboBoxIndicator.Size = new System.Drawing.Size(121, 20);
             this.comboBoxIndicator.TabIndex = 47;
+            this.comboBoxIndicator.Text = "指示器1（1路）";
             this.comboBoxIndicator.SelectedIndexChanged += new System.EventHandler(this.comboBoxIndicator_SelectedIndexChanged);
             // 
             // button2

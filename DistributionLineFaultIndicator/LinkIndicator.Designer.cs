@@ -47,7 +47,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(236, 320);
+            this.button2.Location = new System.Drawing.Point(134, 323);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 19;
@@ -57,7 +57,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(140, 320);
+            this.button1.Location = new System.Drawing.Point(38, 323);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
@@ -191,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 383);
+            this.ClientSize = new System.Drawing.Size(265, 383);
             this.Controls.Add(this.textBoxPort);
             this.Controls.Add(this.textBoxIP);
             this.Controls.Add(this.label6);
@@ -206,6 +206,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(281, 421);
             this.Name = "LinkIndicator";
             this.Text = "LinkIndicator";
             this.Load += new System.EventHandler(this.LinkIndicator_Load);

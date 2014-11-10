@@ -203,8 +203,8 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[12]=0;//数据个数高位
                     DataCollection._ComStructData.TXBuffer[13]=0;//SQ
                     //数据域
-                    DataCollection._ComStructData.TXBuffer[14]=(byte)(index+1); //信息体地址低
-                    DataCollection._ComStructData.TXBuffer[15]=0; //信息体地址高
+                    DataCollection._ComStructData.TXBuffer[14]=(byte)(DataCollection.indtrAddrLocal[index]); //信息体地址低
+                    DataCollection._ComStructData.TXBuffer[15]=(byte)(DataCollection.indtrAddrLocal[index]>>8); //信息体地址高
                     DataCollection._ComStructData.TXBuffer[16]=(byte)DataCollection.quickBreakSwitch[index];
                     DataCollection._ComStructData.TXBuffer[17]=(byte)(DataCollection.quickBreakSwitch[index]>>8);
                     DataCollection._ComStructData.TXBuffer[18]=(byte)DataCollection.quickBreakValue[index];
@@ -247,7 +247,7 @@ namespace DistributionLineFaultIndicator
 
                 case 2://向监视器下发故障指示器标志位
                     DataCollection._ComStructData.TXBuffer[0] = 0x69;
-                    DataCollection._ComStructData.TXBuffer[1] =20;
+                    DataCollection._ComStructData.TXBuffer[1] =16;
                     DataCollection._ComStructData.TXBuffer[2] =0;
                     DataCollection._ComStructData.TXBuffer[3]=0x69;
                     DataCollection._ComStructData.TXBuffer[4]=1;//链路控制域
@@ -261,20 +261,16 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[12]=0;//数据个数高位
                     DataCollection._ComStructData.TXBuffer[13]=0;//SQ
                     //数据域
-                    DataCollection._ComStructData.TXBuffer[14]=(byte)(index+1); //信息体地址低
-                    DataCollection._ComStructData.TXBuffer[15]=0; //信息体地址高
-                    DataCollection._ComStructData.TXBuffer[16]=(byte)DataCollection.calibration[index];
-                    DataCollection._ComStructData.TXBuffer[17]=(byte)(DataCollection.calibration[index]>>8);
-                    DataCollection._ComStructData.TXBuffer[18]=(byte)DataCollection.manualReset[index];
-                    DataCollection._ComStructData.TXBuffer[19]=(byte)(DataCollection.manualReset[index]>>8);
-                    DataCollection._ComStructData.TXBuffer[20]=(byte)DataCollection.res1[index];
-                    DataCollection._ComStructData.TXBuffer[21]=(byte)(DataCollection.res1[index]>>8);
-                    DataCollection._ComStructData.TXBuffer[22]=(byte)DataCollection.res2[index];
-                    DataCollection._ComStructData.TXBuffer[23]=(byte)(DataCollection.res2[index]>>8);
+                    DataCollection._ComStructData.TXBuffer[14]=(byte)(DataCollection.indtrAddrLocal[index]); //信息体地址低
+                    DataCollection._ComStructData.TXBuffer[15]=(byte)(DataCollection.indtrAddrLocal[index]>>8); //信息体地址高
+                    DataCollection._ComStructData.TXBuffer[16] = (byte)(DataCollection.manualReset[index]);
+                    DataCollection._ComStructData.TXBuffer[17] = (byte)(DataCollection.calibration[index]);
+                    DataCollection._ComStructData.TXBuffer[18]=(byte)DataCollection.res1[index];
+                    DataCollection._ComStructData.TXBuffer[19]=(byte)DataCollection.res2[index];
                     
-                    DataCollection._ComStructData.TXBuffer[24]=GetSumCheck(1,4,20);
-                    DataCollection._ComStructData.TXBuffer[25]=0x16;
-                    len =26;
+                    DataCollection._ComStructData.TXBuffer[20]=GetSumCheck(1,4,16);
+                    DataCollection._ComStructData.TXBuffer[21]=0x16;
+                    len =22;
                     break;
                 case 3://向监视器下发读取故障指示器参数
                     DataCollection._ComStructData.TXBuffer[0] = 0x69;
@@ -292,8 +288,8 @@ namespace DistributionLineFaultIndicator
                     DataCollection._ComStructData.TXBuffer[12]=0;//数据个数高位
                     DataCollection._ComStructData.TXBuffer[13]=0;//SQ
                     //数据域
-                    DataCollection._ComStructData.TXBuffer[14]=(byte)(index+1); //信息体地址低
-                    DataCollection._ComStructData.TXBuffer[15]=0; //信息体地址高
+                    DataCollection._ComStructData.TXBuffer[14]=(byte)(DataCollection.indtrAddrLocal[index]); //信息体地址低
+                    DataCollection._ComStructData.TXBuffer[15]=(byte)(DataCollection.indtrAddrLocal[index]>>8); //信息体地址高
                     DataCollection._ComStructData.TXBuffer[16]=0;
                     DataCollection._ComStructData.TXBuffer[17]=0;
                     

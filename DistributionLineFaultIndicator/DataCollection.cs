@@ -26,6 +26,7 @@ namespace DistributionLineFaultIndicator
         public static UInt16 DevAddr;      //设备地址
         public static int YkStartPos;
         public static int ParamInfoAddr;   //参数信息体地址
+        public static UInt16[] indtrAddrLocal;   //参数信息体地址
 
         public static byte addselect = 2;  //
         public static byte seqflag;        //
@@ -362,7 +363,12 @@ namespace DistributionLineFaultIndicator
             indtrAdds = new ushort[9];
             for (int i = 0; i < 9; i++)
             {
-                indtrAdds[i] = (byte)(i + 1);
+                indtrAdds[i] = (ushort)(i + 1);
+            }
+            indtrAddrLocal = new ushort[9];
+            for (int i = 0; i < 9; i++)
+            {
+                indtrAddrLocal[i] = (ushort)(i + 1);
             }
             //初始化故障指示器发送速率及带宽等参数
             MDMCFG0=new byte[9];    

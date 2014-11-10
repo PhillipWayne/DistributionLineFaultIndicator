@@ -51,7 +51,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(169, 332);
+            this.button1.Location = new System.Drawing.Point(59, 351);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -62,7 +62,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(265, 332);
+            this.button2.Location = new System.Drawing.Point(155, 351);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 9;
@@ -234,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 386);
+            this.ClientSize = new System.Drawing.Size(281, 425);
             this.Controls.Add(this.comboBoxInAddrLen);
             this.Controls.Add(this.comboBoxLAddrLen);
             this.Controls.Add(this.comboBoxPALen);
@@ -253,6 +253,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(297, 463);
             this.Name = "LinkMonitor";
             this.Text = "LinkMonitor";
             this.Load += new System.EventHandler(this.LinkMonitor_Load);

@@ -56,6 +56,7 @@ namespace DistributionLineFaultIndicator
             }
         }
 
+        //本机回复链路握手条例
         private void timerF_Tick(object sender, EventArgs e)
         {
             if (DataCollection.linkState == 0)

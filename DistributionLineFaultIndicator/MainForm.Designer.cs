@@ -39,9 +39,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonMonitor = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonIndtr = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonTest = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.checkBoxRoll = new System.Windows.Forms.CheckBox();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonClear = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -53,6 +56,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSaveEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -101,9 +106,7 @@
             this.toolStripButtonUnLink2,
             this.toolStripSeparator2,
             this.toolStripButtonMonitor,
-            this.toolStripButtonIndtr,
-            this.toolStripButtonTest,
-            this.toolStripButton1});
+            this.toolStripButtonIndtr});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(757, 54);
@@ -166,6 +169,7 @@
             // 
             // toolStripButtonMonitor
             // 
+            this.toolStripButtonMonitor.Enabled = false;
             this.toolStripButtonMonitor.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010014804222_easyicon_net_256;
             this.toolStripButtonMonitor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonMonitor.Name = "toolStripButtonMonitor";
@@ -176,6 +180,7 @@
             // 
             // toolStripButtonIndtr
             // 
+            this.toolStripButtonIndtr.Enabled = false;
             this.toolStripButtonIndtr.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010015038738_easyicon_net_512;
             this.toolStripButtonIndtr.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonIndtr.Name = "toolStripButtonIndtr";
@@ -183,27 +188,6 @@
             this.toolStripButtonIndtr.Text = "故障指示器";
             this.toolStripButtonIndtr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonIndtr.Click += new System.EventHandler(this.toolStripButtonIndtr_Click);
-            // 
-            // toolStripButtonTest
-            // 
-            this.toolStripButtonTest.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTest.Image")));
-            this.toolStripButtonTest.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonTest.Name = "toolStripButtonTest";
-            this.toolStripButtonTest.Size = new System.Drawing.Size(84, 51);
-            this.toolStripButtonTest.Text = "串口通信测试";
-            this.toolStripButtonTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonTest.Visible = false;
-            this.toolStripButtonTest.Click += new System.EventHandler(this.toolStripButtonTest_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141010020938961_easyicon_net_256;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(60, 51);
-            this.toolStripButton1.Text = "清除报文";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // splitContainer2
             // 
@@ -214,20 +198,73 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.progressBar1);
+            this.splitContainer2.Panel2.Controls.Add(this.checkBoxRoll);
+            this.splitContainer2.Panel2.Controls.Add(this.toolStrip2);
             this.splitContainer2.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer2.Size = new System.Drawing.Size(757, 399);
-            this.splitContainer2.SplitterDistance = 271;
+            this.splitContainer2.SplitterDistance = 253;
             this.splitContainer2.TabIndex = 1;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressBar1.Location = new System.Drawing.Point(118, 123);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 16);
+            this.progressBar1.TabIndex = 3;
+            this.progressBar1.Visible = false;
+            // 
+            // checkBoxRoll
+            // 
+            this.checkBoxRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxRoll.AutoSize = true;
+            this.checkBoxRoll.Location = new System.Drawing.Point(40, 123);
+            this.checkBoxRoll.Name = "checkBoxRoll";
+            this.checkBoxRoll.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxRoll.TabIndex = 2;
+            this.checkBoxRoll.Text = "锁定输出";
+            this.checkBoxRoll.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonClear,
+            this.toolStripSeparator3});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 117);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(757, 25);
+            this.toolStrip2.TabIndex = 1;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripButtonClear
+            // 
+            this.toolStripButtonClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonClear.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141013094218113_easyicon_net_256;
+            this.toolStripButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonClear.Name = "toolStripButtonClear";
+            this.toolStripButtonClear.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonClear.Text = "清屏";
+            this.toolStripButtonClear.Click += new System.EventHandler(this.toolStripButtonClear_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(757, 124);
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.Size = new System.Drawing.Size(757, 114);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -279,7 +316,8 @@
             // toolStripStatusX
             // 
             this.toolStripStatusX.Name = "toolStripStatusX";
-            this.toolStripStatusX.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusX.Size = new System.Drawing.Size(101, 17);
+            this.toolStripStatusX.Text = "toolStripStatusX";
             // 
             // menuStrip1
             // 
@@ -296,6 +334,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
+            this.ToolStripMenuItemSaveEvent,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
@@ -305,16 +344,25 @@
             // 
             this.openToolStripMenuItem.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141011113220623_easyicon_net_128;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.openToolStripMenuItem.Text = "打开";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemSaveEvent
+            // 
+            this.ToolStripMenuItemSaveEvent.Image = global::DistributionLineFaultIndicator.Properties.Resources._2014101303395568_easyicon_net_128;
+            this.ToolStripMenuItemSaveEvent.Name = "ToolStripMenuItemSaveEvent";
+            this.ToolStripMenuItemSaveEvent.Size = new System.Drawing.Size(124, 22);
+            this.ToolStripMenuItemSaveEvent.Text = "保存事件";
+            this.ToolStripMenuItemSaveEvent.Click += new System.EventHandler(this.ToolStripMenuItemSaveEvent_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::DistributionLineFaultIndicator.Properties.Resources._20141011112955692_easyicon_net_256;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.exitToolStripMenuItem.Text = "退出";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // otherToolStripMenuItem
             // 
@@ -344,6 +392,7 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -353,8 +402,11 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -382,7 +434,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLink2;
         private System.Windows.Forms.ToolStripButton toolStripButtonUnLink2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButtonTest;
         private System.Windows.Forms.ToolStripMenuItem otherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -392,7 +443,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusX;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton toolStripButtonClear;
+        private System.Windows.Forms.CheckBox checkBoxRoll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSaveEvent;
+        private System.Windows.Forms.ProgressBar progressBar1;
 
     }
 }

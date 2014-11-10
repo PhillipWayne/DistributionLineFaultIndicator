@@ -87,7 +87,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timerF
@@ -104,6 +104,8 @@
             this.Controls.Add(this.textBoxWaitTime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonStart);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(417, 266);
             this.Name = "LinkStart";
             this.Text = "LinkStart";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LinkStart_FormClosed);

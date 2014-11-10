@@ -81,6 +81,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBoxSecond = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -644,6 +646,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.textBoxSecond);
             this.groupBox3.Controls.Add(this.label28);
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Controls.Add(this.label26);
@@ -668,6 +672,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "版本与时间";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(309, 38);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(17, 12);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "秒";
+            // 
+            // textBoxSecond
+            // 
+            this.textBoxSecond.Location = new System.Drawing.Point(275, 35);
+            this.textBoxSecond.MaxLength = 4;
+            this.textBoxSecond.Name = "textBoxSecond";
+            this.textBoxSecond.Size = new System.Drawing.Size(32, 21);
+            this.textBoxSecond.TabIndex = 21;
+            this.textBoxSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxSecond.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -680,7 +703,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(316, 38);
+            this.label27.Location = new System.Drawing.Point(362, 38);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(29, 12);
             this.label27.TabIndex = 19;
@@ -773,7 +796,7 @@
             // 
             // textBoxMilisecond
             // 
-            this.textBoxMilisecond.Location = new System.Drawing.Point(281, 35);
+            this.textBoxMilisecond.Location = new System.Drawing.Point(329, 35);
             this.textBoxMilisecond.MaxLength = 4;
             this.textBoxMilisecond.Name = "textBoxMilisecond";
             this.textBoxMilisecond.Size = new System.Drawing.Size(32, 21);
@@ -848,6 +871,8 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(709, 548);
             this.Name = "MotrParamFromMotr";
             this.Text = "MotrParamFromMotr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MotrParamFromMotr_FormClosing);
@@ -935,5 +960,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelState;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBoxSecond;
     }
 }

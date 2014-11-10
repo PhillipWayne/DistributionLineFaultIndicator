@@ -199,5 +199,35 @@ namespace DistributionLineFaultIndicator.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _2014101303395568_easyicon_net_128 {
+            get {
+                object obj = ResourceManager.GetObject("2014101303395568_easyicon_net_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _20141013094112218_easyicon_net_64 {
+            get {
+                object obj = ResourceManager.GetObject("20141013094112218_easyicon_net_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _20141013094218113_easyicon_net_256 {
+            get {
+                object obj = ResourceManager.GetObject("20141013094218113_easyicon_net_256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

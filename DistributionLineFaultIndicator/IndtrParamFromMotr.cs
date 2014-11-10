@@ -12,6 +12,7 @@ namespace DistributionLineFaultIndicator
 {
     public partial class IndtrParamFromMotr : Form
     {
+
         public IndtrParamFromMotr()
         {
             InitializeComponent();
@@ -197,17 +198,23 @@ namespace DistributionLineFaultIndicator
         //验证输入的校验文本框内的输入符合要求，否则不予通过验证，无法执行其他操作
         private void jiaoYan_Validating(object sender, CancelEventArgs e)
         {
-            if (((TextBox)sender).Text == ""||int.Parse(((TextBox)sender).Text) > 1)
+            if (((TextBox)sender).Text == ""||int.Parse(((TextBox)sender).Text) > 255)
             {
                 e.Cancel = true;
                 ((TextBox)sender).BackColor = Color.Red;
-                labelState.Text = "请输入0~1！";
+                labelState.Text = "请输入0~255！";
             }
             else
             {
                 ((TextBox)sender).BackColor = SystemColors.Window;
                 labelState.Text = "";
             }
+        }
+
+        private void buttonInfrAddrLocal_Click(object sender, EventArgs e)
+        {
+            IndtrAddrLocal indtrAddrLocal = new IndtrAddrLocal();
+            indtrAddrLocal.ShowDialog(); 
         }
 
     }
