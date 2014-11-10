@@ -262,49 +262,44 @@ namespace DistributionLineFaultIndicator
 
 
 
-
+        public static int currentMon; //当前正在操作监测单元
+        public static int revMon; //发来报文的监测单元的地址
 
         //遥测数据存储
         public struct YcData
         {
-            public static int num;
-            public static string[] name;
-            public static string[] addr;
-            public static string[] value;
+            public int num;
+            public string[] name;
+            public string[] addr;
+            public string[] value;
         }
+        public static Dictionary<int, YcData> ycDatas = new Dictionary<int, YcData>();
+        
 
         //遥信数据存储
         public struct YxData
         {
-            public static int num;
-            public static string[] name;
-            public static string[] addr;
-            public static string[] value;
+            public int num;
+            public string[] name;
+            public string[] addr;
+            public string[] value;
         }
+        public static Dictionary<int, YxData> yxDatas = new Dictionary<int, YxData>();
+        
 
         //遥信变位数据存储
         public struct Event
         {
-            public static List<string> name=new List<string>();
-            public static List<string> addr = new List<string>();
-            public static List<string> value = new List<string>();
-            public static List<string> date = new List<string>();
-
+            public List<string> name;
+            public List<string> addr;
+            public List<string> value;
+            public List<string> date;
         }
+        public static Dictionary<int, Event> events = new Dictionary<int, Event>();
+        
 
-        public static Dictionary<string, string> nameMap = new Dictionary<string, string>();  //遥信数据名称和地址的映射
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        public static Dictionary<int, Dictionary<string, string>> findNameMap = new Dictionary<int, Dictionary<string, string>>();  //根据int地址，决定取哪一组映射数据
 
 
 

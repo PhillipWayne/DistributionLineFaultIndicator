@@ -111,11 +111,19 @@ namespace DistributionLineFaultIndicator
                     Openpathname = openF.FileName;
 
                     WriteReadAllFile.WriteReadParamIniFile(openF.FileName, 0);
-                    DataCollection.nameMap.Clear();
-                    for (int i = 0; i < DataCollection.YxData.num; i++)
+                    
+                    
+                    foreach (int j in DataCollection.yxDatas.Keys)
                     {
-                        DataCollection.nameMap.Add(DataCollection.YxData.addr[i], DataCollection.YxData.name[i]);
+                        Dictionary<string, string> nameMap = new Dictionary<string, string>();  //遥信数据名称和地址的映射
+                        for (int i = 0; i < DataCollection.yxDatas[j].num; i++)
+                        {
+                            nameMap.Add(DataCollection.yxDatas[j].addr[i], DataCollection.yxDatas[j].name[i]);
+                        }
+                        DataCollection.findNameMap.Add(j, nameMap);
                     }
+
+                    
                         toolStripButtonMonitor.Enabled = true;
                     //timerOpenProj.Enabled = true;
                 }

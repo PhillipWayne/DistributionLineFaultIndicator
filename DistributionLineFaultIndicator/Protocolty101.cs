@@ -992,6 +992,16 @@ namespace DistributionLineFaultIndicator
                     else if ((DataCollection._ComStructData.RXBuffer[1] & 0xFF) == 0xc9) //收到下位机的链路状态请求
                         dataty = 150;
                     
+                    
+                    if (linklen == 1) 
+                    {
+                    DataCollection.linkAddr=DataCollection._ComStructData.TXBuffer[2];  // 
+                    }
+                    else if (linklen == 2)
+                    {
+                        DataCollection.linkAddr = (ushort)(DataCollection._ComStructData.TXBuffer[2] + (DataCollection._ComStructData.TXBuffer[3] << 8));
+                    }
+
 
                     if ((DataCollection._ComStructData.RXBuffer[1] & 0x20) == 0x20)
                         DataCollection._ProtocoltyFlag.ACD = 1;
@@ -1009,6 +1019,14 @@ namespace DistributionLineFaultIndicator
                 }
                 else
                 {
+                    if (linklen == 1)
+                    {
+                        DataCollection.linkAddr = DataCollection._ComStructData.TXBuffer[5];  // 
+                    }
+                    else if (linklen == 2)
+                    {
+                        DataCollection.linkAddr = (ushort)(DataCollection._ComStructData.TXBuffer[5] + (DataCollection._ComStructData.TXBuffer[6] << 8));
+                    }
                     if ((DataCollection._ComStructData.RXBuffer[4] & 0x20) == 0x20)
                         DataCollection._ProtocoltyFlag.ACD = 1;
                     else

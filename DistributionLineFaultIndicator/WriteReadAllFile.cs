@@ -31,6 +31,8 @@ namespace DistributionLineFaultIndicator
 
         public static StringBuilder temp = new StringBuilder(255);       //初始化 一个StringBuilder的类型
         public static string str;
+        public static string str1;
+        public static string str2;
 
         /*************************************************************************
          *  函数名：    WriteReadParamIniFile                                      *
@@ -47,61 +49,81 @@ namespace DistributionLineFaultIndicator
 
             if (Type == 0)//read
             {
-
-                GetPrivateProfileString("NUM", "YCNUM", "0",
-                                                     temp, 255, fname);
-                DataCollection.YcData.num = int.Parse(temp.ToString());
-                DataCollection.YcData.name = new string[DataCollection.YcData.num];
-                DataCollection.YcData.addr = new string[DataCollection.YcData.num];
-                DataCollection.YcData.value = new string[DataCollection.YcData.num];
-
-
-                for (int j = 0; j < DataCollection.YcData.num; j++)
+                GetPrivateProfileString("NUM", "MONITOR", "0", temp, 255, fname);
+                int loopNum = int.Parse(temp.ToString());//共有loopNum个监测单元
+                for (int i = 0; i < loopNum; i++)
                 {
-                    str = String.Format("name_{0:d}", j);
-                    GetPrivateProfileString("YCNAME", str, "无法读取对应数值！",
-                                                 temp, 255, fname);
-                    DataCollection.YcData.name[j] = temp.ToString();
-
-                    str = String.Format("addr_{0:d}", j);
-                    GetPrivateProfileString("YCADRRS", str, "无法读取对应数值！",
-                                                 temp, 255, fname);
-                    DataCollection.YcData.addr[j] = temp.ToString();
-
-                    DataCollection.YcData.value[j] = "null";
-
-                }
-
-
-
-
-
-                //读遥信配置参数
-
-                GetPrivateProfileString("NUM", "YXNUM", "0",
+                    //读取监视器地址参数
+                    str = String.Format("addr_{0:d}", i);
+                    GetPrivateProfileString("MONITORADDR", str, "0", temp, 255, fname);
+                    int linkAddr = int.Parse(temp.ToString());
+                    //建立遥测数据内存
+                    GetPrivateProfileString("NUM", "YCNUM", "0",
                                                      temp, 255, fname);
-                DataCollection.YxData.num = int.Parse(temp.ToString());
-                DataCollection.YxData.name = new string[DataCollection.YxData.num];
-                DataCollection.YxData.addr = new string[DataCollection.YxData.num];
-                DataCollection.YxData.value = new string[DataCollection.YxData.num];
+                    DataCollection.YcData ycdata = new DataCollection.YcData();
+                    ycdata.num = int.Parse(temp.ToString());
+                    ycdata.name = new string[ycdata.num];
+                    ycdata.addr = new string[ycdata.num];
+                    ycdata.value = new string[ycdata.num];
+
+                    //配置遥测数据
+                    for (int j = 0; j < ycdata.num; j++)
+                    {
+                        str1 = String.Format("YCNAME{0:d}", i);
+                        str2 = String.Format("name_{0:d}", j);
+                        GetPrivateProfileString(str1, str2, "无法读取对应数值！",
+                                                     temp, 255, fname);
+                        ycdata.name[j] = temp.ToString();
+
+                        str1 = String.Format("YCADRRS{0:d}", i);
+                        str2 = String.Format("addr_{0:d}", j);
+                        GetPrivateProfileString(str1, str2, "无法读取对应数值！",
+                                                     temp, 255, fname);
+                        ycdata.addr[j] = temp.ToString();
+
+                        ycdata.value[j] = "null";
+
+                    }
 
 
-                for (int j = 0; j < DataCollection.YxData.num; j++)
-                {
-                    str = String.Format("name_{0:d}", j);
-                    GetPrivateProfileString("YXNAME", str, "无法读取对应数值！",
-                                                 temp, 255, fname);
-                    DataCollection.YxData.name[j] = temp.ToString();
 
-                    str = String.Format("addr_{0:d}", j);
-                    GetPrivateProfileString("YXADRRS", str, "无法读取对应数值！",
-                                                 temp, 255, fname);
-                    DataCollection.YxData.addr[j] = temp.ToString();
 
-                    DataCollection.YxData.value[j] = "null";
+                    //读遥信配置参数
 
+                    GetPrivateProfileString("NUM", "YXNUM", "0",
+                                                         temp, 255, fname);
+                    DataCollection.YxData yxdata = new DataCollection.YxData();
+                    yxdata.num = int.Parse(temp.ToString());
+                    yxdata.name = new string[yxdata.num];
+                    yxdata.addr = new string[yxdata.num];
+                    yxdata.value = new string[yxdata.num];
+
+
+                    for (int j = 0; j < yxdata.num; j++)
+                    {
+                        str1 = String.Format("YXNAME{0:d}", i);
+                        str2 = String.Format("name_{0:d}", j);
+                        GetPrivateProfileString(str1, str2, "无法读取对应数值！",
+                                                     temp, 255, fname);
+                        yxdata.name[j] = temp.ToString();
+
+                        str1 = String.Format("YXADRRS{0:d}", i);
+                        str2 = String.Format("addr_{0:d}", j);
+                        GetPrivateProfileString(str1, str2, "无法读取对应数值！",
+                                                     temp, 255, fname);
+                        yxdata.addr[j] = temp.ToString();
+
+                        yxdata.value[j] = "null";
+                    }
+                    DataCollection.ycDatas.Add(i, ycdata);
+                    DataCollection.yxDatas.Add(i, yxdata);
+                    DataCollection.Event eventPerMon = new DataCollection.Event();
+                    eventPerMon.addr = new List<string>();
+                    eventPerMon.date = new List<string>();
+                    eventPerMon.name = new List<string>();
+                    eventPerMon.value = new List<string>();
+                    DataCollection.events.Add(i, eventPerMon);
                 }
-
 
             }
 
