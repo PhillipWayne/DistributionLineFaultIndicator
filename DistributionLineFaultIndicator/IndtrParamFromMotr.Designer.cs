@@ -132,7 +132,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(489, 185);
+            this.button1.Location = new System.Drawing.Point(489, 192);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 34;
@@ -142,7 +142,7 @@
             // 
             // buttonRead1
             // 
-            this.buttonRead1.Location = new System.Drawing.Point(489, 156);
+            this.buttonRead1.Location = new System.Drawing.Point(489, 162);
             this.buttonRead1.Name = "buttonRead1";
             this.buttonRead1.Size = new System.Drawing.Size(75, 23);
             this.buttonRead1.TabIndex = 43;
@@ -152,7 +152,7 @@
             // 
             // textBoxRes4
             // 
-            this.textBoxRes4.Location = new System.Drawing.Point(489, 37);
+            this.textBoxRes4.Location = new System.Drawing.Point(482, 37);
             this.textBoxRes4.MaxLength = 5;
             this.textBoxRes4.Name = "textBoxRes4";
             this.textBoxRes4.Size = new System.Drawing.Size(62, 21);
@@ -162,7 +162,7 @@
             // 
             // textBoxRes3
             // 
-            this.textBoxRes3.Location = new System.Drawing.Point(392, 186);
+            this.textBoxRes3.Location = new System.Drawing.Point(373, 137);
             this.textBoxRes3.MaxLength = 5;
             this.textBoxRes3.Name = "textBoxRes3";
             this.textBoxRes3.Size = new System.Drawing.Size(62, 21);
@@ -172,7 +172,7 @@
             // 
             // textBoxTfgs
             // 
-            this.textBoxTfgs.Location = new System.Drawing.Point(392, 137);
+            this.textBoxTfgs.Location = new System.Drawing.Point(373, 186);
             this.textBoxTfgs.MaxLength = 5;
             this.textBoxTfgs.Name = "textBoxTfgs";
             this.textBoxTfgs.Size = new System.Drawing.Size(62, 21);
@@ -182,7 +182,7 @@
             // 
             // textBoxRate
             // 
-            this.textBoxRate.Location = new System.Drawing.Point(265, 186);
+            this.textBoxRate.Location = new System.Drawing.Point(253, 186);
             this.textBoxRate.MaxLength = 5;
             this.textBoxRate.Name = "textBoxRate";
             this.textBoxRate.Size = new System.Drawing.Size(62, 21);
@@ -192,7 +192,7 @@
             // 
             // textBoxTgz
             // 
-            this.textBoxTgz.Location = new System.Drawing.Point(392, 85);
+            this.textBoxTgz.Location = new System.Drawing.Point(373, 85);
             this.textBoxTgz.MaxLength = 5;
             this.textBoxTgz.Name = "textBoxTgz";
             this.textBoxTgz.Size = new System.Drawing.Size(62, 21);
@@ -222,7 +222,7 @@
             // 
             // textBoxWuLiuTimeSet
             // 
-            this.textBoxWuLiuTimeSet.Location = new System.Drawing.Point(144, 186);
+            this.textBoxWuLiuTimeSet.Location = new System.Drawing.Point(141, 186);
             this.textBoxWuLiuTimeSet.MaxLength = 5;
             this.textBoxWuLiuTimeSet.Name = "textBoxWuLiuTimeSet";
             this.textBoxWuLiuTimeSet.Size = new System.Drawing.Size(62, 21);
@@ -232,7 +232,7 @@
             // 
             // textBoxBandWidth
             // 
-            this.textBoxBandWidth.Location = new System.Drawing.Point(392, 37);
+            this.textBoxBandWidth.Location = new System.Drawing.Point(373, 37);
             this.textBoxBandWidth.MaxLength = 5;
             this.textBoxBandWidth.Name = "textBoxBandWidth";
             this.textBoxBandWidth.Size = new System.Drawing.Size(62, 21);
@@ -242,7 +242,7 @@
             // 
             // textBoxSelfAdapSwitch
             // 
-            this.textBoxSelfAdapSwitch.Location = new System.Drawing.Point(262, 85);
+            this.textBoxSelfAdapSwitch.Location = new System.Drawing.Point(250, 85);
             this.textBoxSelfAdapSwitch.MaxLength = 5;
             this.textBoxSelfAdapSwitch.Name = "textBoxSelfAdapSwitch";
             this.textBoxSelfAdapSwitch.Size = new System.Drawing.Size(62, 21);
@@ -252,7 +252,7 @@
             // 
             // textBoxYongLiuTimeSet
             // 
-            this.textBoxYongLiuTimeSet.Location = new System.Drawing.Point(265, 37);
+            this.textBoxYongLiuTimeSet.Location = new System.Drawing.Point(253, 37);
             this.textBoxYongLiuTimeSet.MaxLength = 5;
             this.textBoxYongLiuTimeSet.Name = "textBoxYongLiuTimeSet";
             this.textBoxYongLiuTimeSet.Size = new System.Drawing.Size(62, 21);
@@ -262,7 +262,7 @@
             // 
             // textBoxIndicatorAddr
             // 
-            this.textBoxIndicatorAddr.Location = new System.Drawing.Point(265, 137);
+            this.textBoxIndicatorAddr.Location = new System.Drawing.Point(253, 137);
             this.textBoxIndicatorAddr.MaxLength = 5;
             this.textBoxIndicatorAddr.Name = "textBoxIndicatorAddr";
             this.textBoxIndicatorAddr.Size = new System.Drawing.Size(62, 21);
@@ -272,7 +272,7 @@
             // 
             // textBoxWuLiuSet
             // 
-            this.textBoxWuLiuSet.Location = new System.Drawing.Point(144, 137);
+            this.textBoxWuLiuSet.Location = new System.Drawing.Point(141, 137);
             this.textBoxWuLiuSet.MaxLength = 5;
             this.textBoxWuLiuSet.Name = "textBoxWuLiuSet";
             this.textBoxWuLiuSet.Size = new System.Drawing.Size(62, 21);
@@ -293,29 +293,29 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(487, 22);
+            this.label17.Location = new System.Drawing.Point(480, 22);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 12);
+            this.label17.Size = new System.Drawing.Size(95, 12);
             this.label17.TabIndex = 16;
-            this.label17.Text = "Res4：";
+            this.label17.Text = "接地定值(0.1A):";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(390, 167);
+            this.label16.Location = new System.Drawing.Point(371, 122);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 12);
+            this.label16.Size = new System.Drawing.Size(119, 12);
             this.label16.TabIndex = 15;
-            this.label16.Text = "Res3:";
+            this.label16.Text = "接地判断延时(10ms):";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(390, 122);
+            this.label15.Location = new System.Drawing.Point(371, 167);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 12);
             this.label15.TabIndex = 14;
-            this.label15.Text = "复归延时(1s):";
+            this.label15.Text = "复归延时(3s):";
             // 
             // textBoxGuoLiuSwitch
             // 
@@ -330,7 +330,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(390, 70);
+            this.label14.Location = new System.Drawing.Point(371, 70);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(119, 12);
             this.label14.TabIndex = 13;
@@ -339,7 +339,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(390, 22);
+            this.label13.Location = new System.Drawing.Point(371, 22);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 12);
             this.label13.TabIndex = 12;
@@ -347,7 +347,7 @@
             // 
             // textBoxGuoLiuSet
             // 
-            this.textBoxGuoLiuSet.Location = new System.Drawing.Point(144, 37);
+            this.textBoxGuoLiuSet.Location = new System.Drawing.Point(141, 37);
             this.textBoxGuoLiuSet.MaxLength = 5;
             this.textBoxGuoLiuSet.Name = "textBoxGuoLiuSet";
             this.textBoxGuoLiuSet.Size = new System.Drawing.Size(62, 21);
@@ -357,7 +357,7 @@
             // 
             // textBoxGuoLiuTimeSet
             // 
-            this.textBoxGuoLiuTimeSet.Location = new System.Drawing.Point(144, 85);
+            this.textBoxGuoLiuTimeSet.Location = new System.Drawing.Point(141, 85);
             this.textBoxGuoLiuTimeSet.MaxLength = 5;
             this.textBoxGuoLiuTimeSet.Name = "textBoxGuoLiuTimeSet";
             this.textBoxGuoLiuTimeSet.Size = new System.Drawing.Size(62, 21);
@@ -368,7 +368,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(263, 167);
+            this.label12.Location = new System.Drawing.Point(251, 167);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(59, 12);
             this.label12.TabIndex = 11;
@@ -377,7 +377,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(263, 122);
+            this.label11.Location = new System.Drawing.Point(251, 122);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 12);
             this.label11.TabIndex = 10;
@@ -386,7 +386,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(263, 70);
+            this.label10.Location = new System.Drawing.Point(251, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 12);
             this.label10.TabIndex = 9;
@@ -395,7 +395,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(263, 22);
+            this.label9.Location = new System.Drawing.Point(251, 22);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 12);
             this.label9.TabIndex = 8;
@@ -404,7 +404,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(142, 167);
+            this.label8.Location = new System.Drawing.Point(139, 167);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 12);
             this.label8.TabIndex = 7;
@@ -413,7 +413,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(142, 115);
+            this.label7.Location = new System.Drawing.Point(139, 115);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 12);
             this.label7.TabIndex = 6;
@@ -422,7 +422,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(142, 70);
+            this.label6.Location = new System.Drawing.Point(139, 70);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 12);
             this.label6.TabIndex = 5;
@@ -431,7 +431,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(142, 22);
+            this.label5.Location = new System.Drawing.Point(139, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 12);
             this.label5.TabIndex = 4;

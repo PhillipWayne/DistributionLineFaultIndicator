@@ -103,8 +103,8 @@ namespace DistributionLineFaultIndicator
             DataCollection.tfgs[index]=UInt16.Parse(textBoxTfgs.Text);
             DataCollection.res3[index]=UInt16.Parse(textBoxRes3.Text);
             DataCollection.res4[index] = UInt16.Parse(textBoxRes4.Text);
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(1,index);
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(1,index);
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
 
@@ -118,8 +118,8 @@ namespace DistributionLineFaultIndicator
             DataCollection.calibration[index]=byte.Parse(textBoxJiaoZhun.Text );
             DataCollection.res1[index]=byte.Parse(textBoxRes1.Text) ;
             DataCollection.res2[index]=byte.Parse(textBoxRes2.Text) ;
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(2,index);
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(2,index);
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void comboBoxIndtr_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,8 +133,8 @@ namespace DistributionLineFaultIndicator
             labelState.Text = "参数读取中...";
             DataCollection.indtrParamState = 0;
             int index = getIndex();
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(3, index);
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.ParamEncodeFrame(3, index);
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void IndtrParamFromMotr_FormClosing(object sender, FormClosingEventArgs e)

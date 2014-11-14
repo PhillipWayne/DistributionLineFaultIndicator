@@ -58,6 +58,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDeleteAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxMon = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -68,8 +70,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
-            this.comboBoxMon = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,8 +97,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.comboBoxMon);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
@@ -327,6 +327,24 @@
             this.ToolStripMenuItemDeleteAll.Text = "删除所有";
             this.ToolStripMenuItemDeleteAll.Click += new System.EventHandler(this.ToolStripMenuItemDeleteAll_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "已在线监测单元：";
+            // 
+            // comboBoxMon
+            // 
+            this.comboBoxMon.FormattingEnabled = true;
+            this.comboBoxMon.Location = new System.Drawing.Point(101, 8);
+            this.comboBoxMon.Name = "comboBoxMon";
+            this.comboBoxMon.Size = new System.Drawing.Size(72, 20);
+            this.comboBoxMon.TabIndex = 9;
+            this.comboBoxMon.SelectedIndexChanged += new System.EventHandler(this.comboBoxMon_SelectedIndexChanged);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -424,34 +442,6 @@
             // 
             this.timerRefresh.Interval = 2000;
             this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
-            // 
-            // comboBoxMon
-            // 
-            this.comboBoxMon.FormattingEnabled = true;
-            this.comboBoxMon.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.comboBoxMon.Location = new System.Drawing.Point(100, 8);
-            this.comboBoxMon.Name = "comboBoxMon";
-            this.comboBoxMon.Size = new System.Drawing.Size(72, 20);
-            this.comboBoxMon.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 12);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "选择监测单元：";
             // 
             // Monitor
             // 

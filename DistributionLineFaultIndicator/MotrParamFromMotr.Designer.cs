@@ -96,14 +96,36 @@
             this.textBoxMinute = new System.Windows.Forms.TextBox();
             this.textBoxMilisecond = new System.Windows.Forms.TextBox();
             this.textBoxYear = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonLocalTime = new System.Windows.Forms.Button();
             this.buttonTimeSyn = new System.Windows.Forms.Button();
             this.labelVersion = new System.Windows.Forms.Label();
             this.buttonReadVersion = new System.Windows.Forms.Button();
             this.labelState = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonReadAddrs = new System.Windows.Forms.Button();
+            this.textBoxAddrB2 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.textBoxAddrC3 = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.textBoxAddrC2 = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.textBoxAddrC1 = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.textBoxAddrB3 = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.textBoxAddrB1 = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBoxAddrA3 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.textBoxAddrA2 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBoxAddrA1 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.buttonAddrs = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -661,11 +683,11 @@
             this.groupBox3.Controls.Add(this.textBoxMinute);
             this.groupBox3.Controls.Add(this.textBoxMilisecond);
             this.groupBox3.Controls.Add(this.textBoxYear);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.buttonLocalTime);
             this.groupBox3.Controls.Add(this.buttonTimeSyn);
             this.groupBox3.Controls.Add(this.labelVersion);
             this.groupBox3.Controls.Add(this.buttonReadVersion);
-            this.groupBox3.Location = new System.Drawing.Point(12, 362);
+            this.groupBox3.Location = new System.Drawing.Point(14, 504);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(669, 120);
             this.groupBox3.TabIndex = 1;
@@ -814,15 +836,15 @@
             this.textBoxYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
             // 
-            // button1
+            // buttonLocalTime
             // 
-            this.button1.Location = new System.Drawing.Point(498, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "本机时间";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonLocalTime.Location = new System.Drawing.Point(498, 33);
+            this.buttonLocalTime.Name = "buttonLocalTime";
+            this.buttonLocalTime.Size = new System.Drawing.Size(75, 23);
+            this.buttonLocalTime.TabIndex = 2;
+            this.buttonLocalTime.Text = "本机时间";
+            this.buttonLocalTime.UseVisualStyleBackColor = true;
+            this.buttonLocalTime.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonTimeSyn
             // 
@@ -856,23 +878,243 @@
             // labelState
             // 
             this.labelState.AutoSize = true;
-            this.labelState.Location = new System.Drawing.Point(589, 489);
+            this.labelState.Location = new System.Drawing.Point(591, 628);
             this.labelState.Name = "labelState";
             this.labelState.Size = new System.Drawing.Size(65, 12);
             this.labelState.TabIndex = 2;
             this.labelState.Text = "labelState";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.buttonReadAddrs);
+            this.groupBox4.Controls.Add(this.textBoxAddrB2);
+            this.groupBox4.Controls.Add(this.label38);
+            this.groupBox4.Controls.Add(this.textBoxAddrC3);
+            this.groupBox4.Controls.Add(this.label37);
+            this.groupBox4.Controls.Add(this.textBoxAddrC2);
+            this.groupBox4.Controls.Add(this.label36);
+            this.groupBox4.Controls.Add(this.textBoxAddrC1);
+            this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.textBoxAddrB3);
+            this.groupBox4.Controls.Add(this.label34);
+            this.groupBox4.Controls.Add(this.textBoxAddrB1);
+            this.groupBox4.Controls.Add(this.label33);
+            this.groupBox4.Controls.Add(this.textBoxAddrA3);
+            this.groupBox4.Controls.Add(this.label32);
+            this.groupBox4.Controls.Add(this.textBoxAddrA2);
+            this.groupBox4.Controls.Add(this.label31);
+            this.groupBox4.Controls.Add(this.textBoxAddrA1);
+            this.groupBox4.Controls.Add(this.label30);
+            this.groupBox4.Controls.Add(this.buttonAddrs);
+            this.groupBox4.Location = new System.Drawing.Point(14, 362);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(667, 136);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "监测单元地址";
+            // 
+            // buttonReadAddrs
+            // 
+            this.buttonReadAddrs.Location = new System.Drawing.Point(496, 107);
+            this.buttonReadAddrs.Name = "buttonReadAddrs";
+            this.buttonReadAddrs.Size = new System.Drawing.Size(75, 23);
+            this.buttonReadAddrs.TabIndex = 19;
+            this.buttonReadAddrs.Text = "读取";
+            this.buttonReadAddrs.UseVisualStyleBackColor = true;
+            this.buttonReadAddrs.Click += new System.EventHandler(this.buttonReadAddrs_Click);
+            // 
+            // textBoxAddrB2
+            // 
+            this.textBoxAddrB2.Location = new System.Drawing.Point(559, 42);
+            this.textBoxAddrB2.MaxLength = 5;
+            this.textBoxAddrB2.Name = "textBoxAddrB2";
+            this.textBoxAddrB2.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrB2.TabIndex = 18;
+            this.textBoxAddrB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrB2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(557, 27);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(53, 12);
+            this.label38.TabIndex = 17;
+            this.label38.Text = "线路2-B:";
+            // 
+            // textBoxAddrC3
+            // 
+            this.textBoxAddrC3.Location = new System.Drawing.Point(429, 81);
+            this.textBoxAddrC3.MaxLength = 5;
+            this.textBoxAddrC3.Name = "textBoxAddrC3";
+            this.textBoxAddrC3.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrC3.TabIndex = 16;
+            this.textBoxAddrC3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrC3.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(427, 66);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(53, 12);
+            this.label37.TabIndex = 15;
+            this.label37.Text = "线路3-C:";
+            // 
+            // textBoxAddrC2
+            // 
+            this.textBoxAddrC2.Location = new System.Drawing.Point(294, 81);
+            this.textBoxAddrC2.MaxLength = 5;
+            this.textBoxAddrC2.Name = "textBoxAddrC2";
+            this.textBoxAddrC2.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrC2.TabIndex = 14;
+            this.textBoxAddrC2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrC2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(292, 66);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(53, 12);
+            this.label36.TabIndex = 13;
+            this.label36.Text = "线路3-B:";
+            // 
+            // textBoxAddrC1
+            // 
+            this.textBoxAddrC1.Location = new System.Drawing.Point(162, 81);
+            this.textBoxAddrC1.MaxLength = 5;
+            this.textBoxAddrC1.Name = "textBoxAddrC1";
+            this.textBoxAddrC1.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrC1.TabIndex = 12;
+            this.textBoxAddrC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrC1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(160, 66);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(53, 12);
+            this.label35.TabIndex = 11;
+            this.label35.Text = "线路3-A:";
+            // 
+            // textBoxAddrB3
+            // 
+            this.textBoxAddrB3.Location = new System.Drawing.Point(30, 81);
+            this.textBoxAddrB3.MaxLength = 5;
+            this.textBoxAddrB3.Name = "textBoxAddrB3";
+            this.textBoxAddrB3.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrB3.TabIndex = 10;
+            this.textBoxAddrB3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrB3.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(28, 66);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(53, 12);
+            this.label34.TabIndex = 9;
+            this.label34.Text = "线路2-C:";
+            // 
+            // textBoxAddrB1
+            // 
+            this.textBoxAddrB1.Location = new System.Drawing.Point(429, 42);
+            this.textBoxAddrB1.MaxLength = 5;
+            this.textBoxAddrB1.Name = "textBoxAddrB1";
+            this.textBoxAddrB1.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrB1.TabIndex = 8;
+            this.textBoxAddrB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrB1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(427, 27);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(53, 12);
+            this.label33.TabIndex = 7;
+            this.label33.Text = "线路2-A:";
+            // 
+            // textBoxAddrA3
+            // 
+            this.textBoxAddrA3.Location = new System.Drawing.Point(294, 42);
+            this.textBoxAddrA3.MaxLength = 5;
+            this.textBoxAddrA3.Name = "textBoxAddrA3";
+            this.textBoxAddrA3.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrA3.TabIndex = 6;
+            this.textBoxAddrA3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrA3.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(292, 27);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(53, 12);
+            this.label32.TabIndex = 5;
+            this.label32.Text = "线路1-C:";
+            // 
+            // textBoxAddrA2
+            // 
+            this.textBoxAddrA2.Location = new System.Drawing.Point(162, 42);
+            this.textBoxAddrA2.MaxLength = 5;
+            this.textBoxAddrA2.Name = "textBoxAddrA2";
+            this.textBoxAddrA2.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrA2.TabIndex = 4;
+            this.textBoxAddrA2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrA2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(160, 27);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(53, 12);
+            this.label31.TabIndex = 3;
+            this.label31.Text = "线路1-B:";
+            // 
+            // textBoxAddrA1
+            // 
+            this.textBoxAddrA1.Location = new System.Drawing.Point(30, 42);
+            this.textBoxAddrA1.MaxLength = 5;
+            this.textBoxAddrA1.Name = "textBoxAddrA1";
+            this.textBoxAddrA1.Size = new System.Drawing.Size(62, 21);
+            this.textBoxAddrA1.TabIndex = 2;
+            this.textBoxAddrA1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validating_KeyPress);
+            this.textBoxAddrA1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(28, 27);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(53, 12);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "线路1-A:";
+            // 
+            // buttonAddrs
+            // 
+            this.buttonAddrs.Location = new System.Drawing.Point(577, 107);
+            this.buttonAddrs.Name = "buttonAddrs";
+            this.buttonAddrs.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddrs.TabIndex = 0;
+            this.buttonAddrs.Text = "下设";
+            this.buttonAddrs.UseVisualStyleBackColor = true;
+            this.buttonAddrs.Click += new System.EventHandler(this.buttonAddr_Click);
+            // 
             // MotrParamFromMotr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 510);
+            this.ClientSize = new System.Drawing.Size(693, 649);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.labelState);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(709, 548);
             this.Name = "MotrParamFromMotr";
             this.Text = "MotrParamFromMotr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MotrParamFromMotr_FormClosing);
@@ -883,6 +1125,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -957,10 +1201,31 @@
         private System.Windows.Forms.TextBox textBoxMinute;
         private System.Windows.Forms.TextBox textBoxMilisecond;
         private System.Windows.Forms.TextBox textBoxYear;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonLocalTime;
         private System.Windows.Forms.Label labelState;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox textBoxSecond;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBoxAddrB2;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox textBoxAddrC3;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox textBoxAddrC2;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox textBoxAddrC1;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox textBoxAddrB3;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox textBoxAddrB1;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox textBoxAddrA3;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox textBoxAddrA2;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBoxAddrA1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button buttonAddrs;
+        private System.Windows.Forms.Button buttonReadAddrs;
     }
 }

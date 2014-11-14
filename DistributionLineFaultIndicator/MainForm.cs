@@ -318,7 +318,7 @@ namespace DistributionLineFaultIndicator
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("    版本号：v0.22      Released by 2014-11-6 ","软件版本",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("    版本号：v0.30      Released by 2014-11-12 ","软件版本",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void PtlComFrameProc()          //构造监测单元通信的一般报文
@@ -333,79 +333,91 @@ namespace DistributionLineFaultIndicator
             //}
 
 
-            if (DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F == true)    //请求链路状态
+            if (DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F == true)    //请求链路状态
             {
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F = false;
-                DataCollection._ComStructData.TxLen = 0;
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F = false;
+                DataCollection.ComStructData.TxLen = 0;
 
-                DataCollection._DataField.TXFieldLen = 0;
-                DataCollection._DataField.TXFieldVSQ = 1;
+                DataCollection.DataField.TXFieldLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
 
-                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(1);
-                DataCollection._ComStructData.TX_TASK = true;
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(1);
+                DataCollection.ComStructData.TX_TASK = true;
 
             }
-            else if (DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 == true)    //链路复位
+            else if (DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F1 == true)    //链路复位
             {
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = false;
-                DataCollection._ComStructData.TxLen = 0;
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F1 = false;
+                DataCollection.ComStructData.TxLen = 0;
                 //DataCollection._ComStructData.TxLen = EncodeFrame(1, 0, 0, ref DataCollection._ComStructData.TXBuffer[0],ref DataCollection._DataField.TXBuffer[0]);
-                DataCollection._DataField.TXFieldLen = 0;
-                DataCollection._DataField.TXFieldVSQ = 1;
-                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(2);
-                DataCollection._ComStructData.TX_TASK = true;
+                DataCollection.DataField.TXFieldLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(2);
+                DataCollection.ComStructData.TX_TASK = true;
 
             }
-            else if (DataCollection._ComTaskFlag.C_IC_NA_1 == true)  //总召唤
+            else if (DataCollection.ComTaskFlag.C_IC_NA_1 == true)  //总召唤
             {
-                DataCollection._ComTaskFlag.C_IC_NA_1 = false;
-                DataCollection._ComStructData.TxLen = 0;
+                DataCollection.ComTaskFlag.C_IC_NA_1 = false;
+                DataCollection.ComStructData.TxLen = 0;
 
-                DataCollection._DataField.TXFieldLen = 0;
-                DataCollection._DataField.TXFieldVSQ = 1;
+                DataCollection.DataField.TXFieldLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
 
-                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(10);
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(10);
 
-                DataCollection._ProtocoltyFlag.ZZFlag = false;
-                DataCollection._ComStructData.TX_TASK = true;
-                DataCollection._ComStructData.FCB = (!DataCollection._ComStructData.FCB);
+                DataCollection.ProtocoltyFlag.ZZFlag = false;
+                DataCollection.ComStructData.TX_TASK = true;
+                DataCollection.ComStructData.FCB = (!DataCollection.ComStructData.FCB);
                 DataCollection.class2Delay = DataCollection.class2Delay_default;    //循环总招重新计时
 
             }
-            else if(DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F== true)//链路请求确认
+            else if(DataCollection.ComTaskFlag.C_RQ_NA_LINKCOM_F== true)//链路请求确认
             {
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F = false;
-                DataCollection._ComStructData.TxLen = 0;
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKCOM_F = false;
+                DataCollection.ComStructData.TxLen = 0;
 
-                DataCollection._DataField.TXFieldLen = 0;
-                DataCollection._DataField.TXFieldVSQ = 1;
+                DataCollection.DataField.TXFieldLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
 
-                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(150);
-                DataCollection._ComStructData.TX_TASK = true;
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(150);
+                DataCollection.ComStructData.TX_TASK = true;
             }
-            else if (DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F1 == true)//链路复位确认
+            else if (DataCollection.ComTaskFlag.C_RQ_NA_LINKCOM_F1 == true)//链路复位确认
             {
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F1 = false;
-                DataCollection._ComStructData.TxLen = 0;
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKCOM_F1 = false;
+                DataCollection.ComStructData.TxLen = 0;
 
-                DataCollection._DataField.TXFieldLen = 0;
-                DataCollection._DataField.TXFieldVSQ = 1;
+                DataCollection.DataField.TXFieldLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
 
-                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(151);
-                DataCollection._ComStructData.TX_TASK = true;
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(151);
+                DataCollection.ComStructData.TX_TASK = true;
             }
 
-            else if (DataCollection._ComTaskFlag.C_CS_NA_1 == true)
+            else if (DataCollection.ComTaskFlag.C_CS_NA_1 == true)
             {
 
-                DataCollection._ComTaskFlag.C_CS_NA_1 = false;
-                DataCollection._ComStructData.TxLen = 0;
-                DataCollection._DataField.TXFieldVSQ = 1;
+                DataCollection.ComTaskFlag.C_CS_NA_1 = false;
+                DataCollection.ComStructData.TxLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
                 DataCollection.ZDYtype = 7;
 
-                DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(12);
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(12);
                 
-                DataCollection._ComStructData.TX_TASK = true;
+                DataCollection.ComStructData.TX_TASK = true;
+
+            }
+
+            else if (DataCollection.ComTaskFlag.Comfirm == true)  //确认帧
+            {
+
+                DataCollection.ComTaskFlag.Comfirm = false;
+                DataCollection.ComStructData.TxLen = 0;
+                DataCollection.DataField.TXFieldVSQ = 1;
+
+                DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(153);
+                DataCollection.ComStructData.TX_TASK = true;
 
             }
             //else if (DataCollection._ComTaskFlag.YK_Sel_1_D == true)
@@ -811,36 +823,36 @@ namespace DistributionLineFaultIndicator
             //    DataCollection._ComStructData.TX_TASK = true;
 
             //}
-            else if (DataCollection._ComTaskFlag.CALL_1 == true)  //召唤一级数据
+            else if (DataCollection.ComTaskFlag.CALL_1 == true)  //召唤一级数据
             {
 
-                DataCollection._ComTaskFlag.CALL_1 = false;
+                DataCollection.ComTaskFlag.CALL_1 = false;
                
-                    DataCollection._ComStructData.TxLen = 0;
+                    DataCollection.ComStructData.TxLen = 0;
 
-                    DataCollection._DataField.TXFieldLen = 0;
-                    DataCollection._DataField.TXFieldVSQ = 1;
+                    DataCollection.DataField.TXFieldLen = 0;
+                    DataCollection.DataField.TXFieldVSQ = 1;
 
-                    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(3);
+                    DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(3);
 
-                    DataCollection._ComStructData.TX_TASK = true;
-                    DataCollection._ComStructData.FCB = (!DataCollection._ComStructData.FCB);
+                    DataCollection.ComStructData.TX_TASK = true;
+                    DataCollection.ComStructData.FCB = (!DataCollection.ComStructData.FCB);
                     //    DataCollection._ThreadIndex.ComThreadID = 9;
                
             }
-            else if (DataCollection._ComTaskFlag.CALL_2 == true)  //召唤二级数据
+            else if (DataCollection.ComTaskFlag.CALL_2 == true)  //召唤二级数据
             {
                 
-                    DataCollection._ComTaskFlag.CALL_2 = false;
-                    DataCollection._ComStructData.TxLen = 0;
+                    DataCollection.ComTaskFlag.CALL_2 = false;
+                    DataCollection.ComStructData.TxLen = 0;
 
-                    DataCollection._DataField.TXFieldLen = 0;
-                    DataCollection._DataField.TXFieldVSQ = 1;
+                    DataCollection.DataField.TXFieldLen = 0;
+                    DataCollection.DataField.TXFieldVSQ = 1;
 
-                    DataCollection._ComStructData.TxLen = Protocolty101.EncodeFrame(4);
+                    DataCollection.ComStructData.TxLen = Protocolty101.EncodeFrame(4);
 
-                    DataCollection._ComStructData.TX_TASK = true;
-                    DataCollection._ComStructData.FCB = (!DataCollection._ComStructData.FCB);
+                    DataCollection.ComStructData.TX_TASK = true;
+                    DataCollection.ComStructData.FCB = (!DataCollection.ComStructData.FCB);
                     //     DataCollection._ThreadIndex.ComThreadID = 9;
                 
             }
@@ -947,14 +959,14 @@ namespace DistributionLineFaultIndicator
                 while (true)    //处理事物
                 {
                     PtlComFrameProc();
-                    if (DataCollection._ComStructData.TX_TASK == true)
+                    if (DataCollection.ComStructData.TX_TASK == true)
                     {
 
-                        DataCollection._ComStructData.TX_TASK = false;
-                        socket1.Send(DataCollection._ComStructData.TXBuffer, 0, DataCollection._ComStructData.TxLen, SocketFlags.None);
+                        DataCollection.ComStructData.TX_TASK = false;
+                        socket1.Send(DataCollection.ComStructData.TXBuffer, 0, DataCollection.ComStructData.TxLen, SocketFlags.None);
                         if (checkBoxRoll.Checked == false)
                         {
-                            outputDisplay(1, DataCollection._ComStructData.TxLen);//打印输出发送报文
+                            outputDisplay(1, DataCollection.ComStructData.TxLen);//打印输出发送报文
                         }
                     }
                     Thread.Sleep(20);
@@ -982,8 +994,9 @@ namespace DistributionLineFaultIndicator
             {
                 while (true)
                 {
-                    DataCollection._ComStructData.RxLen = socket1.Receive(DataCollection._ComStructData.RXBuffer);
-                    if (DataCollection._ComStructData.RxLen == 0)  //远方主动正常断开
+                    int x=socket1.Available;
+                    DataCollection.ComStructData.RxLen = socket1.Receive(DataCollection.ComStructData.RXBuffer);
+                    if (DataCollection.ComStructData.RxLen == 0)  //远方主动正常断开
                     {
                         socket1.Close();
                         if (threadConnect1 != null)
@@ -1018,86 +1031,114 @@ namespace DistributionLineFaultIndicator
                     //    outputDisplay(2, DataCollection._ComStructData.RxLen);//打印输出接收报文
                     //}
 
+                    //解析服务器发来的检测单元上线信息
+                    int len = DataCollection.ComStructData.RxLen;
+                    if (DataCollection.ComStructData.RXBuffer[0]==0x77)//判断是否为服务器发来的监测单元上下线通知
+                    {
+                        int num = len / 4;
+                        for (int i = 0; i < num; i++)
+                        {
+                            if (DataCollection.ComStructData.RXBuffer[3 + i * 4] == 0x11)//上线通知
+                            {
+                                if (!DataCollection.onLineMon.Contains(DataCollection.ComStructData.RXBuffer[1 + i * 4]))
+                                {
+                                    DataCollection.onLineMon.Add(DataCollection.ComStructData.RXBuffer[1 + i * 4] + (DataCollection.ComStructData.RXBuffer[2 + i * 4]<<8));
+                                }
+                            }
+                            else if (DataCollection.ComStructData.RXBuffer[3 + i * 4] == 0x22)//下线通知
+                            {
+                                if (DataCollection.onLineMon.Contains(DataCollection.ComStructData.RXBuffer[1 + i * 4]))
+                                {
+                                    DataCollection.onLineMon.Remove(DataCollection.ComStructData.RXBuffer[1 + i * 4] + (DataCollection.ComStructData.RXBuffer[2 + i * 4] << 8));
+                                }
+                            }
+                        } 
+                        continue;
+                    }
+
+                    
                     //可解析多帧的方案
-                    int len = DataCollection._ComStructData.RxLen;
                     while (len != 0)
                     {
-                        if (DataCollection._ComStructData.RXBuffer[0] == 0x69 && DataCollection._ComStructData.RXBuffer[3] == 0x69)//检测到69开头的自定义帧
+                        int oldlen = len;
+                        if (DataCollection.ComStructData.RXBuffer[0] == 0x69 && DataCollection.ComStructData.RXBuffer[3] == 0x69)//检测到69开头的自定义帧
                         {
-                            int lenTele = DataCollection._ComStructData.RXBuffer[1] + (DataCollection._ComStructData.RXBuffer[2] >> 8) + 6;
+                            int lenTele = DataCollection.ComStructData.RXBuffer[1] + (DataCollection.ComStructData.RXBuffer[2] >> 8) + 6;
                             if (lenTele > len)
                             {
                                 toolStripStatusX.Text = "监测单元方向报文接收传输错误";
                                 break;
                             }
-                            DataCollection._ComStructData.RxLen = lenTele;
+                            DataCollection.ComStructData.RxLen = lenTele;
                             ProtocoltyParam.DecodeFrame();
                             outputDisplay(2, lenTele);//打印输出接收报文
                             byte[] temp = new byte[len - lenTele];
                             //复制保存余下报文
-                            Array.Copy(DataCollection._ComStructData.RXBuffer, lenTele, temp, 0, len - lenTele);
+                            Array.Copy(DataCollection.ComStructData.RXBuffer, lenTele, temp, 0, len - lenTele);
                             //删除已解析的第一帧报文，拷贝余下报文从第0位开始（左移余下报文）
-                            Array.Copy(temp, 0, DataCollection._ComStructData.RXBuffer, 0, temp.Length);
+                            Array.Copy(temp, 0, DataCollection.ComStructData.RXBuffer, 0, temp.Length);
                             len -= lenTele;
                         }
-                        else if (DataCollection._ComStructData.RXBuffer[0] == 0x10 && DataCollection._ComStructData.RXBuffer[4] == 0x16 && DataCollection.linklen == 1)//检测到10开头的101固定帧，并且链路长度为1
+                        else if (DataCollection.ComStructData.RXBuffer[0] == 0x10 && DataCollection.ComStructData.RXBuffer[4] == 0x16 && DataCollection.linklen == 1)//检测到10开头的101固定帧，并且链路长度为1
                         {
                             if (len < 5)
                             {
                                 toolStripStatusX.Text = "监测单元方向报文接收传输错误";
                                 break;
                             }
-                            DataCollection._ComStructData.RxLen = 5;
+                            DataCollection.ComStructData.RxLen = 5;
                             DataTy = Protocolty101.DecodeFrame();
                             System.Diagnostics.Debug.WriteLine("Dataty: " + DataTy);
                             processRevTele(DataTy);
                             outputDisplay(2, 5);//打印输出接收报文
                             byte[] temp = new byte[len - 5];
                             //复制保存余下报文
-                            Array.Copy(DataCollection._ComStructData.RXBuffer, 5, temp, 0, len - 5);
+                            Array.Copy(DataCollection.ComStructData.RXBuffer, 5, temp, 0, len - 5);
                             //删除已解析的第一帧报文，拷贝余下报文从第0位开始（左移余下报文）
-                            Array.Copy(temp, 0, DataCollection._ComStructData.RXBuffer, 0, temp.Length);
+                            Array.Copy(temp, 0, DataCollection.ComStructData.RXBuffer, 0, temp.Length);
                             len -= 5;
                         }
-                        else if (DataCollection._ComStructData.RXBuffer[0] == 0x10 && DataCollection._ComStructData.RXBuffer[5] == 0x16 && DataCollection.linklen == 2)//检测到10开头的101固定帧，并且链路长度为2
+                        else if (DataCollection.ComStructData.RXBuffer[0] == 0x10 && DataCollection.ComStructData.RXBuffer[5] == 0x16 && DataCollection.linklen == 2)//检测到10开头的101固定帧，并且链路长度为2
                         {
                             if (len < 6)
                             {
                                 toolStripStatusX.Text = "监测单元方向报文接收传输错误";
                                 break;
                             }
-                            DataCollection._ComStructData.RxLen = 6;
+                            DataCollection.ComStructData.RxLen = 6;
                             DataTy = Protocolty101.DecodeFrame();
                             System.Diagnostics.Debug.WriteLine("Dataty: " + DataTy);
                             processRevTele(DataTy);
                             outputDisplay(2, 6);//打印输出接收报文
                             byte[] temp = new byte[len - 6];
                             //复制保存余下报文
-                            Array.Copy(DataCollection._ComStructData.RXBuffer, 6, temp, 0, len - 6);
+                            Array.Copy(DataCollection.ComStructData.RXBuffer, 6, temp, 0, len - 6);
                             //删除已解析的第一帧报文，拷贝余下报文从第0位开始（左移余下报文）
-                            Array.Copy(temp, 0, DataCollection._ComStructData.RXBuffer, 0, temp.Length);
+                            Array.Copy(temp, 0, DataCollection.ComStructData.RXBuffer, 0, temp.Length);
                             len -= 6;
                         }
-                        else if (DataCollection._ComStructData.RXBuffer[0] == 0x68 && DataCollection._ComStructData.RXBuffer[3] == 0x68)//检测到68开头的101帧
+                        else if (DataCollection.ComStructData.RXBuffer[0] == 0x68 && DataCollection.ComStructData.RXBuffer[3] == 0x68)//检测到68开头的101帧
                         {
-                            int lenTele = DataCollection._ComStructData.RXBuffer[1] + 6;
+                            int lenTele = DataCollection.ComStructData.RXBuffer[1] + 6;
                             if (lenTele > len)
                             {
                                 toolStripStatusX.Text = "监测单元方向报文接收传输错误";
                                 break;
                             }
-                            DataCollection._ComStructData.RxLen = lenTele;
+                            DataCollection.ComStructData.RxLen = lenTele;
                             DataTy = Protocolty101.DecodeFrame();
                             System.Diagnostics.Debug.WriteLine("Dataty: " + DataTy);
                             processRevTele(DataTy);
                             outputDisplay(2, lenTele);//打印输出接收报文
                             byte[] temp = new byte[len - lenTele];
                             //复制保存余下报文
-                            Array.Copy(DataCollection._ComStructData.RXBuffer, lenTele, temp, 0, temp.Length);
+                            Array.Copy(DataCollection.ComStructData.RXBuffer, lenTele, temp, 0, temp.Length);
                             //删除已解析的第一帧报文，拷贝余下报文从第0位开始（左移余下报文）
-                            Array.Copy(temp, 0, DataCollection._ComStructData.RXBuffer, 0, temp.Length);
+                            Array.Copy(temp, 0, DataCollection.ComStructData.RXBuffer, 0, temp.Length);
                             len -= lenTele;
                         }
+                        if (len == oldlen)//防止无法解析的错误报文导致的死循环
+                            break;
                     }
                 }
             }
@@ -1121,12 +1162,12 @@ namespace DistributionLineFaultIndicator
             while (true)    //处理事物
             {
                 PtlComFrameProc2();
-                if (DataCollection._ComStructData2.TX_TASK == true)
+                if (DataCollection.ComStructData2.TX_TASK == true)
                 {
                     try
                     {
-                        DataCollection._ComStructData2.TX_TASK = false;
-                        socket2.Send(DataCollection._ComStructData2.TXBuffer, 0, DataCollection._ComStructData2.TxLen, SocketFlags.None);
+                        DataCollection.ComStructData2.TX_TASK = false;
+                        socket2.Send(DataCollection.ComStructData2.TXBuffer, 0, DataCollection.ComStructData2.TxLen, SocketFlags.None);
                     }
                     catch
                     {
@@ -1155,7 +1196,7 @@ namespace DistributionLineFaultIndicator
             if (DataTy == 2)  //链路状态正常
             {
                 DataCollection.linkState = 1;
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;  //链路复位
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;  //链路复位
                 return;
             }
             else if (DataTy == 3)  //复位链路确认
@@ -1388,13 +1429,13 @@ namespace DistributionLineFaultIndicator
                 if (DataTy == 150)  //收到下位机链路状态请求
                 {
                     DataCollection.linkState = 3;
-                    DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F = true;
+                    DataCollection.ComTaskFlag.C_RQ_NA_LINKCOM_F = true;
                     return;
                 }
                 else if (DataTy == 151)  //收到下位机链路复位请求
                 {
                     DataCollection.linkState = 4;
-                    DataCollection._ComTaskFlag.C_RQ_NA_LINKCOM_F1 = true;
+                    DataCollection.ComTaskFlag.C_RQ_NA_LINKCOM_F1 = true;
                     return;
                 }
                 else if (DataTy == 152)  //收到下位机初始化完成确认
@@ -1407,7 +1448,7 @@ namespace DistributionLineFaultIndicator
 
                 if (DataTy == 6)
                 {
-                    if (DataCollection._ComStructData.RXBuffer[7 + DataCollection.linklen] == 7)//对时成功
+                    if (DataCollection.ComStructData.RXBuffer[7 + DataCollection.linklen] == 7)//对时成功
                         DataCollection.montrParamState = 1;
                     else
                         DataCollection.montrParamState = 2;
@@ -1425,244 +1466,255 @@ namespace DistributionLineFaultIndicator
             {
                 case 51:     //单点遥信响应站召唤，类型标识1  
                     if(DataCollection.inflen==3)
-                        StartPos = (DataCollection._DataField.Buffer[2] << 16) +DataCollection._DataField.Buffer[0] + (DataCollection._DataField.Buffer[1] << 8);    
+                        StartPos = (DataCollection.DataField.Buffer[2] << 16) +DataCollection.DataField.Buffer[0] + (DataCollection.DataField.Buffer[1] << 8);    
                     if(DataCollection.inflen==2)
-                        StartPos = DataCollection._DataField.Buffer[0] + (DataCollection._DataField.Buffer[1] << 8);
+                        StartPos = DataCollection.DataField.Buffer[0] + (DataCollection.DataField.Buffer[1] << 8);
 
-                    for (int j = 0; j < DataCollection._DataField.FieldVSQ; j++)
+                    for (int j = 0; j < DataCollection.DataField.FieldVSQ; j++)
                     {
 
                         if (DataCollection.inflen == 3)
                         {
-                            if ((DataCollection._DataField.Buffer[j + 3]&0x01) == 0)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            if ((DataCollection.DataField.Buffer[j + 3]&0x01) == 0)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                         }
                         if (DataCollection.inflen == 2)
                         {
-                            if ((DataCollection._DataField.Buffer[j + 2] & 0x01) == 0)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            if ((DataCollection.DataField.Buffer[j + 2] & 0x01) == 0)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                         }
                         StartPos++;
                     }
                     break;
 
                 case 52:     //突发，单点遥信变位，类型标识1
-                    for (int i = 0; i < DataCollection._DataField.FieldVSQ; i++)
+                    for (int i = 0; i < DataCollection.DataField.FieldVSQ; i++)
                     {
                         if (DataCollection.inflen == 3) 
                         { 
-                            StartPos = (DataCollection._DataField.Buffer[index + 2] << 16) + DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8);
-                            if ((DataCollection._DataField.Buffer[index + 3] & 0x01) == 0)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            StartPos = (DataCollection.DataField.Buffer[index + 2] << 16) + DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8);
+                            if ((DataCollection.DataField.Buffer[index + 3] & 0x01) == 0)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                             index += 4;
                         }
                         else if (DataCollection.inflen == 2)
                         {
-                            StartPos = DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8);
-                            if ((DataCollection._DataField.Buffer[index + 2] & 0x01) == 0)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            StartPos = DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8);
+                            if ((DataCollection.DataField.Buffer[index + 2] & 0x01) == 0)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                             index += 3;
                         }
                     }
+                    DataCollection.ComTaskFlag.Comfirm = true;
                     break;
 
                 case 36:         //归一化遥测响应站召唤,类型标识9
                     if (DataCollection.inflen == 2)
-                        StartPos = DataCollection._DataField.Buffer[0] + (DataCollection._DataField.Buffer[1] << 8);
+                        StartPos = DataCollection.DataField.Buffer[0] + (DataCollection.DataField.Buffer[1] << 8);
                     if(DataCollection.inflen==3)
-                        StartPos = (DataCollection._DataField.Buffer[2] << 16) + DataCollection._DataField.Buffer[0] + (DataCollection._DataField.Buffer[1] << 8);  
-                    for (int j = 0; j < DataCollection._DataField.FieldVSQ; j++)
+                        StartPos = (DataCollection.DataField.Buffer[2] << 16) + DataCollection.DataField.Buffer[0] + (DataCollection.DataField.Buffer[1] << 8);  
+                    for (int j = 0; j < DataCollection.DataField.FieldVSQ; j++)
                     {
                         if (DataCollection.inflen == 2)
                         {
-                            data = DataCollection._DataField.Buffer[index + 2] + (DataCollection._DataField.Buffer[index + 3] << 8);
+                            data = DataCollection.DataField.Buffer[index + 2] + (DataCollection.DataField.Buffer[index + 3] << 8);
 
                         }
                         if (DataCollection.inflen == 3)
                         {
-                            data = DataCollection._DataField.Buffer[index + 3] + (DataCollection._DataField.Buffer[index + 4] << 8);
+                            data = DataCollection.DataField.Buffer[index + 3] + (DataCollection.DataField.Buffer[index + 4] << 8);
                         }
                         if (data > 0x8000)
                             data = data - 65536;
-                        DataCollection.YcData.value[StartPos-0x4001] = Convert.ToString(data);
+                        DataCollection.ycDatas[DataCollection.linkAddr].value[StartPos - 0x4001] = Convert.ToString(data);
                         StartPos++;
                         index += 3;
                     }
                     break;
 
                 case 37:        //突发，归一化遥测扰动,类型标识9
-                    for (int j = 0; j < DataCollection._DataField.FieldVSQ; j++)
+                    for (int j = 0; j < DataCollection.DataField.FieldVSQ; j++)
                     {
                         if (DataCollection.inflen == 2)
                         {
-                            StartPos += DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8);
+                            StartPos += DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8);
 
-                            data = DataCollection._DataField.Buffer[index + 2] + (DataCollection._DataField.Buffer[index + 3] << 8);
+                            data = DataCollection.DataField.Buffer[index + 2] + (DataCollection.DataField.Buffer[index + 3] << 8);
                             index += 5;
                             if (data > 0x8000)
                                 data = data - 65536;
-                            DataCollection.YcData.value[StartPos - 0x4001] = Convert.ToString(data);
+                            DataCollection.ycDatas[DataCollection.linkAddr].value[StartPos - 0x4001] = Convert.ToString(data);
                         }
                         else if (DataCollection.inflen == 3)
                         {
-                            StartPos = DataCollection._DataField.Buffer[index + 2];
+                            StartPos = DataCollection.DataField.Buffer[index + 2];
                             StartPos = StartPos << 16;
-                            StartPos += DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8);
+                            StartPos += DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8);
 
-                            data = DataCollection._DataField.Buffer[index + 3] + (DataCollection._DataField.Buffer[index + 4] << 8);
+                            data = DataCollection.DataField.Buffer[index + 3] + (DataCollection.DataField.Buffer[index + 4] << 8);
                             index += 6;
                             if (data > 0x8000)
                                 data = data - 65536;
-                            DataCollection.YcData.value[StartPos - 0x4001] = Convert.ToString(data);
+                            DataCollection.ycDatas[DataCollection.linkAddr].value[StartPos - 0x4001] = Convert.ToString(data);
                         }
                     }
+                    DataCollection.ComTaskFlag.Comfirm = true;
                     break;
 
                 case 53:     //双点遥信响应站召唤，类型标识3
                     if(DataCollection.inflen==3)
-                        StartPos = (DataCollection._DataField.Buffer[2] << 16) +DataCollection._DataField.Buffer[0] + (DataCollection._DataField.Buffer[1] << 8);    
+                        StartPos = (DataCollection.DataField.Buffer[2] << 16) +DataCollection.DataField.Buffer[0] + (DataCollection.DataField.Buffer[1] << 8);    
                     if(DataCollection.inflen==2)
-                        StartPos = DataCollection._DataField.Buffer[0] + (DataCollection._DataField.Buffer[1] << 8);
-                    System.Diagnostics.Debug.WriteLine("FieldVSQ: " + DataCollection._DataField.FieldVSQ);
-                    for (int j = 0; j < DataCollection._DataField.FieldVSQ; j++)
+                        StartPos = DataCollection.DataField.Buffer[0] + (DataCollection.DataField.Buffer[1] << 8);
+                    System.Diagnostics.Debug.WriteLine("FieldVSQ: " + DataCollection.DataField.FieldVSQ);
+                    for (int j = 0; j < DataCollection.DataField.FieldVSQ; j++)
                     {
                         if (DataCollection.inflen == 2)
                         {
-                            System.Diagnostics.Debug.WriteLine(String.Format("DataCollection._DataField.Buffer{0:d}: ",j + 2) + DataCollection._DataField.Buffer[j + 2].ToString("X2"));
+                            System.Diagnostics.Debug.WriteLine(String.Format("DataCollection._DataField.Buffer{0:d}: ",j + 2) + DataCollection.DataField.Buffer[j + 2].ToString("X2"));
                             System.Diagnostics.Debug.WriteLine("StartPos - 1:" + (StartPos - 1));
-                            if ((DataCollection._DataField.Buffer[j + 2] & 0x03) == 1)
-                                DataCollection.YxData.value[StartPos-1] = "分";
+                            if ((DataCollection.DataField.Buffer[j + 2] & 0x03) == 1)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
 
                             
                             
                         }
                         if (DataCollection.inflen == 3)
                         {
-                            if ((DataCollection._DataField.Buffer[j + 3] & 0x03) == 1)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            if ((DataCollection.DataField.Buffer[j + 3] & 0x03) == 1)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                         }
                         StartPos++;
                     }
                     break;
 
                 case 54:    //突变，双点遥信，类型标识3
-                    for (int i = 0; i < DataCollection._DataField.FieldVSQ; i++)
+                    for (int i = 0; i < DataCollection.DataField.FieldVSQ; i++)
                     {
                         if (DataCollection.inflen == 2)
                         {
-                            StartPos += DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8);
-                            if ((DataCollection._DataField.Buffer[index + 2] & 0x03) == 1)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            StartPos += DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8);
+                            if ((DataCollection.DataField.Buffer[index + 2] & 0x03) == 1)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                             index += 3;
                         }
                         else if (DataCollection.inflen == 3)
                         {
-                            StartPos = DataCollection._DataField.Buffer[index + 2];
+                            StartPos = DataCollection.DataField.Buffer[index + 2];
                             StartPos = StartPos << 16;
-                            StartPos += DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8);
-                            if ((DataCollection._DataField.Buffer[index + 3]& 0x03) == 1)
-                                DataCollection.YxData.value[StartPos - 1] = "分";
+                            StartPos += DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8);
+                            if ((DataCollection.DataField.Buffer[index + 3]& 0x03) == 1)
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "分";
                             else
-                                DataCollection.YxData.value[StartPos - 1] = "合";
+                                DataCollection.yxDatas[DataCollection.linkAddr].value[StartPos - 1] = "合";
                             index += 4;
                         }
                     }
+                    DataCollection.ComTaskFlag.Comfirm = true;
                     break;
                 case 56://遥信变位，类型标示30，传送原因3
 
                     
-                    for (int i = 0; i < DataCollection._DataField.FieldVSQ;i++ )
+                    for (int i = 0; i < DataCollection.DataField.FieldVSQ;i++ )
                     {
                         if (DataCollection.inflen == 2)
                         {
-                            StartPos = DataCollection._DataField.Buffer[index] +(DataCollection._DataField.Buffer[index+1] << 8);
-                            if (DataCollection.nameMap.ContainsKey(StartPos.ToString()))
+                            StartPos = DataCollection.DataField.Buffer[index] +(DataCollection.DataField.Buffer[index+1] << 8);
+                            if (DataCollection.findNameMap[DataCollection.linkAddr].ContainsKey(StartPos.ToString()))
                             {
-                                DataCollection.Event.name.Add(DataCollection.nameMap[StartPos.ToString()]);
+                                DataCollection.events[DataCollection.linkAddr].name.Add(DataCollection.findNameMap[DataCollection.linkAddr][StartPos.ToString()]);
                             }
                             else
                             {
-                                DataCollection.Event.name.Add("未知");
+                                DataCollection.events[DataCollection.linkAddr].name.Add("未知");
                             }
-                            
-                            DataCollection.Event.addr.Add(StartPos.ToString());
+
+                            DataCollection.events[DataCollection.linkAddr].addr.Add(StartPos.ToString());
 
 
-                            if (DataCollection._DataField.Buffer[index+2] == 0)
-                                DataCollection.Event.value.Add("分");
+                            if (DataCollection.DataField.Buffer[index+2] == 0)
+                                DataCollection.events[DataCollection.linkAddr].value.Add("分");
                             else
-                                DataCollection.Event.value.Add("合");
+                                DataCollection.events[DataCollection.linkAddr].value.Add("合");
 
                             DataInfo = "";
-                            DataInfo = String.Format("{0:d}", DataCollection._DataField.Buffer[index+9]&0x7f);   //年
+                            DataInfo = String.Format("{0:d}", DataCollection.DataField.Buffer[index+9]&0x7f);   //年
                             DataInfo += "年";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index+8]&0x0f);  //月
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index+8]&0x0f);  //月
                             DataInfo += "月";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index+7] & 0x1f);  //日+星期
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index+7] & 0x1f);  //日+星期
                             DataInfo += "日";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index+6]&0x1f);  //时
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index+6]&0x1f);  //时
                             DataInfo += "时";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 5] & 0x3f);  //分
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index + 5] & 0x3f);  //分
                             DataInfo += "分";
-                            int ms = (DataCollection._DataField.Buffer[index+4] << 8)
-                                      + DataCollection._DataField.Buffer[index+3];
+                            int ms = (DataCollection.DataField.Buffer[index+4] << 8)
+                                      + DataCollection.DataField.Buffer[index+3];
 
                             DataInfo += String.Format("{0:d}", ms/1000);
                             DataInfo += "秒";
                             DataInfo += String.Format("{0:d}", ms%1000);
                             DataInfo += "毫秒";
-                            DataCollection.Event.date.Add(DataInfo);
+                            DataCollection.events[DataCollection.linkAddr].date.Add(DataInfo);
                             index += 10;
                         }
                         else if (DataCollection.inflen == 3)
                         {
-                            StartPos = DataCollection._DataField.Buffer[index] + (DataCollection._DataField.Buffer[index + 1] << 8)
-                                + (DataCollection._DataField.Buffer[index + 2] << 16);
-                            DataCollection.Event.name.Add("No Name");
-                            DataCollection.Event.addr.Add(StartPos.ToString());
-
-
-                            if (DataCollection._DataField.Buffer[index + 3] == 0)
-                                DataCollection.Event.value.Add("分");
+                            StartPos = DataCollection.DataField.Buffer[index] + (DataCollection.DataField.Buffer[index + 1] << 8)
+                                + (DataCollection.DataField.Buffer[index + 2] << 16);
+                            if (DataCollection.findNameMap[DataCollection.linkAddr].ContainsKey(StartPos.ToString()))
+                            {
+                                DataCollection.events[DataCollection.linkAddr].name.Add(DataCollection.findNameMap[DataCollection.linkAddr][StartPos.ToString()]);
+                            }
                             else
-                                DataCollection.Event.value.Add("合");
+                            {
+                                DataCollection.events[DataCollection.linkAddr].name.Add("未知");
+                            }
+                            DataCollection.events[DataCollection.linkAddr].addr.Add(StartPos.ToString());
+
+
+                            if (DataCollection.DataField.Buffer[index + 3] == 0)
+                                DataCollection.events[DataCollection.linkAddr].value.Add("分");
+                            else
+                                DataCollection.events[DataCollection.linkAddr].value.Add("合");
 
                             DataInfo = "";
-                            DataInfo = String.Format("{0:d}", DataCollection._DataField.Buffer[index + 10] & 0x7f);   //年
+                            DataInfo = String.Format("{0:d}", DataCollection.DataField.Buffer[index + 10] & 0x7f);   //年
                             DataInfo += "年";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 9] & 0x0f);  //月
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index + 9] & 0x0f);  //月
                             DataInfo += "月";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 8] & 0x1f);  //日+星期
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index + 8] & 0x1f);  //日+星期
                             DataInfo += "日";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 7] & 0x1f);  //时
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index + 7] & 0x1f);  //时
                             DataInfo += "时";
-                            DataInfo += String.Format("{0:d}", DataCollection._DataField.Buffer[index + 6] & 0x3f);  //分
+                            DataInfo += String.Format("{0:d}", DataCollection.DataField.Buffer[index + 6] & 0x3f);  //分
                             DataInfo += "分";
-                            int ms = (DataCollection._DataField.Buffer[index + 5] << 8)
-                                      + DataCollection._DataField.Buffer[index + 4];
+                            int ms = (DataCollection.DataField.Buffer[index + 5] << 8)
+                                      + DataCollection.DataField.Buffer[index + 4];
 
                             DataInfo += String.Format("{0:d}", ms / 1000);
                             DataInfo += "秒";
                             DataInfo += String.Format("{0:d}", ms % 1000);
                             DataInfo += "毫秒";
-                            DataCollection.Event.date.Add(DataInfo);
+                            DataCollection.events[DataCollection.linkAddr].date.Add(DataInfo);
                             index += 11;
                         }
                     }
+                    DataCollection.ComTaskFlag.Comfirm = true;
                     break;
 
 
@@ -1686,7 +1738,7 @@ namespace DistributionLineFaultIndicator
 
         private void ToolStripMenuItemSaveEvent_Click(object sender, EventArgs e)
         {
-            if (DataCollection.Event.addr.Count==0)
+            if (DataCollection.events[DataCollection.currentMon].addr.Count == 0)
             {
                 MessageBox.Show("没有可保存的的事件", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; 
@@ -1725,15 +1777,15 @@ namespace DistributionLineFaultIndicator
                 Application.DoEvents();
                 progressBar1.Refresh();
                 //填充数据         
-                for (int i = 0; i < DataCollection.Event.addr.Count; i++)//所要添加的行数           
+                for (int i = 0; i < DataCollection.events[DataCollection.currentMon].addr.Count; i++)//所要添加的行数           
                 {
                     //将数据填充到每一列的对应的单元格中    
                     excel.Cells[i + 2, 1] = i;
-                    excel.Cells[i + 2, 2] = DataCollection.Event.name[i];
-                    excel.Cells[i + 2, 3] = DataCollection.Event.addr[i];
-                    excel.Cells[i + 2, 4] = DataCollection.Event.value[i];
-                    excel.Cells[i + 2, 5] = DataCollection.Event.date[i];
-                    progressBar1.Value += 60 / DataCollection.Event.addr.Count;
+                    excel.Cells[i + 2, 2] = DataCollection.events[DataCollection.currentMon].name[i];
+                    excel.Cells[i + 2, 3] = DataCollection.events[DataCollection.currentMon].addr[i];
+                    excel.Cells[i + 2, 4] = DataCollection.events[DataCollection.currentMon].value[i];
+                    excel.Cells[i + 2, 5] = DataCollection.events[DataCollection.currentMon].date[i];
+                    progressBar1.Value += 60 / DataCollection.events[DataCollection.currentMon].addr.Count;
                 }
                 Application.DoEvents();
                 progressBar1.Refresh();
@@ -1745,7 +1797,7 @@ namespace DistributionLineFaultIndicator
                 Excel.Range er = sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, 5]];
                 er.Cells.Interior.Color = Color.LightBlue;
                 //重新选择单元格范围         
-                int rowscount = DataCollection.Event.addr.Count;
+                int rowscount = DataCollection.events[DataCollection.currentMon].addr.Count;
                 int columncount = 5;
                 //将范围重新确定为每一行的第一个单元格    
                 er = sheet.Range[sheet.Cells[1, 1], sheet.Cells[rowscount + 1, 1]];
@@ -1804,7 +1856,7 @@ namespace DistributionLineFaultIndicator
             if (type == 1)
             {
                 byte[] x = new byte[len];
-                Array.Copy(DataCollection._ComStructData.TXBuffer, 0, x, 0, len);
+                Array.Copy(DataCollection.ComStructData.TXBuffer, 0, x, 0, len);
                 StringBuilder str = new StringBuilder("发送;");
 
                 for (int i = 0; i < len; i++)
@@ -1828,7 +1880,7 @@ namespace DistributionLineFaultIndicator
             else if (type == 2)
             {
                 byte[] x = new byte[len];
-                Array.Copy(DataCollection._ComStructData.RXBuffer, 0, x, 0, len);
+                Array.Copy(DataCollection.ComStructData.RXBuffer, 0, x, 0, len);
                 StringBuilder str = new StringBuilder("接收;");
                 for (int i = 0; i < len; i++)
                 {

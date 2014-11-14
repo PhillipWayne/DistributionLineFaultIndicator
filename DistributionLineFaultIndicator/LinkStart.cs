@@ -23,7 +23,7 @@ namespace DistributionLineFaultIndicator
         {
             DataCollection.linkState = 0;
             textBoxState.Text = "已发送链路状态请求";
-            DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F = true;
+            DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F = true;
             DataCollection.waitTime = int.Parse(textBoxWaitTime.Text)*1000;
             timerF.Interval = DataCollection.waitTime;
             timerF.Enabled = true;
@@ -49,7 +49,7 @@ namespace DistributionLineFaultIndicator
                 case 5:
                     textBoxState.Text = "链路及下位机初始化完成！";
                     DataCollection.linkState = -1;
-                    DataCollection._ComTaskFlag.C_IC_NA_1 = true;    //总招
+                    DataCollection.ComTaskFlag.C_IC_NA_1 = true;    //总招
                     break;
                 default:
                     break;
@@ -61,11 +61,11 @@ namespace DistributionLineFaultIndicator
         {
             if (DataCollection.linkState == 0)
             {
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F = true;
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F = true;
             }
             else if (DataCollection.linkState == 1)
             {
-                DataCollection._ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;
+                DataCollection.ComTaskFlag.C_RQ_NA_LINKREQ_F1 = true;
             }
             else 
             {

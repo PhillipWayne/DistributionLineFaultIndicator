@@ -115,14 +115,14 @@ namespace DistributionLineFaultIndicator
 
                         yxdata.value[j] = "null";
                     }
-                    DataCollection.ycDatas.Add(i, ycdata);
-                    DataCollection.yxDatas.Add(i, yxdata);
+                    DataCollection.ycDatas.Add(linkAddr, ycdata);
+                    DataCollection.yxDatas.Add(linkAddr, yxdata);
                     DataCollection.Event eventPerMon = new DataCollection.Event();
                     eventPerMon.addr = new List<string>();
                     eventPerMon.date = new List<string>();
                     eventPerMon.name = new List<string>();
                     eventPerMon.value = new List<string>();
-                    DataCollection.events.Add(i, eventPerMon);
+                    DataCollection.events.Add(linkAddr, eventPerMon);
                 }
 
             }

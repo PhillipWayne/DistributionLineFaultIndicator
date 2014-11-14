@@ -32,33 +32,33 @@ namespace DistributionLineFaultIndicator
             DataCollection.SystemParam.NormalCurrentRating = UInt16.Parse(textBoxNormalCurrentRating.Text);
             DataCollection.SystemParam.PubAddr_101 = UInt16.Parse(textBoxPubAddr.Text);
             DataCollection.SystemParam.RequestTime = UInt16.Parse(textBoxRequestTime.Text);
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(1);            //向监视器下发监视端系统参数
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(1);            //向监视器下发监视端系统参数
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void buttonIpConfig_Click(object sender, EventArgs e)
         {
             DataCollection.montrParamState = 0;
             labelState.Text = "参数下设中...";
-            DataCollection._GPRSComSet.main_IP[0] = byte.Parse(textBoxMainIP1.Text);
-            DataCollection._GPRSComSet.main_IP[1] = byte.Parse(textBoxMainIP2.Text);
-            DataCollection._GPRSComSet.main_IP[2] = byte.Parse(textBoxMainIP3.Text);
-            DataCollection._GPRSComSet.main_IP[3] = byte.Parse(textBoxMainIP4.Text);
-            DataCollection._GPRSComSet.main_Port = UInt16.Parse(textBoxMainPort.Text);
+            DataCollection.GPRSComSet.main_IP[0] = byte.Parse(textBoxMainIP1.Text);
+            DataCollection.GPRSComSet.main_IP[1] = byte.Parse(textBoxMainIP2.Text);
+            DataCollection.GPRSComSet.main_IP[2] = byte.Parse(textBoxMainIP3.Text);
+            DataCollection.GPRSComSet.main_IP[3] = byte.Parse(textBoxMainIP4.Text);
+            DataCollection.GPRSComSet.main_Port = UInt16.Parse(textBoxMainPort.Text);
 
-            DataCollection._GPRSComSet.res_IP[0] = byte.Parse(textBoxResIP1.Text);
-            DataCollection._GPRSComSet.res_IP[1] = byte.Parse(textBoxResIP2.Text);
-            DataCollection._GPRSComSet.res_IP[2] = byte.Parse(textBoxResIP3.Text);
-            DataCollection._GPRSComSet.res_IP[3] = byte.Parse(textBoxResIP4.Text);
-            DataCollection._GPRSComSet.res_Port = UInt16.Parse(textBoxResPort.Text);
+            DataCollection.GPRSComSet.res_IP[0] = byte.Parse(textBoxResIP1.Text);
+            DataCollection.GPRSComSet.res_IP[1] = byte.Parse(textBoxResIP2.Text);
+            DataCollection.GPRSComSet.res_IP[2] = byte.Parse(textBoxResIP3.Text);
+            DataCollection.GPRSComSet.res_IP[3] = byte.Parse(textBoxResIP4.Text);
+            DataCollection.GPRSComSet.res_Port = UInt16.Parse(textBoxResPort.Text);
             
             if (textBoxAPN.Text.Length < 16)
             {
                 for (int i = 0; i < textBoxAPN.Text.Length; i++)
                 {
-                    DataCollection._GPRSComSet.APN[i] = textBoxAPN.Text[i]; 
+                    DataCollection.GPRSComSet.APN[i] = textBoxAPN.Text[i]; 
                 }
-                DataCollection._GPRSComSet.APN[textBoxAPN.Text.Length] = '\0';
+                DataCollection.GPRSComSet.APN[textBoxAPN.Text.Length] = '\0';
 
             }
             else 
@@ -67,8 +67,8 @@ namespace DistributionLineFaultIndicator
                 return;
             }
 
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(2);      //向监视器下发监视端ip参数
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(2);      //向监视器下发监视端ip参数
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void MotrParamFromMotr_Load(object sender, EventArgs e)
@@ -92,19 +92,29 @@ namespace DistributionLineFaultIndicator
             textBoxPubAddr.Text = DataCollection.SystemParam.PubAddr_101.ToString();
             textBoxRequestTime.Text = DataCollection.SystemParam.RequestTime.ToString();
 
-            textBoxMainIP1.Text = DataCollection._GPRSComSet.main_IP[0].ToString();
-            textBoxMainIP2.Text = DataCollection._GPRSComSet.main_IP[1].ToString();
-            textBoxMainIP3.Text = DataCollection._GPRSComSet.main_IP[2].ToString();
-            textBoxMainIP4.Text = DataCollection._GPRSComSet.main_IP[3].ToString();
-            textBoxMainPort.Text = DataCollection._GPRSComSet.main_Port.ToString();
+            textBoxMainIP1.Text = DataCollection.GPRSComSet.main_IP[0].ToString();
+            textBoxMainIP2.Text = DataCollection.GPRSComSet.main_IP[1].ToString();
+            textBoxMainIP3.Text = DataCollection.GPRSComSet.main_IP[2].ToString();
+            textBoxMainIP4.Text = DataCollection.GPRSComSet.main_IP[3].ToString();
+            textBoxMainPort.Text = DataCollection.GPRSComSet.main_Port.ToString();
 
-            textBoxResIP1.Text=DataCollection._GPRSComSet.res_IP[0].ToString();
-            textBoxResIP2.Text=DataCollection._GPRSComSet.res_IP[1].ToString();
-            textBoxResIP3.Text=DataCollection._GPRSComSet.res_IP[2].ToString();
-            textBoxResIP4.Text=DataCollection._GPRSComSet.res_IP[3].ToString();
-            textBoxResPort.Text = DataCollection._GPRSComSet.res_Port.ToString();
+            textBoxResIP1.Text=DataCollection.GPRSComSet.res_IP[0].ToString();
+            textBoxResIP2.Text=DataCollection.GPRSComSet.res_IP[1].ToString();
+            textBoxResIP3.Text=DataCollection.GPRSComSet.res_IP[2].ToString();
+            textBoxResIP4.Text=DataCollection.GPRSComSet.res_IP[3].ToString();
+            textBoxResPort.Text = DataCollection.GPRSComSet.res_Port.ToString();
 
-            textBoxAPN.Text = new string(DataCollection._GPRSComSet.APN);
+            textBoxAPN.Text = new string(DataCollection.GPRSComSet.APN);
+
+            textBoxAddrA1.Text = DataCollection.MonitorAddrs.addrA1.ToString();
+            textBoxAddrA2.Text = DataCollection.MonitorAddrs.addrA2.ToString();
+            textBoxAddrA3.Text = DataCollection.MonitorAddrs.addrA3.ToString();
+            textBoxAddrB1.Text = DataCollection.MonitorAddrs.addrB1.ToString();
+            textBoxAddrB2.Text = DataCollection.MonitorAddrs.addrB2.ToString();
+            textBoxAddrB3.Text = DataCollection.MonitorAddrs.addrB3.ToString();
+            textBoxAddrC1.Text = DataCollection.MonitorAddrs.addrC1.ToString();
+            textBoxAddrC2.Text = DataCollection.MonitorAddrs.addrC2.ToString();
+            textBoxAddrC3.Text = DataCollection.MonitorAddrs.addrC3.ToString();
 
             System.Diagnostics.Debug.WriteLine(DataCollection.Version.VER_FACNO + " " + DataCollection.Version.VER_DEVNO);
             if (DataCollection.Version.VER_SOFTNO != "")
@@ -120,16 +130,16 @@ namespace DistributionLineFaultIndicator
         {
             labelState.Text = "参数读取中...";
             DataCollection.montrParamState = 0;
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(3);      //向监视器下发读取监视端系统参数
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(3);      //向监视器下发读取监视端系统参数
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void buttonReadIpConfig_Click(object sender, EventArgs e)
         {
             labelState.Text = "参数读取中...";
             DataCollection.montrParamState = 0;
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(4);      //向监视器下发读取监视端ip参数
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(4);      //向监视器下发读取监视端ip参数
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -170,8 +180,8 @@ namespace DistributionLineFaultIndicator
         {
             labelState.Text = "参数读取中...";
             DataCollection.montrParamState = 0;
-            DataCollection._ComStructData.TxLen = ProtocoltyParam.EncodeFrame(5);      //向监视器下发读版本号
-            DataCollection._ComStructData.TX_TASK = true;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(5);      //向监视器下发读版本号
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
         private void buttonTimeSyn_Click(object sender, EventArgs e)
@@ -182,16 +192,16 @@ namespace DistributionLineFaultIndicator
                 labelState.Text = "参数下设中...";
                 DataCollection.montrParamState = 0;
                 int len = 0;
-                DataCollection._DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxMilisecond.Text) + int.Parse(textBoxSecond.Text)*1000);
-                DataCollection._DataField.TXBuffer[len++] = (byte)((int.Parse(textBoxMilisecond.Text) + int.Parse(textBoxSecond.Text) * 1000) >> 8);
-                DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxMinute.Text);
-                DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxHour.Text);
-                DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxDay.Text);
-                DataCollection._DataField.TXBuffer[len++] = byte.Parse(textBoxMonth.Text);
-                DataCollection._DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxYear.Text)%100);
-                DataCollection._DataField.TXFieldLen = len;
-                DataCollection._DataField.TXFieldVSQ = 1;
-                DataCollection._ComTaskFlag.C_CS_NA_1 = true;
+                DataCollection.DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxMilisecond.Text) + int.Parse(textBoxSecond.Text)*1000);
+                DataCollection.DataField.TXBuffer[len++] = (byte)((int.Parse(textBoxMilisecond.Text) + int.Parse(textBoxSecond.Text) * 1000) >> 8);
+                DataCollection.DataField.TXBuffer[len++] = byte.Parse(textBoxMinute.Text);
+                DataCollection.DataField.TXBuffer[len++] = byte.Parse(textBoxHour.Text);
+                DataCollection.DataField.TXBuffer[len++] = byte.Parse(textBoxDay.Text);
+                DataCollection.DataField.TXBuffer[len++] = byte.Parse(textBoxMonth.Text);
+                DataCollection.DataField.TXBuffer[len++] = (byte)(int.Parse(textBoxYear.Text)%100);
+                DataCollection.DataField.TXFieldLen = len;
+                DataCollection.DataField.TXFieldVSQ = 1;
+                DataCollection.ComTaskFlag.C_CS_NA_1 = true;
             }
             else
             {
@@ -215,7 +225,7 @@ namespace DistributionLineFaultIndicator
 
         private void validating_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar < '0' || e.KeyChar > '9')&&e.KeyChar!=8)
+            if ((e.KeyChar < '0' || e.KeyChar > '9') && e.KeyChar != 8 && e.KeyChar != 3)
                 e.Handled = true;
         }
 
@@ -247,6 +257,31 @@ namespace DistributionLineFaultIndicator
                 ((TextBox)sender).BackColor = SystemColors.Window;
                 labelState.Text = "";
             }
+        }
+
+        private void buttonAddr_Click(object sender, EventArgs e)
+        {
+            DataCollection.montrParamState = 0;
+            labelState.Text = "参数下设中...";
+            DataCollection.MonitorAddrs.addrA1 = int.Parse(textBoxAddrA1.Text);
+            DataCollection.MonitorAddrs.addrA2 = int.Parse(textBoxAddrA2.Text);
+            DataCollection.MonitorAddrs.addrA3 = int.Parse(textBoxAddrA3.Text);
+            DataCollection.MonitorAddrs.addrB1 = int.Parse(textBoxAddrB1.Text);
+            DataCollection.MonitorAddrs.addrB2 = int.Parse(textBoxAddrB2.Text);
+            DataCollection.MonitorAddrs.addrB3 = int.Parse(textBoxAddrB3.Text);
+            DataCollection.MonitorAddrs.addrC1 = int.Parse(textBoxAddrC1.Text);
+            DataCollection.MonitorAddrs.addrC2 = int.Parse(textBoxAddrC2.Text);
+            DataCollection.MonitorAddrs.addrC3 = int.Parse(textBoxAddrC3.Text);
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(6);      //向监视器下发修改地址参数
+            DataCollection.ComStructData.TX_TASK = true;
+        }
+
+        private void buttonReadAddrs_Click(object sender, EventArgs e)
+        {
+            labelState.Text = "参数读取中...";
+            DataCollection.montrParamState = 0;
+            DataCollection.ComStructData.TxLen = ProtocoltyParam.EncodeFrame(7);      //向监视器下发读地址
+            DataCollection.ComStructData.TX_TASK = true;
         }
 
        

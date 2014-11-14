@@ -83,6 +83,8 @@ namespace DistributionLineFaultIndicator
         {
             if (comboBoxMon.Text == "")
                 return;
+            if (listView1.Items.Count ==0)
+                return;
             //遥信标签页
             if (tabControl1.SelectedIndex == 0)
             {
@@ -129,7 +131,7 @@ namespace DistributionLineFaultIndicator
         //总招按钮
         private void button1_Click(object sender, EventArgs e)
         {
-            DataCollection._ComTaskFlag.C_IC_NA_1 = true;
+            DataCollection.ComTaskFlag.C_IC_NA_1 = true;
         }
 
         //下设监视电源参数按钮
@@ -185,7 +187,7 @@ namespace DistributionLineFaultIndicator
             DataCollection.class2Delay-=1000;
             if (DataCollection.class2Delay <= 0)
             {
-                DataCollection._ComTaskFlag.C_IC_NA_1 = true;
+                DataCollection.ComTaskFlag.C_IC_NA_1 = true;
                 DataCollection.class2Delay = DataCollection.class2Delay_default;
             }
         }
@@ -202,6 +204,13 @@ namespace DistributionLineFaultIndicator
         {
             if(comboBoxMon.Text!="")
                 refresh();
+            comboBoxMon.Items.Clear();
+            foreach (int mon in DataCollection.onLineMon)
+            {
+                comboBoxMon.Items.Add(mon.ToString());
+            }
+            if (!comboBoxMon.Items.Contains(comboBoxMon.Text))
+                comboBoxMon.Text = "";
         }
 
         //右键菜单删除所有遥信变位事件选项
@@ -272,6 +281,58 @@ namespace DistributionLineFaultIndicator
                     DataCollection.ycDatas[DataCollection.currentMon].value[i] = "null";
                 }
                 refresh();
+            }
+        }
+
+        private void comboBoxMon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxMon.Text == "")
+                return;
+            DataCollection.currentMon = int.Parse(comboBoxMon.Text);
+            DataCollection.linkAddr = (ushort)(DataCollection.currentMon);
+            ListViewItem lv;
+            //遥信
+            if (tabControl1.SelectedIndex == 0)
+            {
+                listView1.Items.Clear();
+                for (int i = 0; i < DataCollection.yxDatas[DataCollection.currentMon].num; i++)
+                {
+                    lv = new ListViewItem();
+                    lv.SubItems.Add(listView1.Items.Count.ToString());
+                    lv.SubItems.Add(DataCollection.yxDatas[DataCollection.currentMon].name[i]);
+                    lv.SubItems.Add(DataCollection.yxDatas[DataCollection.currentMon].addr[i]);
+                    lv.SubItems.Add(DataCollection.yxDatas[DataCollection.currentMon].value[i]);
+                    listView1.Items.Add(lv);
+                }
+            }
+            //遥测
+            else if (tabControl1.SelectedIndex == 1)
+            {
+                listView2.Items.Clear();
+                for (int i = 0; i < DataCollection.ycDatas[DataCollection.currentMon].num; i++)
+                {
+                    lv = new ListViewItem();
+                    lv.SubItems.Add(listView2.Items.Count.ToString());
+                    lv.SubItems.Add(DataCollection.ycDatas[DataCollection.currentMon].name[i]);
+                    lv.SubItems.Add(DataCollection.ycDatas[DataCollection.currentMon].addr[i]);
+                    lv.SubItems.Add(DataCollection.ycDatas[DataCollection.currentMon].value[i]);
+                    listView2.Items.Add(lv);
+                }
+            }
+            //遥信变位事件
+            else
+            {
+                listView3.Items.Clear();
+                for (int i = 0; i < DataCollection.events[DataCollection.currentMon].addr.Count; i++)
+                {
+                    lv = new ListViewItem();
+                    lv.SubItems.Add(listView3.Items.Count.ToString());
+                    lv.SubItems.Add(DataCollection.events[DataCollection.currentMon].name[i]);
+                    lv.SubItems.Add(DataCollection.events[DataCollection.currentMon].addr[i]);
+                    lv.SubItems.Add(DataCollection.events[DataCollection.currentMon].value[i]);
+                    lv.SubItems.Add(DataCollection.events[DataCollection.currentMon].date[i]);
+                    listView3.Items.Add(lv);
+                }
             }
         }
     }

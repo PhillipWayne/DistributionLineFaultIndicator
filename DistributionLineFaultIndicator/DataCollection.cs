@@ -49,7 +49,8 @@ namespace DistributionLineFaultIndicator
         public static int class2Delay;             //总招定时器时间瞬时值
         public static int class2Delay_default;     //总招定时器时间设定值
 
-        public static int trial;   //测试专用量
+        public static HashSet<int> onLineMon = new HashSet<int>();
+
 
         public struct Channel1        //监测单元连接参数
         {
@@ -71,7 +72,7 @@ namespace DistributionLineFaultIndicator
             public static string port;
         }
 
-        public struct _ProtocoltyFlag
+        public struct ProtocoltyFlag
         {
             public static int ACD;
             public static int FCB;
@@ -91,7 +92,7 @@ namespace DistributionLineFaultIndicator
         }
 
         //信息体，默认一般不包含第一个信息体地址
-        public struct _DataField
+        public struct DataField
         {
             //接收来的
             public static byte[] Buffer = new byte[1024];
@@ -105,7 +106,7 @@ namespace DistributionLineFaultIndicator
         }
 
         //------------------------------------------------------------------------串口数据缓存
-        public struct _ComStructData
+        public struct ComStructData
         {
             public static byte[] RXBuffer = new byte[1024]; //接收
             public static byte[] TXBuffer = new byte[1024]; //发送
@@ -116,7 +117,7 @@ namespace DistributionLineFaultIndicator
 
         }
 
-        public struct _ComStructData2
+        public struct ComStructData2
         {
             public static byte[] RXBuffer = new byte[1024];
             public static byte[] TXBuffer = new byte[1024];
@@ -127,7 +128,7 @@ namespace DistributionLineFaultIndicator
 
         }
         //------------------------------------------------------------------------串口任务处理
-        public struct _ComTaskFlag
+        public struct ComTaskFlag
         {
             public static bool C_P1_NA_F;
             public static bool C_RQ_NA_LINKREQ_F;//请求链路状态
@@ -192,7 +193,7 @@ namespace DistributionLineFaultIndicator
         }
 
         //下发监视端ip参数
-        public struct _GPRSComSet
+        public struct GPRSComSet
         {
             public static byte[] main_IP=new byte[4];
             public static UInt16 main_Port;
@@ -201,6 +202,19 @@ namespace DistributionLineFaultIndicator
             public static char[] APN=new char[16];
         }
 
+         //下发监视端地址参数
+        public struct MonitorAddrs
+        {
+            public static int addrA1;
+            public static int addrA2;
+            public static int addrA3;
+            public static int addrB1;
+            public static int addrB2;
+            public static int addrB3;
+            public static int addrC1;
+            public static int addrC2;
+            public static int addrC3;
+        }
 
 
 
